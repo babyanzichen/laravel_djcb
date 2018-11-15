@@ -65,15 +65,15 @@
      var ue = UE.getEditor('editor'); 
 </script>
 <script>
-    /*Markdown ------------start */
-    var simplemde = new SimpleMDE({
-        element: document.getElementById("editor"),
-        placeholder: 'Please input the article content.',
-        autoDownloadFontAwesome: true,
-        forceSync: false,
-        tabSize: 8,
-        lineWrapping: false
-    });
+    // /*Markdown ------------start */
+    // var simplemde = new SimpleMDE({
+    //     element: document.getElementById("editor"),
+    //     placeholder: 'Please input the article content.',
+    //     autoDownloadFontAwesome: true,
+    //     forceSync: false,
+    //     tabSize: 8,
+    //     lineWrapping: false
+    // });
     /*表单提交*/
     $("#saveBtn").click(function () {
 

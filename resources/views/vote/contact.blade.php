@@ -15,13 +15,13 @@
     <section style="border:none;margin: 5px;">
         <section style="color: rgb(117, 117, 118); font-size: 20px; text-align: center; margin: 0px auto -2px; border-bottom-width: 2px; border-bottom-style: solid; border-color: rgb(117, 117, 118); border-radius: 15px; padding: 5px 5px 15px;">
             <span class="135brush" data-brushtype="text" style="border-color: #757576; color: inherit; font-size: 18px; letter-spacing: 2px;"><p style="text-align:center">
-                <span style="font-size: 16px;"><strong><span style="font-family: 宋体;">联系我们</span></strong></span>
+                <span style="font-size: 16px;"><strong><span style="font-family: 宋体;">{{$about->title}}</span></strong></span>
             </p></span>
         </section>
     </section>
 </section>
 <div class="content" style="margin:5%">
-{{$about->content}}
+{{json_decode($about->content)->raw  }}
 </div>
 
 @include('layout.app')

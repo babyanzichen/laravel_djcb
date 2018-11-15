@@ -125,7 +125,8 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' 
         Route::post('{id}/delete', 'VoteController@destroy');
         Route::get('rules', 'VoteController@rules');
         Route::post('ajaxGetRules/{page?}', 'VoteController@ajaxGetRules');
-        Route::post('roles', 'VoteController@giveUserRolesStore');
+        Route::get('rule/{id}/edit', 'VoteController@rule_edit')->name('vote.show');
+        Route::post('rule/{id}/update', 'VoteController@rule_update');
 
     });
 

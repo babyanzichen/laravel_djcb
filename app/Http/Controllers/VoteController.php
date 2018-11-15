@@ -16,6 +16,7 @@ use App\voterecords;
 use App\Models\VoteInfo; 
 use App\Models\About;
 use App\Repositories\AboutRepository;
+use App\Repositories\VoteRuleRepository;
 class VoteController extends BaseController
 {
     /**
@@ -23,9 +24,10 @@ class VoteController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct(AboutRepository $about)
+     public function __construct(AboutRepository $about,VoteRuleRepository $VoteRuleRepository)
     {
         $this->about = $about;
+         $this->VoteRuleRepository = $VoteRuleRepository;
     }
     public function index(Request $request)
     {
@@ -545,14 +547,11 @@ class VoteController extends BaseController
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'laws','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
+      $info=$this->VoteRuleRepository->getById($id);
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'5']);
         return view('vote/laws', 
-          [
-         
-          'ip'=>$IP,
-          'signPackage' => $signPackage
-          ]);
+          compact('ip','signPackage','info'));
     }
 
 

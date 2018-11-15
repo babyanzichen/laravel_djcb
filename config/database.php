@@ -62,7 +62,7 @@ return [
 
             'driver'    => 'mysql',
 
-            'host'      => 'localhost',
+            'host'      => '120.76.76.231',
 
             'database'  => 'dianjin',
 

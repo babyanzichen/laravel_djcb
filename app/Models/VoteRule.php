@@ -14,7 +14,7 @@ class VoteRule extends Model
     protected $fillable = [
         'name',
         'content',
-        'status',
+        'is_enabled',
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];

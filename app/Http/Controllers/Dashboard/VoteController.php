@@ -6,7 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAward_RegisterRequest;
 use App\Http\Requests\UpdateAward_RegisterRequest;
-use App\Repositories\RoleRepository;
+use App\Http\Requests\UpdateVoteRuleRequest;
 use App\Repositories\VoteRuleRepository;
 use App\Repositories\Award_RegisterRepository;
 use shouquan;
@@ -23,11 +23,10 @@ class VoteController extends Controller
 
 
 
-    public function __construct(Award_RegisterRepository $Award_RegisterRepository, RoleRepository $roleRepository, VoteRuleRepository $VoteRuleRepository)
+    public function __construct(Award_RegisterRepository $Award_RegisterRepository, VoteRuleRepository $VoteRuleRepository)
     {
         $this->Award_RegisterRepository = $Award_RegisterRepository;
         $this->VoteRuleRepository = $VoteRuleRepository;
-        $this->roleRepository = $roleRepository;
     }
 
     public function lists()
@@ -97,6 +96,19 @@ class VoteController extends Controller
         return view('dashboard.vote.edit', ['info' => $this->Award_RegisterRepository->getById($id)]);
     }
 
+    public function rule_edit($id)
+    {
+        $info=$this->VoteRuleRepository->getById($id);
+
+        return view('dashboard.vote.rule-edit', compact('info'));
+    }
+    public function rule_update(UpdateVoteRuleRequest $request, $id)
+    {
+        $data = $request->all();
+        
+        $this->VoteRuleRepository->update($id, $data);
+        return ajaxReturn(dashboardUrl('/vote/rules'));
+    }
     public function update(UpdateAward_RegisterRequest $request, $id)
     {
         $data = $request->all();

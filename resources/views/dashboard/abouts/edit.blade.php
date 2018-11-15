@@ -29,8 +29,7 @@
                         <div class="form-group avalue">
                             <label class="col-sm-3 control-label">内容：</label>
                             <div class="input-group col-sm-8">
-                                <textarea name="content" id="editor" class="form-control"
-                                          placeholder="内容">{{ json_decode($info->content)->raw }}</textarea>
+                                <script id="editor" name="profile" type="text/plain" style="width:1024px;height:500px;"></script>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -61,7 +60,10 @@
     </div>
 </div>
 @include('dashboard.layouts.partials.footer')
-
+@include('UEditor::head')
+<script type="text/javascript">
+     var ue = UE.getEditor('editor'); 
+</script>
 <script>
     /*Markdown ------------start */
     var simplemde = new SimpleMDE({

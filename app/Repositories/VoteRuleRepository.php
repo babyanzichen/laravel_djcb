@@ -9,9 +9,9 @@ class VoteRuleRepository
     use BaseRepository;
     protected $model;
 
-    public function __construct(Rule $rule)
+    public function __construct(VoteRule $VoteRule)
     {
-        $this->model = $rule;
+        $this->model = $VoteRule;
     }
 
     /**

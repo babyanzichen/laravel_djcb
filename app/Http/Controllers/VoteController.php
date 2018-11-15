@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use App\award_register;
 use App\voterecords; 
 use App\Models\VoteInfo; 
+use App\Models\About;
 use App\Repositories\AboutRepository;
 class VoteController extends BaseController
 {
@@ -524,8 +525,7 @@ class VoteController extends BaseController
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
          $IP=$_SERVER['REMOTE_ADDR'];
-        $about=$this->about->find(1);
-        var_dump($about);
+        $about=About::where('is_enable','yes')->first();
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'contact','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));

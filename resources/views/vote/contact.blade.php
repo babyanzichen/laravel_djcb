@@ -21,7 +21,7 @@
     </section>
 </section>
 <div class="content" style="margin:5%">
-<?php echo html_entity_decode(json_decode($info->content)->raw)  ?>
+<?php echo html_entity_decode(json_decode($about->content)->raw)  ?>
 </div>
 
 @include('layout.app')

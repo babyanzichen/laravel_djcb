@@ -29,7 +29,7 @@
                         <div class="form-group avalue">
                             <label class="col-sm-3 control-label">内容：</label>
                             <div class="input-group col-sm-8">
-                                <script id="editor"  type="text/plain" style="width:1024px;height:500px;">{{ json_decode($info->content)->raw }}</script>
+                                <script id="editor" name="content" type="text/plain" style="width:1024px;height:500px;">{{ json_decode($info->content)->raw }}</script>
                                 <textarea name="content" style="display:none"></textarea>
                             </div>
                         </div>

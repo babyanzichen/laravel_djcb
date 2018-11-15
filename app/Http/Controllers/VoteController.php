@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use App\award_register;
 use App\voterecords; 
 use App\Models\VoteInfo; 
+use App\Repositories\AboutRepository;
 class VoteController extends BaseController
 {
     /**
@@ -21,7 +22,10 @@ class VoteController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    
+     public function __construct(AboutRepository $about)
+    {
+        $this->about = $about;
+    }
     public function index(Request $request)
     {
       $this->check($request,'vote/index');
@@ -515,23 +519,19 @@ class VoteController extends BaseController
 
 
   public function contact(Request $request){
-            $this->check($request,'vote/contact');
+        $this->check($request,'vote/contact');
      
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
          $IP=$_SERVER['REMOTE_ADDR'];
-
+        $about=$this->about->->getAllData('*', array('is_enabled'=>'yes'));
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'contact','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'3']);
         return view('vote/contact', 
-          [
-         
-          'ip'=>$IP,
-          'signPackage' => $signPackage
-          ]);
+          compact('ip','about','signPackage'));
     }
 
      public function laws(Request $request){

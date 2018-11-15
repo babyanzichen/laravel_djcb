@@ -21,27 +21,7 @@
     </section>
 </section>
 <div class="content" style="margin:5%">
-<p>
-    <span style=";font-family:宋体;font-size:14px">&nbsp;</span>
-</p>
-<p>
-    地址：广州市天河区粤垦路623号燕都商务大厦18楼
-</p>
-<p>
-    联系电话：020-38376058-828，38377734，38376086，38376185
-</p>
-<p>
-    传真电话：020-38376173
-</p>
-<p>
-    广告合作：400-168-8880
-</p>
-<p>
-    展会合作：18922350760&nbsp;
-</p>
-<p>
-    展会邮箱：gaishow@ciaas.cn
-</p>
+{{$about->content}}
 </div>
 
 @include('layout.app')

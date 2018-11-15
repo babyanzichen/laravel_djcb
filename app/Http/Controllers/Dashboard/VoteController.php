@@ -70,7 +70,7 @@ class VoteController extends Controller
             $where['k4'][] = ['brandname', 'like', "%$keywords%"];
         }
 
-        $list = $this->RuleRepository->page($where, Config::get('dashboard.pagesize'));
+        $list = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
         foreach($list as $key=>$val) {
             
             $list[$key]['photo']=$list[$key]['logo'].$list[$key]['head']; 

@@ -288,7 +288,7 @@ Route::post('vote/sub','VoteController@sub');
 Route::get('vote/laws','VoteController@laws');
 Route::get('vote/get','VoteController@get'); 
 Route::post('vote/vote/{id}', 'voteController@vote');
-Route::get('vote/contact', 'voteController@contact'); 
+Route::get('vote/contact', 'voteController@contact')->name('contact');
 Route::get('vote/subs', 'voteController@subs'); 
 Route::get('vote/expXls', 'voteController@expXls'); 
 Route::get('vote/detail/{id}', 'voteController@detail');

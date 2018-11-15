@@ -23,7 +23,7 @@ class VoteController extends Controller
 
 
 
-    public function __construct(Award_RegisterRepository $Award_RegisterRepository, RoleRepository $roleRepository)
+    public function __construct(Award_RegisterRepository $Award_RegisterRepository, RoleRepository $roleRepository, VoteRuleRepository $VoteRuleRepository)
     {
         $this->Award_RegisterRepository = $Award_RegisterRepository;
         $this->VoteRuleRepository = $VoteRuleRepository;

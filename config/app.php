@@ -207,9 +207,10 @@ return [
         
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Naux\Mail\SendCloudServiceProvider::class,
+         Stevenyangecho\UEditor\UEditorServiceProvider::class,
     ],
     Overtrue\LaravelWechat\ServiceProvider::class,
-    Stevenyangecho\UEditor\UEditorServiceProvider::class,
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

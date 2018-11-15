@@ -71,10 +71,7 @@ class VoteController extends Controller
         }
 
         $lists = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
-        foreach($list as $key=>$val) {
-            
-            $list[$key]['photo']=$list[$key]['logo'].$list[$key]['head']; 
-        }
+        
         return view('dashboard.vote.ajax-rule-list', compact('lists'));
 
     }

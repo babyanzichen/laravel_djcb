@@ -54,7 +54,7 @@
                                                href="{{ dashboardUrl('/abouts/'.$v->id.'/edit') }}">
                                                 <span class="fa fa-pencil-square-o"> </span>&nbsp;编辑
                                             </a>&nbsp;&nbsp;
-                                            <a href="{{ route('vote/contact') }}" target="_blank" title="预览"><span
+                                            <a href="{{ route('/vote/contact') }}" target="_blank" title="预览"><span
                                                         class="fa fa-eye"></span>&nbsp;预览</a>&nbsp;&nbsp;
                                             <a href="javascript:;" class="btn-warning btn-xs" onclick="delBtn(this)"
                                                data-id="0"

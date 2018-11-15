@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Rule;
+use App\Models\VoteRule;
 
 class VoteRuleRepository
 {

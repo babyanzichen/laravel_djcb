@@ -29,7 +29,8 @@
                         <div class="form-group avalue">
                             <label class="col-sm-3 control-label">内容：</label>
                             <div class="input-group col-sm-8">
-                                <script id="editor" name="profile" type="text/plain" style="width:1024px;height:500px;"></script>
+                                <script id="editor"  type="text/plain" style="width:1024px;height:500px;"></script>
+                                <textarea name="content" style="display:none"></textarea>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -77,7 +78,7 @@
     /*表单提交*/
     $("#saveBtn").click(function () {
 
-        $("textarea[name=content]").val(simplemde.value());
+        $("textarea[name=content]").val(ue.getContent());
         if (isEmpty('', $("input[name=title]").val(), '请输入关于我们标题') == false) {
             return false;
         }

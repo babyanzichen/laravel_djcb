@@ -11,7 +11,7 @@ use JSSDK;
 use Validator;
 use Redirect, Input, Response;
 use Illuminate\Support\Facades\Session; 
-use App\award_register;
+use App\Models\VoteRegister;
 use App\voterecords; 
 use App\Models\VoteInfo; 
 use App\Models\About;
@@ -547,7 +547,7 @@ class VoteController extends BaseController
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'laws','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
-      $info=$this->VoteRuleRepository->getById($id);
+      $info=$this->VoteRuleRepository->getById(1);
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'5']);
         return view('vote/laws', 

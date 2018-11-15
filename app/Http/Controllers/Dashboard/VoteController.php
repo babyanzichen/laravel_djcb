@@ -4,28 +4,28 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAward_RegisterRequest;
-use App\Http\Requests\UpdateAward_RegisterRequest;
+use App\Http\Requests\StoreVoteRegisterRequest;
+use App\Http\Requests\UpdateVoteRegisterRequest;
 use App\Http\Requests\UpdateVoteRuleRequest;
 use App\Repositories\VoteRuleRepository;
-use App\Repositories\Award_RegisterRepository;
+use App\Repositories\VoteRegisterRepository;
 use shouquan;
 use Config;
 use Auth;
 use DB;
 use page;
-use App\award_register;
+use App\VoteRegister;
 class VoteController extends Controller
 {
     protected $userRepository;
     protected $roleRepository;
-    protected $Award_RegisterRepository;
+    protected $VoteRegisterRepository;
 
 
 
-    public function __construct(Award_RegisterRepository $Award_RegisterRepository, VoteRuleRepository $VoteRuleRepository)
+    public function __construct(VoteRegisterRepository $VoteRegisterRepository, VoteRuleRepository $VoteRuleRepository)
     {
-        $this->Award_RegisterRepository = $Award_RegisterRepository;
+        $this->VoteRegisterRepository = $VoteRegisterRepository;
         $this->VoteRuleRepository = $VoteRuleRepository;
     }
 
@@ -45,7 +45,7 @@ class VoteController extends Controller
             $where['k4'][] = ['brandname', 'like', "%$keywords%"];
         }
 
-        $list = $this->Award_RegisterRepository->page($where, Config::get('dashboard.pagesize'));
+        $list = $this->VoteRegisterRepository->page($where, Config::get('dashboard.pagesize'));
         foreach($list as $key=>$val) {
             
             $list[$key]['photo']=$list[$key]['logo'].$list[$key]['head']; 
@@ -93,7 +93,7 @@ class VoteController extends Controller
 
     public function edit($id)
     {
-        return view('dashboard.vote.edit', ['info' => $this->Award_RegisterRepository->getById($id)]);
+        return view('dashboard.vote.edit', ['info' => $this->VoteRegisterRepository->getById($id)]);
     }
 
     public function rule_edit($id)
@@ -109,11 +109,11 @@ class VoteController extends Controller
         $this->VoteRuleRepository->update($id, $data);
         return ajaxReturn(dashboardUrl('/vote/rules'));
     }
-    public function update(UpdateAward_RegisterRequest $request, $id)
+    public function update(UpdateVoteRegisterRequest $request, $id)
     {
         $data = $request->all();
         
-        $this->Award_RegisterRepository->update($id, $data);
+        $this->VoteRegisterRepository->update($id, $data);
        if($request->input('status')==1){
 
         $this->passSend($id,$request->input('openid'),$request->input('awards'));

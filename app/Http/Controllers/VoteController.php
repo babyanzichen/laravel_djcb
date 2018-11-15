@@ -525,6 +525,7 @@ class VoteController extends BaseController
         $nickname= $request->session()->get('user')['nickname'];
          $IP=$_SERVER['REMOTE_ADDR'];
         $about=$this->about->find(1);
+        var_dump($about);
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'contact','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));

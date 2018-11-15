@@ -31,7 +31,7 @@ class VoteController extends BaseController
     }
     public function index(Request $request)
     {
-      $this->check($request,'vote/index');
+      //$this->check($request,'vote/index');
      $IP=$_SERVER['REMOTE_ADDR'];
       /*$url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 
         $data = file_get_contents($url); //调用淘宝接口获取信息 
@@ -139,13 +139,12 @@ class VoteController extends BaseController
               $lists4[$key]['name']=$lists4[$key]['companyname']; 
             }        
 
-           $voterecords = new voterecords;
-            $has=$voterecords
-              ->where('openid',$openid)
+           
+            $has=$VoteRecord::where('openid',$openid)
               ->where('cid',$lists4[$key]['id'])
               ->where('date',date('Y-m-d', time()))
-              ->get();
-               if($has->first()==''){
+              ->first();
+               if($has==''){
                  $lists4[$key]['tips']='立即投票';
                   $lists4[$key]['style']='';
                }else{
@@ -158,7 +157,7 @@ class VoteController extends BaseController
             
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
-      $data['regcount']= VoteRegisters::distinct('openid')->count();
+      $data['regcount']= VoteRegister::distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
       $data['visitcount']=$data['visitcount']+60000;
       $data['votecount']= DB::table('voterecords')->distinct('openid')->count();

@@ -70,12 +70,12 @@ class VoteController extends Controller
             $where['k4'][] = ['brandname', 'like', "%$keywords%"];
         }
 
-        $list = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
+        $lists = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
         foreach($list as $key=>$val) {
             
             $list[$key]['photo']=$list[$key]['logo'].$list[$key]['head']; 
         }
-        return view('dashboard.vote.ajax-rule-list', compact('list'));
+        return view('dashboard.vote.ajax-rule-list', compact('lists'));
 
     }
     public function create()

@@ -75,7 +75,7 @@ class VoteController extends Controller
             
             $list[$key]['photo']=$list[$key]['logo'].$list[$key]['head']; 
         }
-        return view('dashboard.vote.ajax-rule-list', compact('lists'));
+        return view('dashboard.vote.ajax-rule-list', compact('list'));
 
     }
     public function create()

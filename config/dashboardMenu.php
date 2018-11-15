@@ -33,7 +33,7 @@ return [
                 ],
                 [
                     'name' => '活动规则',
-                    'href' => '/dashboard/vote/rule',
+                    'href' => '/dashboard/vote/rules',
                 ],
                 [
                     'name' => '奖项列表',

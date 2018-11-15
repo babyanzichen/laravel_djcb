@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAward_RegisterRequest;
 use App\Http\Requests\UpdateAward_RegisterRequest;
 use App\Repositories\RoleRepository;
+use App\Repositories\VoteRuleRepository;
 use App\Repositories\Award_RegisterRepository;
 use shouquan;
 use Config;
@@ -25,6 +26,7 @@ class VoteController extends Controller
     public function __construct(Award_RegisterRepository $Award_RegisterRepository, RoleRepository $roleRepository)
     {
         $this->Award_RegisterRepository = $Award_RegisterRepository;
+        $this->VoteRuleRepository = $VoteRuleRepository;
         $this->roleRepository = $roleRepository;
     }
 
@@ -52,7 +54,30 @@ class VoteController extends Controller
         return view('dashboard.vote.ajax-list', ['lists' => $list]);
 
     }
+    public function rules()
+    {
+        return view('dashboard.vote.rule-list');
+    }
 
+    public function ajaxGetRules(Request $request)
+    {
+        $keywords = $request->keywords;
+        $where = [];
+        if ($request->keywords) {
+            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
+            $where['k2'][] = ['username', 'like', "%$keywords%"];
+            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
+            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
+        }
+
+        $list = $this->RuleRepository->page($where, Config::get('dashboard.pagesize'));
+        foreach($list as $key=>$val) {
+            
+            $list[$key]['photo']=$list[$key]['logo'].$list[$key]['head']; 
+        }
+        return view('dashboard.vote.ajax-rule-list', compact('lists');
+
+    }
     public function create()
     {
         return view('dashboard.users.create');

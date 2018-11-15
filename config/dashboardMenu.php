@@ -24,7 +24,7 @@ return [
 
         
         [
-            'name' => '报名管理',
+            'name' => '金字塔活动管理',
             'style' => 'info',
             'sun'  => [
                 [
@@ -32,14 +32,18 @@ return [
                     'href' => '/dashboard/vote',
                 ],
                 [
+                    'name' => '活动规则',
+                    'href' => '/dashboard/vote/rule',
+                ],
+                [
                     'name' => '奖项列表',
-                    'href' => '/dashboard/awards',
+                    'href' => '/dashboard/vote/awards',
                 ],
             ]
         ],
 
         [
-            'name' => '投票管理',
+            'name' => '飘移活动管理',
             'style' => 'sticky-note',
             'sun'  => [
                 [
@@ -51,7 +55,7 @@ return [
         ],
 
         [
-            'name' => '售票管理',
+            'name' => '改装门票管理',
             'style' => 'ticket',
             'sun'  => [
                 [

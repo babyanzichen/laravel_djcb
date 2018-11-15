@@ -3,14 +3,8 @@
         <thead>
         <tr class="long-tr">
             <th><input type="checkbox" onclick="checkAll(this)">ID</th>
-            <th>奖项名</th>
-            <th>logo</th>
-            <th>公司名</th>
-           
-            <th style="width:20px">联系电话</th>
-            <th>审核状态</th>
-            <th>当前票数</th>
-            <th>报名时间</th>
+            <th>规则名称</th>
+            <th>更新时间</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -18,27 +12,8 @@
         @forelse( $lists as $v )
             <tr class="long-td">
                 <td><input type="checkbox" name="ids[]" value="{{ $v->id }}">{{ $v->id }}</td>
-                <td>{{ $v->awards}}</td>
-                <td>
-                    <a>
-                        <img src="{{  $v->photo }}" class="img-circle fancybox" href="{{ $v->logo }}" title="{{ $v->user_name }}" style="width:35px;height:35px"
-                             onerror="this.src='/assets/dashboard/images/head_default.gif'"/>
-                    </a>
-                </td>
-                <td>{{ $v->companyname }}</td>
-                
-                <td> {{ $v->phone}}</td>
-                <td> 
-                    @if($v->status==1)
-                       已通过
-                    @elseif($v->status==2)
-                        不通过
-                    @else
-                        审核中
-                    @endif
-                </td>
-                <td> {{ $v->votes}}</td>
-                <td>{{ $v->created_at }}</td>
+                <td>{{ $v->name}}</td>
+                <td>{{ $v->updated_at }}</td>
                 <td>
                     <a href="{{ dashboardUrl('/vote/'.$v->id.'/edit') }}" class="btn btn-primary btn-xs">
                         <i class="fa fa-pencil-square-o"></i> 编辑

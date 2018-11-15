@@ -209,6 +209,7 @@ return [
         Naux\Mail\SendCloudServiceProvider::class,
     ],
     Overtrue\LaravelWechat\ServiceProvider::class,
+    Stevenyangecho\UEditor\UEditorServiceProvider::class,
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

@@ -49,7 +49,7 @@ class VoteController extends BaseController
          $voteInfo=VoteInfo::where('status','ON')->first();
          
          
-        $lists1= award_register::where('c1','=','1') ->where('status','1') ->orderBy('votes', 'desc')->limit(10)->get();
+        $lists1= VoteRegister::where('c1','=','1') ->where('status','1') ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists1 as $key=>$val) {
             if ($lists1[$key]['c2']==1) {   //
@@ -82,7 +82,7 @@ class VoteController extends BaseController
                   
             }
            
-          $lists2= award_register::where('c1','=','2')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
+          $lists2= VoteRegister::where('c1','=','2')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists2 as $key=>$val) {
                 //
@@ -103,7 +103,7 @@ class VoteController extends BaseController
                   
             }
             
-          $lists3= award_register::where('c1','=','3')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
+          $lists3= VoteRegister::where('c1','=','3')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists3 as $key=>$val) {
                 //
@@ -124,7 +124,7 @@ class VoteController extends BaseController
                   
             }
             
-          $lists4= award_register::where('c1','=','4')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
+          $lists4= VoteRegister::where('c1','=','4')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists4 as $key=>$val) {
                if ($lists4[$key]['c2']==33) {   //
@@ -158,7 +158,7 @@ class VoteController extends BaseController
             
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
-      $data['regcount']= DB::table('award_registers')->distinct('openid')->count();
+      $data['regcount']= DB::table('VoteRegisters')->distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
       $data['visitcount']=$data['visitcount']+60000;
       $data['votecount']= DB::table('voterecords')->distinct('openid')->count();
@@ -227,8 +227,8 @@ class VoteController extends BaseController
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
-      $award_register = new award_register;
-      $is= $award_register->where('openid','=',$openid)->get();
+      $VoteRegister = new VoteRegister;
+      $is= $VoteRegister->where('openid','=',$openid)->get();
       //print_r($is);
       
           
@@ -252,8 +252,8 @@ class VoteController extends BaseController
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
       	$signPackage = $JSSDK->getSignPackage();
          session(['index'=>'2']);
-         $award_register = new award_register;
-      $lists= $award_register->where('status','=','1')->get();
+         $VoteRegister = new VoteRegister;
+      $lists= $VoteRegister->where('status','=','1')->get();
       //var_dump($lists);
     	return view('vote/lists', 
           [
@@ -359,22 +359,22 @@ class VoteController extends BaseController
             'companyname' => 'required', // 必填
         ]);
         if ($validator->passes()){
-         $award_register = new award_register; // 初始化 Article 对象
-         $award_register->username = $request->get('username'); // 将 POST 提交过了的 title 字段的值赋给 article 的 title 属性
-         $award_register->phone=$phone = $request->get('phone'); // 同上
-         $award_register->companyname = $request->get('companyname'); // 同上
-         $award_register->head = $request->get('head'); // 同上
-          $award_register->logo = $request->get('logo'); // 同上
-        $award_register->awards=$awards= $request->get('awards'); // 同上
-         $award_register->brandname= $request->get('brandname'); // 同上
-        $award_register->position = $request->get('position'); // 同上
-        $award_register->projectname= $request->get('projectname'); // 同上
-        $award_register->reason = $request->get('reason'); // 同上
-        $award_register->openid=$openid= $request->session()->get('user')['openid'];
+         $VoteRegister = new VoteRegister; // 初始化 Article 对象
+         $VoteRegister->username = $request->get('username'); // 将 POST 提交过了的 title 字段的值赋给 article 的 title 属性
+         $VoteRegister->phone=$phone = $request->get('phone'); // 同上
+         $VoteRegister->companyname = $request->get('companyname'); // 同上
+         $VoteRegister->head = $request->get('head'); // 同上
+          $VoteRegister->logo = $request->get('logo'); // 同上
+        $VoteRegister->awards=$awards= $request->get('awards'); // 同上
+         $VoteRegister->brandname= $request->get('brandname'); // 同上
+        $VoteRegister->position = $request->get('position'); // 同上
+        $VoteRegister->projectname= $request->get('projectname'); // 同上
+        $VoteRegister->reason = $request->get('reason'); // 同上
+        $VoteRegister->openid=$openid= $request->session()->get('user')['openid'];
        $nickname= $request->session()->get('user')['nickname'];
         
         // 将数据保存到数据库，通过判断保存结果，控制页面进行不同跳转
-        if ($award_register->save()) {
+        if ($VoteRegister->save()) {
             $this->send($request,$openid,$awards,$phone,$nickname);
            return Response::json(
             [
@@ -418,10 +418,10 @@ class VoteController extends BaseController
           $c1= $request->get('c1'); // 同上
           $c2= $request->get('c2'); // 同上
           $keyword= $request->get('keyword');
-           $award_register = new award_register;
+           $VoteRegister = new VoteRegister;
          
           if($keyword){
-             $lists= $award_register
+             $lists= $VoteRegister
              ->where(function ($query)use ($keyword) {
               $query->where('status', 1)->where('companyname', 'like','%'.$keyword.'%');
           })->orWhere(function ($query)use ($keyword) {
@@ -439,7 +439,7 @@ class VoteController extends BaseController
           /*
 
 
-           $lists= $award_register
+           $lists= $VoteRegister
           ->where('companyname', 'like','%'.$keyword.'%')
           ->orWhere('username', 'like','%'.$keyword.'%')
           ->orWhere('brandname', 'like','%'.$keyword.'%')
@@ -454,7 +454,7 @@ class VoteController extends BaseController
           */
       }
      else{
-         $lists= $award_register->where('c2','=',$c2)->where('status','1') ->orderBy('votes', 'desc')->get();
+         $lists= $VoteRegister->where('c2','=',$c2)->where('status','1') ->orderBy('votes', 'desc')->get();
      }
      foreach($lists as $key=>$val) {
             
@@ -590,8 +590,8 @@ class VoteController extends BaseController
          DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>$id,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
          
-         $award_register=new award_register;
-        $info=$award_register->where('id', '=',$id)->first();
+         $VoteRegister=new VoteRegister;
+        $info=$VoteRegister->where('id', '=',$id)->first();
         // print_r($news);
         //echo $news->title;
           $voterecords = new voterecords;
@@ -685,14 +685,14 @@ class VoteController extends BaseController
               ->where('date',date('Y-m-d', time()))
               ->get();
           if($has->first()==''){
-               $award_register = new award_register;
+               $VoteRegister = new VoteRegister;
                $voterecords->openid =$openid;
                $voterecords->cid =$id;
                $voterecords->date =date('Y-m-d', time());
                $voterecords->save();
               // $voterecords->insert(
        // ['openid' => $openid, 'cid'=>$id,'date' => date('Y-m-d', time())]);
-               $handle= $award_register->where('id',$id)->increment('votes');
+               $handle= $VoteRegister->where('id',$id)->increment('votes');
               if ($handle) {
                  return Response::json(
                   [
@@ -738,8 +738,8 @@ class VoteController extends BaseController
         array('created_at','报名时间'),  
         );
         
-        $award_register = new award_register;
-        $xlsData  = $award_register->get();
+        $VoteRegister = new VoteRegister;
+        $xlsData  = $VoteRegister->get();
         
         $this->exportExcel($xlsName,$xlsCell,$xlsData);
          

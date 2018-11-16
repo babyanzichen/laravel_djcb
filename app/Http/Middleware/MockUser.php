@@ -10,10 +10,10 @@ class MockUser
     {
 
         $user = new SocialiteUser([
-            'id' => '12345',//openid
-            'name' => 'mock',
-            'nickname' => 'mock user',
-            'avatar' => '',
+           'id' => array_get($user, 'openid'),
+            'name' => array_get($user, 'nickname'),
+            'nickname' => array_get($user, 'nickname'),
+            'avatar' => array_get($user, 'headimgurl'),
             'email' => null,
             'original' => [],
             'provider' => 'WeChat',

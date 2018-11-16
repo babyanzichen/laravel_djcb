@@ -1,7 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
-
 use App\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +15,8 @@ class SelfAuthController extends Controller
     public function autoLogin()
     {
         $userInfo = $this->getEasyWechatSession();
-        $openId = $userInfo['id'];
+        $openId = $userInfo['openid'];
+        //exit($openId);
         //查看对应的openid是否已被注册
         $userModel = User::where('openid', $openId)->first();
         //如果未注册，跳转到注册

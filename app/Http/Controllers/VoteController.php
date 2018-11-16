@@ -26,11 +26,14 @@ class VoteController extends BaseController
      */
      public function __construct(AboutRepository $about,VoteRuleRepository $VoteRuleRepository)
     {
+      $this->middleware(['wechat.oauth']);
         $this->about = $about;
          $this->VoteRuleRepository = $VoteRuleRepository;
     }
     public function index(Request $request)
-    {
+    { 
+      $officialAccount = EasyWeChat::officialAccount('wx7221456a3f12698e',
+        'fa019a106cdaf1af3831e4012a2c2c8e'); // 公众号
       //$this->check($request,'vote/index');
      $IP=$_SERVER['REMOTE_ADDR'];
       /*$url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 

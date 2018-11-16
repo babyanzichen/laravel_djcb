@@ -66,7 +66,6 @@ class Kernel extends HttpKernel
         'permission' => \Ucer\Entrust\Middlewares\EntrustPermission::class,
         'ability' => \Ucer\Entrust\Middlewares\EntrustAbility::class,
         'wechat.oauth' => \Overtrue\LaravelWeChat\Middleware\OAuthAuthenticate::class,
-         'mock.user' => \App\Http\Middleware\MockUser::class,
         'admin' => \App\Http\Middleware\MustBeAdmin::class
     ];
 }

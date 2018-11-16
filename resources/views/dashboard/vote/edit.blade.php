@@ -31,42 +31,40 @@
                             <div class="input-group col-sm-4">
                                 <input type="text" class="form-control" name="phone" value="{{ $info->phone }}"
                                 placeholder="联系方式">
-                                <input type="text" class="form-control" style="display: none" name="openid"
-                                       placeholder="openid" value="{{ $info->openid }}">
                             </div>
                         </div>
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">奖项名：</label>
-                            <div class="input-group col-sm-4">
-                                <input type="text" class="form-control" name="awards" value="{{ $info->awards }}"
-                                placeholder="奖项名">
-                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 必填</span>
-                            </div>
-                        </div>
+                        
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">申报理由：</label>
                             <div class="input-group col-sm-4">
-                                <textarea type="text" class="form-control" name="reason" 
-                                placeholder="申报理由">{{ $info->reason }}</textarea> 
+                               <script id="editor" name="reason" type="text/plain" style="width:724px;height:500px;">{!!$info->reason!!}</script>
+                                <textarea name="reason" style="display:none"></textarea>
                                 <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 必填</span>
                             </div>
                         </div>
-                        <div class="hr-line-dashed"></div>
+                       <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">一级类目：</label>
-                            <div class="input-group col-sm-4">
-                                <input type="text" class="form-control" name="c1" value="{{ $info->c1}}" placeholder="一级类目">
-                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 一级类目为奖项打的分类</span>
+                            <label class="col-sm-3 control-label">参评奖项：</label>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <select class="form-control m-b chosen-select" name="award_id">
+                                        <option value="">选择参评奖项</option>
+                                        @foreach($awardList as $v)
+                                            <option value="{{ $v->id }}"
+                                                    @if($info->award_id == $v->id) selected @endif>{{ $v->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="hr-line-dashed"></div>
+                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">二级类目：</label>
+                            <label class="col-sm-3 control-label">作假票数：</label>
                             <div class="input-group col-sm-4">
-                                <input type="text" class="form-control" name="c2" value="{{ $info->c2}}"
-                                       placeholder="二级类目">
+                                <input type="text" class="form-control" name="cheat" value="{{ $info->cheat }}"
+                                placeholder="作假票数">
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>请填需要增加的票数</span>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -74,13 +72,11 @@
                             <label class="col-sm-3 control-label">是否立即上线参评：</label>
                             <div class="input-group col-sm-4">
                                 <div class="radio i-checks">
-                                    <input type="radio" name='status' value="1"
-                                           @if($info->status == '1') checked @endif/>是&nbsp;&nbsp;
-                                    <input type="radio" name='status' value="0"
-                                           @if($info->status == '0') checked @endif/>否
-                                        &nbsp;&nbsp;
-                                         <input type="radio" name='status' value="2"
-                                           @if($info->status == '2') checked @endif/>不通过
+                                    <input type="radio" name='is_enabled' value="yes"
+                                           @if($info->is_enabled == 'yes') checked @endif/>是&nbsp;&nbsp;
+                                    <input type="radio" name='is_enabled' value="no"
+                                           @if($info->is_enabled == 'no') checked @endif/>否
+                                        
                                 </div>
                             </div>
                         </div>
@@ -99,11 +95,15 @@
     </div>
 </div>
 @include('dashboard.layouts.partials.footer')
-
+@include('dashboard.layouts.partials.footer')
+@include('UEditor::head')
+<script type="text/javascript">
+     var ue = UE.getEditor('editor'); 
+</script>
 <script>
     /*表单提交*/
     $("#saveBtn").click(function () {
-       
+        $("textarea[name=reason]").val(ue.getContent());
         ajaxFormBtn("{{ dashboardUrl('/vote/'.$info->id.'/update') }}", 'btnForm');
     });
 

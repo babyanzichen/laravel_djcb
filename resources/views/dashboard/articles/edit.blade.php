@@ -28,9 +28,9 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">文章分类：</label>
+                            <label class="col-sm-6 control-label">文章分类：</label>
                             <div class="form-group">
-                                <div class="col-md-2">
+                                <div class="col-md-6">
                                     <select class="form-control m-b chosen-select" name="category_id">
                                         <option value="">选择分类</option>
                                         @foreach($catList as $v)

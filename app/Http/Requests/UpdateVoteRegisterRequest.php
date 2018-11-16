@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateAward_RegisterRequest extends FormRequest
+class UpdateVoteRegisterRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,8 +16,8 @@ class UpdateAward_RegisterRequest extends FormRequest
     {
         $id = $this->route('id');
         return [
-            'companyname' => 'required', Rule::unique('award_register')->ignore($id),
-            'phone' => 'alpha_dash|required', Rule::unique('award_register')->ignore($id),
+            'companyname' => 'required',
+            'phone' => 'alpha_dash|required',
         ];
     }
 }

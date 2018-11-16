@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Auth;
 use convert;
+use App\Models\VoteRegister;
 class HomeController extends Controller
 {   
 	/**
@@ -37,13 +38,10 @@ class HomeController extends Controller
     {   
 
     	$dayviews = DB::select('SELECT * FROM chebao_dayviews WHERE id > (SELECT MAX(id) FROM chebao_dayviews) - 7');
-        //$newUser= DB::select('select count(*) from users where to_days(created_at) = to_days(now())');
-       // return $dayviews;
         $start = date('Y-m-d 00:00:00');
         $end = date('Y-m-d H:i:s');
         $newUser=DB::table('users')->whereBetween('created_at', [$start,$end])->count();
-        $newSign=DB::table('award_registers')->whereBetween('created_at', [$start,$end])->count();
-    	//return $newUser;
+        $newSign=VoteRegister::whereBetween('created_at', [$start,$end])->count();
        $userCounts=DB::select('select sex, Count(*) as count FROM users GROUP BY sex');
         //return $userCounts;
       $articles= DB::connection('mysql2')->select('select title,addtime from new order by addtime desc');

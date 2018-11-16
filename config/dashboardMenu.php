@@ -3,7 +3,7 @@
 return [
     'leftMenu' => [
         [
-            'name' => '用户管理',
+            'name' => '平台用户管理',
             'style' => 'users',
             'sun' => [
                 [
@@ -39,6 +39,10 @@ return [
                     'name' => '奖项列表',
                     'href' => '/dashboard/vote/awards',
                 ],
+                [
+                    'name' => '奖项分类',
+                    'href' => '/dashboard/vote/categorys',
+                ],
             ]
         ],
 
@@ -67,45 +71,45 @@ return [
         ],
 
 
+        // [
+        //     'name' => '内容管理',
+        //     'style' => 'ils',
+        //     'sun'  => [
+        //         [
+        //             'name' => '文章分类',
+        //             'href' => '/dashboard/articleCategory',
+        //         ],
+        //         [
+        //             'name' => '文章管理',
+        //             'href' => '/dashboard/article',
+        //         ],
+        //         [
+        //             'name' => '标签管理',
+        //             'href' => '/dashboard/tag',
+        //         ]
+        //     ]
+        // ],
+
+
+        // [
+        //     'name' => '问题管理',
+        //     'style' => 'question',
+        //     'sun'  => [
+        //         [
+        //             'name' => '问题分类',
+        //             'href' => '/dashboard/questionCategory',
+        //         ],
+        //         [
+        //             'name' => '问题管理',
+        //             'href' => '/dashboard/question',
+        //         ],
+        //     ]
+        // ],
+
+
+
         [
-            'name' => '内容管理',
-            'style' => 'ils',
-            'sun'  => [
-                [
-                    'name' => '文章分类',
-                    'href' => '/dashboard/articleCategory',
-                ],
-                [
-                    'name' => '文章管理',
-                    'href' => '/dashboard/article',
-                ],
-                [
-                    'name' => '标签管理',
-                    'href' => '/dashboard/tag',
-                ]
-            ]
-        ],
-
-
-        [
-            'name' => '问题管理',
-            'style' => 'question',
-            'sun'  => [
-                [
-                    'name' => '问题分类',
-                    'href' => '/dashboard/questionCategory',
-                ],
-                [
-                    'name' => '问题管理',
-                    'href' => '/dashboard/question',
-                ],
-            ]
-        ],
-
-
-
-        [
-            'name' => '站点管理',
+            'name' => '系统配置管理',
             'style' => 'gear',
             'sun'  => [
                 [

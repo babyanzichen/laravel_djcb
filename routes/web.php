@@ -128,6 +128,15 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' 
         Route::get('rule/{id}/edit', 'VoteController@rule_edit')->name('vote.show');
         Route::post('rule/{id}/update', 'VoteController@rule_update');
 
+         Route::get('awards', 'VoteController@awards');
+        Route::post('ajaxGetAwards/{page?}', 'VoteController@ajaxGetAwards');
+        Route::get('award/{id}/edit', 'VoteController@award_edit')->name('award.show');
+        Route::post('award/{id}/update', 'VoteController@award_update');
+
+        Route::get('categorys', 'VoteController@categorys');
+        Route::post('ajaxGetCategorys/{page?}', 'VoteController@ajaxGetCategorys');
+        Route::get('category/{id}/edit', 'VoteController@category_edit')->name('category.show');
+        Route::post('category/{id}/update', 'VoteController@category_update');
     });
 
 

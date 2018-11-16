@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Config;
 use DB;
-
+use App\Models\VoteRegister;
 class IndexController extends Controller
 {
 
@@ -38,8 +38,8 @@ class IndexController extends Controller
        // return $dayviews;
         $start = date('Y-m-d 00:00:00');
         $end = date('Y-m-d H:i:s');
-        $newUser=DB::table('users')->whereBetween('created_at', [$start,$end])->count();
-        $newSign=DB::table('award_registers')->whereBetween('created_at', [$start,$end])->count();
+        $newUser=User::whereBetween('created_at', [$start,$end])->count();
+        $newSign=VoteRegister::whereBetween('created_at', [$start,$end])->count();
         //return $newUser;
        $userCounts=DB::select('select sex, Count(*) as count FROM users GROUP BY sex');
         //return $userCounts;

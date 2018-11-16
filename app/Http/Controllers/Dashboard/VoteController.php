@@ -7,8 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVoteRegisterRequest;
 use App\Http\Requests\UpdateVoteRegisterRequest;
 use App\Http\Requests\UpdateVoteRuleRequest;
+use App\Http\Requests\UpdateVoteAwardRequest;
+use App\Http\Requests\UpdateVoteCategoryRequest;
 use App\Repositories\VoteRuleRepository;
 use App\Repositories\VoteRegisterRepository;
+use App\Repositories\VoteAwardRepository;
+use App\Repositories\VoteCategoryRepository;
 use shouquan;
 use Config;
 use Auth;
@@ -23,12 +27,20 @@ class VoteController extends Controller
 
 
 
-    public function __construct(VoteRegisterRepository $VoteRegisterRepository, VoteRuleRepository $VoteRuleRepository)
+    public function __construct(VoteRegisterRepository $VoteRegisterRepository, VoteRuleRepository $VoteRuleRepository, VoteAwardRepository $VoteAwardRepository, VoteCategoryRepository $VoteCategoryRepository)
     {
         $this->VoteRegisterRepository = $VoteRegisterRepository;
         $this->VoteRuleRepository = $VoteRuleRepository;
+        $this->VoteAwardRepository = $VoteAwardRepository;
+        $this->VoteCategoryRepository = $VoteCategoryRepository;
     }
-
+    /**
+    *评选列表
+    */
+    public function index()
+    {
+        return view('Dashboard.vote.index');
+    }
     public function lists()
     {
         return view('dashboard.vote.lists');
@@ -53,27 +65,8 @@ class VoteController extends Controller
         return view('dashboard.vote.ajax-list', ['lists' => $list]);
 
     }
-    public function rules()
-    {
-        return view('dashboard.vote.rule-list');
-    }
 
-    public function ajaxGetRules(Request $request)
-    {
-        $keywords = $request->keywords;
-        $where = [];
-        if ($request->keywords) {
-            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
-            $where['k2'][] = ['username', 'like', "%$keywords%"];
-            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
-            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
-        }
 
-        $lists = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
-        
-        return view('dashboard.vote.ajax-rule-list', compact('lists'));
-
-    }
     public function create()
     {
         return view('dashboard.users.create');
@@ -92,22 +85,10 @@ class VoteController extends Controller
     }
 
     public function edit($id)
-    {
-        return view('dashboard.vote.edit', ['info' => $this->VoteRegisterRepository->getById($id)]);
-    }
-
-    public function rule_edit($id)
-    {
-        $info=$this->VoteRuleRepository->getById($id);
-
-        return view('dashboard.vote.rule-edit', compact('info'));
-    }
-    public function rule_update(UpdateVoteRuleRequest $request, $id)
-    {
-        $data = $request->all();
-        
-        $this->VoteRuleRepository->update($id, $data);
-        return ajaxReturn(dashboardUrl('/vote/rules'));
+    {    
+        $awardList = $this->VoteAwardRepository->getAllData(['id', 'name'], false);
+        $info = $this->VoteRegisterRepository->getById($id);
+        return view('dashboard.vote.edit',compact('awardList','info'));
     }
     public function update(UpdateVoteRegisterRequest $request, $id)
     {
@@ -147,95 +128,134 @@ class VoteController extends Controller
           }
 
 
-
-
-    public function giveUserRoles(Request $request)
+    /*
+    活动规则
+    */
+    public function rules()
     {
-        $roles = $this->userRepository->getById($request->id)->cachedRoles();
-        return response()->json(
-            ajaxReturn('', 1, '成功',
-                roleOrPermissionDataHandle(array_column($roles->toArray(), 'id'), $this->roleRepository->getAllData(['id', 'name', 'display_name'])
-                )));
+        return view('dashboard.vote.rule-list');
     }
 
-    public function giveUserRolesStore(Request $request)
+    public function ajaxGetRules(Request $request)
     {
-        $ids = [];
-        if ($request->data) {
-            $ids = explode(',', $request->data);
+        $keywords = $request->keywords;
+        $where = [];
+        if ($request->keywords) {
+            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
+            $where['k2'][] = ['username', 'like', "%$keywords%"];
+            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
+            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
         }
-        $this->userRepository->syncRole($ids, $request->id);
-        return ajaxReturn(redirect()->back());
+
+        $lists = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
+        
+        return view('dashboard.vote.ajax-rule-list', compact('lists'));
+
     }
+    
 
-
-
-    public function index()
+    public function rule_edit($id)
     {
-        return view('Dashboard.vote.index');
+        $info=$this->VoteRuleRepository->getById($id);
+
+        return view('dashboard.vote.rule-edit', compact('info'));
+    }
+    public function rule_update(UpdateVoteRuleRequest $request, $id)
+    {
+        $data = $request->all();
+        
+        $this->VoteRuleRepository->update($id, $data);
+        return ajaxReturn(dashboardUrl('/vote/rules'));
+    }
+    
+    /*
+    奖项列表
+    */
+    public function awards()
+    {
+        return view('dashboard.vote.award-list');
+    }
+
+    public function ajaxGetAwards(Request $request)
+    {
+        $keywords = $request->keywords;
+        $where = [];
+        if ($request->keywords) {
+            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
+            $where['k2'][] = ['username', 'like', "%$keywords%"];
+            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
+            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
+        }
+
+        $lists = $this->VoteAwardRepository->page($where, Config::get('dashboard.pagesize'));
+        
+        return view('dashboard.vote.ajax-award-list', compact('lists'));
+
+    }
+    
+
+    public function award_edit($id)
+    {
+        $info=$this->VoteAwardRepository->getById($id);
+
+        return view('dashboard.vote.award-edit', compact('info'));
+    }
+    public function award_update(UpdateVoteAwardRequest $request, $id)
+    {
+        $data = $request->all();
+        
+        $this->VoteAwardRepository->update($id, $data);
+        return ajaxReturn(dashboardUrl('/vote/awards'));
+    }
+    
+    /*
+    奖项分类
+    */
+    public function categorys()
+    {
+        return view('dashboard.vote.category-list');
+    }
+
+    public function ajaxGetcategorys(Request $request)
+    {
+        $keywords = $request->keywords;
+        $where = [];
+        if ($request->keywords) {
+            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
+            $where['k2'][] = ['username', 'like', "%$keywords%"];
+            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
+            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
+        }
+
+        $lists = $this->VoteCategoryRepository->page($where, Config::get('dashboard.pagesize'));
+        
+        return view('dashboard.vote.ajax-category-list', compact('lists'));
+
+    }
+    
+
+    public function category_edit($id)
+    {
+        $info=$this->VoteCategoryRepository->getById($id);
+
+        return view('dashboard.vote.category-edit', compact('info'));
+    }
+    public function category_update(UpdateVoteAwardRequest $request, $id)
+    {
+        $data = $request->all();
+        
+        $this->VoteAwardRepository->update($id, $data);
+        return ajaxReturn(dashboardUrl('/vote/awards'));
     }
 
 
-
-    public function getUser(Request $request)
-    {   
-        $limit = $request->get('limit'); //一页显示的行数  
-        $curpage = empty( $request->get('page')) ? 1 :$request->get('page');
-        $url="";
-        $res['code']='0';
-        $res['msg']="success";
-       if($request->get('keywords')!=''){
-            $keywords=$request->get('keywords');
-            $count= Users::where('nickname',$keywords)
-            ->count();
-            $res['count']=$count;
-            $res['data'] = Users::where('nickname',$keywords)
-                ->orderBy('created_at', 'desc')
-                ->offset(($curpage - 1) * $limit)
-                ->limit($limit)
-                ->get();
-       }else{
-            $count=Users::count();
-            $res['count']=$count;
-            $res['data'] = Users::orderBy('created_at', 'desc')
-                ->offset(($curpage - 1) * $limit)
-                ->limit($limit)
-                ->get();
-       }
-       //return $res['data'];
-        foreach($res['data'] as $key=>$val) {
-           if ($res['data'][$key]['sex']==1) {   //
-            $res['data'][$key]['female']="男"; 
-            }elseif ($res['data'][$key]['sex']==2) {
-                $res['data'][$key]['female']="女"; 
-            } else{
-                $res['data'][$key]['female']="未知"; 
-            }        
-        }
-        return response()->json($res);
-    }
+   
 
 
-    public function getUserCate(){
-         $userCounts=DB::select('select sex, Count(*) as count FROM users GROUP BY sex');
-        //return $userCounts;
-      
-        foreach($userCounts as $key=>$val) {
-           if ($userCounts[$key]->sex==1) {   //
-            $userCounts[$key]->female='男'; 
-            $userCounts[$key]->color='#2196f3'; 
-            $userCounts[$key]->hightlight='#03a9f4'; 
-            }elseif ($userCounts[$key]->sex==2) {
-                $userCounts[$key]->female='女';  
-                $userCounts[$key]->color='#ea5f5f'; 
-                $userCounts[$key]->hightlight='#ff0000'; 
-            } else{
-                $userCounts[$key]->female='未知';
-                $userCounts[$key]->color='#a4a6a7'; 
-                $userCounts[$key]->hightlight='#000000'; 
-            }        
-        }
-       
-        return response()->json($userCounts);
-     }
+
+    
+
+
+
+    
 }

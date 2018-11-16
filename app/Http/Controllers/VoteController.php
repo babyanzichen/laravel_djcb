@@ -43,10 +43,10 @@ class VoteController extends BaseController
          $voteInfo=VoteInfo::where('status','ON')->first();
          
          
-        $lists1= VoteRegister::where('c1','=','1') ->where('status','1') ->orderBy('votes', 'desc')->limit(10)->get();
+        $lists1= VoteRegister::where('award_id','=','1') ->where('is_enabled','yes') ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists1 as $key=>$val) {
-            if ($lists1[$key]['c2']==1) {   //
+            if ($lists1[$key]['award_id']==1) {   //
               $lists1[$key]['photo']=$lists1[$key]['head'];
               $lists1[$key]['name']=$lists1[$key]['username']; 
             } else{
@@ -76,7 +76,7 @@ class VoteController extends BaseController
                   
             }
            
-          $lists2= VoteRegister::where('c1','=','2')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
+          $lists2= VoteRegister::where('award_id','=','2')->where('is_enabled','yes')  ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists2 as $key=>$val) {
                 //
@@ -97,7 +97,7 @@ class VoteController extends BaseController
                   
             }
             
-          $lists3= VoteRegister::where('c1','=','3')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
+          $lists3= VoteRegister::where('award_id','=','3')->where('is_enabled','1')  ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists3 as $key=>$val) {
                 //
@@ -118,7 +118,7 @@ class VoteController extends BaseController
                   
             }
             
-          $lists4= VoteRegister::where('c1','=','4')->where('status','1')  ->orderBy('votes', 'desc')->limit(10)->get();
+          $lists4= VoteRegister::where('award_id','=','4')->where('is_enabled','yes')  ->orderBy('votes', 'desc')->limit(10)->get();
          
          foreach($lists4 as $key=>$val) {
                if ($lists4[$key]['c2']==33) {   //

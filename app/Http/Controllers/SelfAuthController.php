@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Users;
+use App\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 

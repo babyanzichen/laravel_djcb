@@ -18,7 +18,8 @@ use App\Models\About;
 use App\Repositories\AboutRepository;
 use App\Repositories\VoteRuleRepository;
 class VoteController extends BaseController
-{
+{   
+
     /**
      * Show the application dashboard.
      *
@@ -26,24 +27,17 @@ class VoteController extends BaseController
      */
      public function __construct(AboutRepository $about,VoteRuleRepository $VoteRuleRepository)
     {
-        $this->about = $about;
-         $this->VoteRuleRepository = $VoteRuleRepository;
-    }
-    public function index(Request $request)
-    {
-      //$this->check($request,'vote/index');
-     $IP=$_SERVER['REMOTE_ADDR'];
-      /*$url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 
-        $data = file_get_contents($url); //调用淘宝接口获取信息 
-        $json = json_decode($data);
-        $country=$json->{'data'}->{'country'};
-        $area=$json->{'data'}->{'area'};
-        $region=$json->{'data'}->{'region'};
-        $city=$json->{'data'}->{'city'};
-        $county=$json->{'data'}->{'county'};
-        $isp=$json->{'data'}->{'isp'};
 
-        $addr=$country.$area.$region.$city.$county.$isp;*/
+      $this->middleware(['wechat.oauth']);
+      $this->about = $about;
+      $this->VoteRuleRepository = $VoteRuleRepository;
+    }
+    protected function index(Request $request)
+    { 
+       
+        $this->autoLogin();
+       $IP=$_SERVER['REMOTE_ADDR'];
+     
          $openid= $request->session()->get('user')['openid'];
         
          $voteInfo=VoteInfo::where('status','ON')->first();
@@ -174,20 +168,8 @@ class VoteController extends BaseController
 
     public function regs(Request $request)
     { 
-        $this->check($request,'vote/regs');
-     
-      /*$url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 
-        $data = file_get_contents($url); //调用淘宝接口获取信息 
-        $json = json_decode($data);
-        $country=$json->{'data'}->{'country'};
-        $area=$json->{'data'}->{'area'};
-        $region=$json->{'data'}->{'region'};
-        $city=$json->{'data'}->{'city'};
-        $county=$json->{'data'}->{'county'};
-        $isp=$json->{'data'}->{'isp'};
-
-        $addr=$country.$area.$region.$city.$county.$isp;
-        */
+      
+        $this->autoLogin();
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
        // DB::table('chebao_visittable')->insert(
@@ -215,8 +197,8 @@ class VoteController extends BaseController
 
     public function reg(Request $request)
     {  
-        $this->check($request,'vote/reg');
-     
+       
+         $this->autoLogin();
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
         $IP=$_SERVER['REMOTE_ADDR'];
@@ -241,8 +223,8 @@ class VoteController extends BaseController
 
     public function lists(Request $request)
     { 
-       $this->check($request,'vote/lists');
-     
+      
+         $this->autoLogin();
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
        $IP=$_SERVER['REMOTE_ADDR'];
@@ -263,7 +245,7 @@ class VoteController extends BaseController
     }
     public function positive(Request $request)
     {  
-    	 $this->check($request,'vote/positive');
+    	 $this->autoLogin();
       $IP=$_SERVER['REMOTE_ADDR'];
       $url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 
         $data = file_get_contents($url); //调用淘宝接口获取信息 
@@ -292,6 +274,7 @@ class VoteController extends BaseController
     }
     public function scroll(Request $request)
     {  
+       $this->autoLogin();
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
       	$signPackage = $JSSDK->getSignPackage();
     	return view('vote/scroll', 
@@ -308,7 +291,7 @@ class VoteController extends BaseController
 
     public function newslist(Request $request)
     {  
-    	$this->check($request,'vote/newslist');
+       $this->autoLogin();
       $IP=$_SERVER['REMOTE_ADDR'];
       $url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 
         $data = file_get_contents($url); //调用淘宝接口获取信息 
@@ -340,6 +323,7 @@ class VoteController extends BaseController
     }
     public function my(Request $request)
     {  
+       $this->autoLogin();
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
       	$signPackage = $JSSDK->getSignPackage();
          session(['index'=>'5']);
@@ -352,7 +336,7 @@ class VoteController extends BaseController
 
     public function sub(Request $request)
     {  
-
+       $this->autoLogin();
       $validator = Validator::make($request->all(),  [
             'phone'=> 'required|max:20',
             'companyname' => 'required', // 必填
@@ -403,8 +387,11 @@ class VoteController extends BaseController
     }
 
 
+
+
     public function subs(Request $request)
-    {  
+    {     
+       $this->autoLogin();
             $openid='o4d_8shXjlNNvAPLRZy4ve5Dmn3I';
             $awards='2017-2018年度汽车服务连锁十强品牌';
             $phone='13928886425';
@@ -414,6 +401,7 @@ class VoteController extends BaseController
 
 
     public function get(Request $request){
+       $this->autoLogin();
           $c1= $request->get('c1'); // 同上
           $c2= $request->get('c2'); // 同上
           $keyword= $request->get('keyword');
@@ -521,8 +509,8 @@ class VoteController extends BaseController
 
 
   public function contact(Request $request){
-        $this->check($request,'vote/contact');
      
+       $this->autoLogin();
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
          $IP=$_SERVER['REMOTE_ADDR'];
@@ -537,7 +525,7 @@ class VoteController extends BaseController
     }
 
      public function laws(Request $request){
-            $this->check($request,'vote/laws');
+       $this->autoLogin();
      
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
@@ -568,7 +556,7 @@ class VoteController extends BaseController
     */
 
     public function send(){
-           
+            $this->autoLogin();
             $shouquan=new shouquan();
            // $shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法
              $shouquan->sendMessage('o4d_8stUOsFxmq-Cll9HHPM8E3pI','zp','15827400208','777');//调用方法
@@ -577,10 +565,7 @@ class VoteController extends BaseController
     
 
       public function detail(Request $request){
-        
-        $id=$request->route('id');
-
-        $this->check($request,'vote/detail/'.$id);
+         $this->autoLogin();
         $IP=$_SERVER['REMOTE_ADDR'];
            $openid= $request->session()->get('user')['openid'];
         $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
@@ -639,8 +624,7 @@ class VoteController extends BaseController
 
 
     public function articledetail(Request $request){
-       $id=$request->route('id');
-       $this->check($request,'vote/articledetail/'.$id);
+       $this->autoLogin();
       $IP=$_SERVER['REMOTE_ADDR'];
       $url = 'http://ip.taobao.com/service/getIpInfo.php?ip='.$IP; 
         $data = file_get_contents($url); //调用淘宝接口获取信息 
@@ -675,8 +659,7 @@ class VoteController extends BaseController
 
 
     public function vote(Request $request){
-       $id=$request->route('id');
-        $openid= $request->session()->get('user')['openid'];
+       $this->autoLogin();
         $voterecords = new voterecords;
         $has=$voterecords
               ->where('openid',$openid)

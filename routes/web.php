@@ -270,29 +270,7 @@ Route::auth();
 
 
 
-/*
-    财富金字塔投票路由群组
- */
-Route::get('vote/send', 'voteController@send');
-Route::get('vote', 'VoteController@index');
-Route::get('vote/index', 'VoteController@index');
-Route::get('vote/my', 'VoteController@my');
-Route::get('vote/lists', 'VoteController@lists');
-Route::get('vote/positive', 'VoteController@positive');
-Route::get('vote/reg', 'voteController@reg');
-Route::get('vote/regs', 'voteController@regs');
-Route::get('vote/newslist', 'voteController@newslist');
-Route::get('vote/scroll', 'voteController@scroll');
-Route::get('vote/articledetail/{id}', 'voteController@articledetail');
-Route::post('upload/upimg','UploadController@upimg');    
-Route::post('vote/sub','VoteController@sub');  
-Route::get('vote/laws','VoteController@laws');
-Route::get('vote/get','VoteController@get'); 
-Route::post('vote/vote/{id}', 'voteController@vote');
-Route::get('vote/contact', 'voteController@contact')->name('contact');
-Route::get('vote/subs', 'voteController@subs'); 
-Route::get('vote/expXls', 'voteController@expXls'); 
-Route::get('vote/detail/{id}', 'voteController@detail');
+
 
 
 /*
@@ -363,3 +341,44 @@ Route::get('race', 'RaceController@index');
 Route::get('race/detail/{id}', 'RaceController@detail');
 Route::post('race/infosubmit', 'RaceController@infosubmit');
 Route::get('race/vote/{id}', 'RaceController@vote');
+
+
+    Route::middleware('wechat.oauth:snsapi_base')->group(function () {
+        // Route::get('/login', 'SelfAuthController@autoLogin')->name('login');
+    });
+    Route::middleware('wechat.oauth:snsapi_userinfo')->group(function () {
+      //  Route::get('/vote','SelfAuthController@autoLogin');
+        /*
+            财富金字塔投票路由群组
+         */
+        Route::get('vote', 'VoteController@index');
+        Route::get('vote/send', 'voteController@send');
+        Route::get('vote/index', 'VoteController@index');
+        Route::get('vote/my', 'VoteController@my');
+        Route::get('vote/lists', 'VoteController@lists');
+        Route::get('vote/positive', 'VoteController@positive');
+        Route::get('vote/reg', 'voteController@reg');
+        Route::get('vote/regs', 'voteController@regs');
+        Route::get('vote/newslist', 'voteController@newslist');
+        Route::get('vote/scroll', 'voteController@scroll');
+        Route::get('vote/articledetail/{id}', 'voteController@articledetail');
+        Route::post('upload/upimg','UploadController@upimg');    
+        Route::post('vote/sub','VoteController@sub');  
+        Route::get('vote/laws','VoteController@laws');
+        Route::get('vote/get','VoteController@get'); 
+        Route::post('vote/vote/{id}', 'voteController@vote');
+        Route::get('vote/contact', 'voteController@contact')->name('contact');
+        Route::get('vote/subs', 'voteController@subs'); 
+        Route::get('vote/expXls', 'voteController@expXls'); 
+        Route::get('vote/detail/{id}', 'voteController@detail');
+
+    });
+
+
+
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+

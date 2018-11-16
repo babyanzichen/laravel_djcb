@@ -483,10 +483,10 @@
                                 </ul>
                 </h3>
                 <h4>
-                    {{$voteInfo->hold_time}}
+                颁奖时间：  {{$voteInfo->hold_time}}
                 </h4>
                 <h4>
-                    盛典地址：{{$voteInfo->address}}
+                盛典地址：{{$voteInfo->address}}
                 </h4><a href="{{ asset('/vote/laws') }}">活动详细介绍&gt;&gt;</a>
             </div>
             <div class="contents">
@@ -496,9 +496,6 @@
                     </div>
                     <ul class="list-unstyled category-tags">
                          @foreach ($lists1 as $l1)
-   
-             
-
                         <li class="tbg">
                            
                             <div class="xtbmk">

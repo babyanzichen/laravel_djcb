@@ -344,20 +344,14 @@ Route::get('race/vote/{id}', 'RaceController@vote');
 
 
     Route::middleware('wechat.oauth:snsapi_base')->group(function () {
-        Route::get('/login', 'SelfAuthController@autoLogin')->name('login');
+        // Route::get('/login', 'SelfAuthController@autoLogin')->name('login');
     });
     Route::middleware('wechat.oauth:snsapi_userinfo')->group(function () {
-        Route::get('/vote', function () {
-        $user = session('wechat.oauth_user.default'); // 拿到授权用户资料
-
-        dd($user);
-    });
-        Route::get('/register', 'SelfAuthController@autoRegister')->name('register');
-
-
-            /*
+      //  Route::get('/vote','SelfAuthController@autoLogin');
+        /*
             财富金字塔投票路由群组
          */
+        Route::get('vote', 'VoteController@index');
         Route::get('vote/send', 'voteController@send');
         Route::get('vote/index', 'VoteController@index');
         Route::get('vote/my', 'VoteController@my');

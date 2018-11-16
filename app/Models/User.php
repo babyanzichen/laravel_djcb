@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_name', 'email',
+        'user_name', 'email','province','country','openid','nickname','sex','language',
         'city','phone',
         'introduction',
         'password', 'image_url',
@@ -30,7 +30,7 @@ class User extends Authenticatable
         'nickname', 'register_source',
         'status', 'last_actived_at', 'is_admin',
         'company', 'personal_website',
-        'avatar'
+        'avatar','is_guanzhu'
     ];
     /**
      * 需要被转换成日期的属性。

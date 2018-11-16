@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,21 +13,51 @@ class SelfAuthController extends Controller
     }
 
     public function autoLogin()
-    {
+    {   
+        echo '1111';
         $userInfo = $this->getEasyWechatSession();
-        $openId = $userInfo['openid'];
-        //exit($openId);
+        var_dump($userInfo);
+        $openId = $userInfo['id'];
+        echo $openId;
+        echo '88888';
         //查看对应的openid是否已被注册
         $userModel = User::where('openid', $openId)->first();
         //如果未注册，跳转到注册
         if (!$userModel) {
-            return redirect()->route('register');
+            User::create( array(
+                    'openid'=>$userInfo['original']['openid'],
+                    'nickname'=>$userInfo['original']['nickname'],
+                    'sex'=>$userInfo['original']['sex'],
+                    'avatar'=>$userInfo['original']['headimgurl'],
+                    'language'=>$userInfo['original']['language'],
+                    'city'=>$userInfo['original']['city'],
+                    'province'=>$userInfo['original']['province'],
+                    'country'=>$userInfo['original']['country'],
+                    'register_source'=>'wechat_auth',
+                ));
+           // return redirect()->intended('/vote/index');
+           // return redirect()->route('register');
         } else {
+            echo '有';
+            User::where('openid',$openId)->update(
+                array(
+                    'nickname'=>$userInfo['original']['nickname'],
+                    'sex'=>$userInfo['original']['sex'],
+                    'avatar'=>$userInfo['original']['headimgurl'],
+                    'language'=>$userInfo['original']['language'],
+                    'city'=>$userInfo['original']['city'],
+                    'province'=>$userInfo['original']['province'],
+                    'country'=>$userInfo['original']['country'],
+                )
+            );
+            return redirect()->intended('/vote/index');
         //如果已被注册，通过openid进行自动认证，
         //认证通过后重定向回原来的路由，这样就实现了自动登陆。
-            if(Auth::attempt(['openid' => $openId, 'password' => '123456'])) {
-                return redirect()->intended();
-            }
+            // if(Auth::attempt(['openid' => $openId, 'password' => '123456'])) {
+            //     return redirect()->intended();
+            // }else{
+            //     echo'出了点小问题';
+            // }
         }
     }
 

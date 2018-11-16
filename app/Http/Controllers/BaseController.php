@@ -1,6 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
+use App\Models\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -12,104 +14,76 @@ use shouquan;
 use Illuminate\Support\Facades\Session;
 use App\Users;
 class BaseController extends Controller
-{   
-
-	public function check($request,$route){
-		//print_r($request->session()->all()) ;
-		$user= $request->session()->get('user');
-	      
-	       if(!isset($user["openid"])){
-	          
-	       
-	      	$code = $request->get('code');
-	      
-	       if($code==""){
-	          $shouquan=new shouquan();
-	          $shouquan->authe($route);
-
-	       }else{
-	      // return $code;
-	        $this->get_user_info($code);
-	     
-	     
-	      }
-	    }else{  
-	         // var_dump(Session::get('user'));
-	      } 
-	}
-
-
-
-
-
-    public function get_user_info($code){
-
-      $appid = config('app.appId'); 
-      $secret = config('app.appSecret'); 
-      $get_token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$secret.'&code='.$code.'&grant_type=authorization_code';  
-       //var_dump( $get_token_url);
-     $shouquan=new shouquan();
-      $json_obj =$shouquan->httpGet($get_token_url);
-       // var_dump($json_obj);
-      //根据openid和access_token查询用户信息  
-      $access_token = $json_obj["access_token"];  
-      $openid = $json_obj["openid"];
-
-      $get_user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';  
-        
-     $userinfo =$shouquan->httpGet($get_user_info_url); 
-        
-      //解析json  
-      
-       
-       $this->zhuce($userinfo);
-      //print_r($user_obj);  
+{
+    public function getEasyWechatSession()
+    {
+        $user = session('wechat.oauth_user.default');
+        return $user;
     }
 
+    public function autoLogin()
+    {   
+       
+        $userInfo = $this->getEasyWechatSession();
+       
+        $openId = $userInfo['id'];
+      
+        //查看对应的openid是否已被注册
+        $userModel = User::where('openid', $openId)->first();
+        //如果未注册，跳转到注册
+        if (!$userModel) {
+            User::create( array(
+                    'openid'=>$userInfo['original']['openid'],
+                    'nickname'=>$userInfo['original']['nickname'],
+                    'sex'=>$userInfo['original']['sex'],
+                    'avatar'=>$userInfo['original']['headimgurl'],
+                    'language'=>$userInfo['original']['language'],
+                    'city'=>$userInfo['original']['city'],
+                    'province'=>$userInfo['original']['province'],
+                    'country'=>$userInfo['original']['country'],
+                    'register_source'=>'wechat_auth',
+                ));
+           // return redirect()->intended('/vote/index');
+           // return redirect()->route('register');
+        } else {
+            
+            User::where('openid',$openId)->update(
+                array(
+                    'nickname'=>$userInfo['original']['nickname'],
+                    'sex'=>$userInfo['original']['sex'],
+                    'avatar'=>$userInfo['original']['headimgurl'],
+                    'language'=>$userInfo['original']['language'],
+                    'city'=>$userInfo['original']['city'],
+                    'province'=>$userInfo['original']['province'],
+                    'country'=>$userInfo['original']['country'],
+                )
+            );
+            return redirect()->intended('/vote/index');
+        //如果已被注册，通过openid进行自动认证，
+        //认证通过后重定向回原来的路由，这样就实现了自动登陆。
+            // if(Auth::attempt(['openid' => $openId, 'password' => '123456'])) {
+            //     return redirect()->intended();
+            // }else{
+            //     echo'出了点小问题';
+            // }
+        }
+    }
 
+    public function autoRegister()
+    {
+        $userInfo = $this->getEasyWechatSession();
+    //根据微信信息注册用户。
+        $userData = [
+            'password' => bcrypt('123456'),
+            'openid' => $userInfo['id'],
+            'nickname' => $userInfo['nickname'],
+        ];
+        //注意批量写入需要把相应的字段写入User中的$fillable属性数组中
+        User::create($userData);
+        return redirect()->route('login');
+    }
 
-
-	public function zhuce($userinfo){
-			$openid= $userinfo['openid'];
-			$nickname= $userinfo['nickname'];
-			$avatar= $userinfo['headimgurl'];
-			$sex= $userinfo['sex'];
-			$city= $userinfo['city'];
-			$province= $userinfo['province'];
-			$country= $userinfo['country'];
-			$UserModel=new Users;
-			$user=$UserModel->where('openid', '=',$openid)->first();
-			//var_dump($userinfo);
-            if($user==null||$user==""){
-            	// echo"1111";
-             
-			    $UserModel->nickname = $nickname;
-			    $UserModel->openid = $openid;
-			    $UserModel->sex = $sex;
-			    $UserModel->avatar = $avatar;
-			    $UserModel->city = $city;
-			    $UserModel->province = $province;
-			    $UserModel->country = $country;
-			    $UserModel->register_source = 'wechat_auth';
-                $UserModel->save();
-            }else{
-            	//echo"222222";
-            	$UserModel = Users::find($user['id']);
-				$UserModel->nickname = $nickname;
-			    $UserModel->openid = $openid;
-			    $UserModel->sex = $sex;
-			    $UserModel->avatar = $avatar;
-			    $UserModel->city = $city;
-			     $UserModel->province = $province;
-			    $UserModel->country = $country;
-			    $UserModel->save();
-            }
-              session(['user'=>$userinfo]);
-         }
-
-
-
-       public  function printf_info($data)
+     public  function printf_info($data)
         {
             foreach($data as $key=>$value){
                 echo "<font color='#00ff55;'>$key</font> : $value <br/>";
@@ -145,6 +119,5 @@ class BaseController extends Controller
         $objWriter->save('php://output'); 
         exit;   
     }
-
 
 }

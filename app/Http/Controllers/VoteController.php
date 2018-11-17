@@ -105,10 +105,10 @@ class VoteController extends BaseController
     {  
        
          $this->autoLogin();
-
+        $userInfo = $this->getEasyWechatSession();
         $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['openid'],'visittime' => date('Y-m-d H:i:s', time())]);
        
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();

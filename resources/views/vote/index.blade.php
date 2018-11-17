@@ -460,7 +460,7 @@
                 @foreach ($lists as $list)
                 <div class="gdmk">
                     <div class="bt">
-                       <span class="line"></span> <span></span><a href="{{ asset('/vote/lists') }}">更多</a>
+                       <span class="line"></span> <span>{{$list->name}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
                     </div>
                     <ul class="list-unstyled category-tags">
                         

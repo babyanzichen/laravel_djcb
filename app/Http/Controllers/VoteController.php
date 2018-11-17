@@ -46,6 +46,11 @@ class VoteController extends BaseController
          
          
         $lists= $this->VoteCateryRepository->getAllData(['id', 'name'], false);
+
+        foreach ($lists as $key => $value) {
+          $value['award']=VoteReward::where('category_id',$value['id']);
+        }
+        var_dump($lists);
          // foreach($lists as $key=>$val) {
          //    if ($lists[$key]['award_id']==1) {   //
          //      $lists[$key]['photo']=$lists[$key]['head'];

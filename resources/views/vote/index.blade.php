@@ -463,8 +463,7 @@
                        <span class="line"></span> <span>{{$list->name}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
                     </div>
                     <ul class="list-unstyled category-tags">
-                        @foreach($list->award as $award)
-                        @foreach($award->register as $register)
+                       
                         <li class="tbg">
                            
                             <div class="xtbmk">
@@ -482,8 +481,7 @@
                                 </div>
                             </div>
                         </li>
-                        @endforeach
-                        @endforeach
+                       
                         
                     </ul>
                 </div>

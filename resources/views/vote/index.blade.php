@@ -463,7 +463,7 @@
             </div>
             <div class="tit">
                 <h3 class="tit1">
-                    <p>
+                    
                         <input type="hidden" name="countDown" data-prefix="" value="{{$voteInfo->time}}"> 
                         <span class="payment-time">
                             <span class="active-time pull-right">
@@ -472,7 +472,7 @@
                                 <t class="time_suffix"></t>
                             </span>
                         </span>
-                    </p>
+                    
                 </h3>
                 <h4>
                 颁奖时间：  {{$voteInfo->hold_time}}

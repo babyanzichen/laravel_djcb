@@ -463,9 +463,16 @@
             </div>
             <div class="tit">
                 <h3 class="tit1">
-                    距离活动结束：<p>
-    <input type="hidden" name="countDown" data-prefix="距离活动结束仅有" value="{{$voteInfo->time}}"> <span class="payment-time"><span class="active-time pull-right"><t class="time_prefix">距离活动结束仅有</t><em class="time_d">379</em>天<em class="time_h">12</em>:<em class="time_m">08</em>:<em class="time_s">53</em><t class="time_suffix"></t></span></span>
-</p>
+                    <p>
+                        <input type="hidden" name="countDown" data-prefix="" value="{{$voteInfo->time}}"> 
+                        <span class="payment-time">
+                            <span class="active-time pull-right">
+                                <t class="time_prefix"></t>
+                                <em class="time_d">379</em>天<em class="time_h">12</em>:<em class="time_m">08</em>:<em class="time_s">53</em>
+                                <t class="time_suffix"></t>
+                            </span>
+                        </span>
+                    </p>
                 </h3>
                 <h4>
                 颁奖时间：  {{$voteInfo->hold_time}}

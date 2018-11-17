@@ -46,14 +46,14 @@ class VoteController extends BaseController
          
          
         $lists= $this->VoteCateryRepository->getAllData(['id', 'name'], false);
-         foreach($lists as $key=>$val) {
-            if ($lists[$key]['award_id']==1) {   //
-              $lists[$key]['photo']=$lists[$key]['head'];
-              $lists[$key]['name']=$lists[$key]['username']; 
-            } else{
-              $lists[$key]['photo']=$lists[$key]['logo'];
-              $lists[$key]['name']=$lists[$key]['brandname']; 
-            }            
+         // foreach($lists as $key=>$val) {
+         //    if ($lists[$key]['award_id']==1) {   //
+         //      $lists[$key]['photo']=$lists[$key]['head'];
+         //      $lists[$key]['name']=$lists[$key]['username']; 
+         //    } else{
+         //      $lists[$key]['photo']=$lists[$key]['logo'];
+         //      $lists[$key]['name']=$lists[$key]['brandname']; 
+         //    }            
 
 
 
@@ -62,19 +62,19 @@ class VoteController extends BaseController
 
              
             
-            // $has=VoteRecord::where('openid',$openid)
-            //   ->where('cid',$lists[$key]['id'])
-            //   ->where('date',date('Y-m-d', time()))
-            //   ->get();
-            //    if($has->first()==''){
-            //      $lists[$key]['tips']='立即投票';
-            //       $lists[$key]['style']='';
-            //    }else{
-            //       $lists[$key]['tips']='已投票';
-            //       $lists[$key]['style']="dark";
-            //    }
+         //    // $has=VoteRecord::where('openid',$openid)
+         //    //   ->where('cid',$lists[$key]['id'])
+         //    //   ->where('date',date('Y-m-d', time()))
+         //    //   ->get();
+         //    //    if($has->first()==''){
+         //    //      $lists[$key]['tips']='立即投票';
+         //    //       $lists[$key]['style']='';
+         //    //    }else{
+         //    //       $lists[$key]['tips']='已投票';
+         //    //       $lists[$key]['style']="dark";
+         //    //    }
                   
-             }
+         //     }
            
          var_dump($lists);
             

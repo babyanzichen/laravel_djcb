@@ -116,13 +116,9 @@ class VoteController extends BaseController
       $is= VoteRegister::where('openid','=',$userInfo['openid'])->get();
       //print_r($is);
       
-          
+          $nickname=$userInfo['nickname'];
     
-          return view('vote/checking',[
-          'is'=>$is,
-          'nickname'=>$nickname,
-          'signPackage' => $signPackage
-          ]); 
+          return view('vote/checking',compact('is','signPackage','nickname')); 
     }
 
     public function lists(Request $request)

@@ -4,136 +4,121 @@
          <meta name="_token" content="{!! csrf_token() !!}" />
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>
-            财富金字塔颁奖盛典
-        </title>
+        <title>财富金字塔颁奖盛典</title>
          <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
-          <script src="{{asset('/')}}index/vote/CountDown.js" type="text/javascript"></script>
+        <script src="{{asset('/')}}index/vote/CountDown.js" type="text/javascript"></script>
         <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-<script>
-      wx.checkJsApi({
-        jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-        success: function(res) {
-          // 以键值对的形式返回，可用的api值true，不可用为false
-          // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+        <script>
+            wx.checkJsApi({
+                jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                success: function(res) {
+                  // 以键值对的形式返回，可用的api值true，不可用为false
+                  // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                }
+              });
+            wx.config({
+                debug: false,
+                appId: '<?php echo $signPackage["appId"];?>',
+                timestamp: '<?php echo $signPackage["timestamp"];?>',
+                nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+                signature: '<?php echo $signPackage["signature"];?>',
+                jsApiList: [
+                  // 所有要调用的 API 都要加到这个列表中
+                  'onMenuShareTimeline','onMenuShareAppMessage'
+                ]
+              });
+
+          wx.ready(function(){
+            wx.onMenuShareAppMessage({
+             title: '点金传媒邀请您关注2017汽车服务行业财富金字塔颁奖盛典', // 分享标题
+              desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
+              link: 'http://www.djcb123.cn/vote', // 分享链接
+              imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
+              type: '', // 分享类型,music、video或link，不填默认为link
+              dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+              success: function () {
+              
+              },
+              cancel: function () {
+                 alert("分享失败");
+              }
+          });
+
+          wx.onMenuShareTimeline({
+              title: '点金传媒邀请您关注2017汽车服务行业财富金字塔颁奖盛典', // 分享标题
+              desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
+              link: 'http://www.djcb123.cn/vote', // 分享链接
+              imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
+              success: function () {
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              },
+              cancel: function () {
+                 alert("分享失败");
+              }
+          });
+
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
+    <style type="text/css">
+        @media screen and (max-width:350px) and (orientation:portrait){
+            .title {
+                animation: fromBack 1s linear forwards;
+                height: auto;
+                min-height: 120px;
+                border-radius: 20px;
+                background-color: rgba(255, 255, 255, 0.76);
+                filter: alpha(Opacity=80);
+                -moz-opacity: 0.5;
+                opacity: 0.5;
+                background-size: 100%;
+                z-index: 10;
+                position: relative;
+                box-shadow: 0 0 10px #ad7e59;
+                width:100%;  
+                top: -30px;
+            }
+            .tit {
+                padding: 5%;
+                position: relative;
+                top:-20px;
+                background-color: white;
+                font-size: 14px;
+            }
+            .contents {
+                       margin-top: -10px;
+                        background-color: white;
+                        height:1000px;
+                        margin-bottom: 30px;
+                    }
         }
-      });
-    wx.config({
-        debug: false,
-        appId: '<?php echo $signPackage["appId"];?>',
-        timestamp: '<?php echo $signPackage["timestamp"];?>',
-        nonceStr: '<?php echo $signPackage["nonceStr"];?>',
-        signature: '<?php echo $signPackage["signature"];?>',
-        jsApiList: [
-          // 所有要调用的 API 都要加到这个列表中
-          'onMenuShareTimeline','onMenuShareAppMessage'
-        ]
-      });
-
-  wx.ready(function(){
-    wx.onMenuShareAppMessage({
-     title: '点金传媒邀请您关注2017汽车服务行业财富金字塔颁奖盛典', // 分享标题
-      desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
-      link: 'http://www.djcb123.cn/vote', // 分享链接
-      imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
-      type: '', // 分享类型,music、video或link，不填默认为link
-      dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-      success: function () {
-      
-      },
-      cancel: function () {
-         alert("分享失败");
-      }
-  });
-
-  wx.onMenuShareTimeline({
-      title: '点金传媒邀请您关注2017汽车服务行业财富金字塔颁奖盛典', // 分享标题
-      desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
-      link: 'http://www.djcb123.cn/vote', // 分享链接
-      imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
-      success: function () {
-          
-          
-          
-          
-          
-          
-          
-      },
-      cancel: function () {
-         alert("分享失败");
-      }
-  });
-
-  });
-</script>
-
-        <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
-        <style type="text/css">
-        @media screen and (max-width:350px) and (orientation:portrait)
-{
-  .title {
-    animation: fromBack 1s linear forwards;
-    height: auto;
-    min-height: 120px;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.76);
-    filter: alpha(Opacity=80);
-    -moz-opacity: 0.5;
-    opacity: 0.5;
-  
-   background-size: 100%;
-    z-index: 10;
-  
-    position: relative;
-    box-shadow: 0 0 10px #ad7e59;
-        width:100%;
-       
-  top: -30px;
-}
-.tit {
-    padding: 5%;
-    position: relative;
-    top:-20px;
-    background-color: white;
-    font-size: 14px;
-}
-.contents {
-           margin-top: -10px;
-            background-color: white;
-            height:1000px;
-            margin-bottom: 30px;
-        }
-}
-
-@media screen and (min-width:351px) and (max-width:400px)
-{
-  .title {
-        animation: fromBack 1s linear forwards;
-        height: auto;
-        min-height: 120px;
-        border-radius: 20px;
-        background-color: rgba(255, 255, 255, 0.76);
-        filter: alpha(Opacity=80);
-        -moz-opacity: 0.5;
-        opacity: 0.5;
-        box-shadow: 0 0 10px #ad7e59;
-        width:100%;
-       
-     
-       
-      
-        z-index: 10;
-       position: relative;
-       top: -30px;
-       
-      
+        @media screen and (min-width:351px) and (max-width:400px){
+        .title {
+            animation: fromBack 1s linear forwards;
+            height: auto;
+            min-height: 120px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.76);
+            filter: alpha(Opacity=80);
+            -moz-opacity: 0.5;
+            opacity: 0.5;
+            box-shadow: 0 0 10px #ad7e59;
+            width:100%;
+            z-index: 10;
+           position: relative;
+           top: -30px;
         }
         .tit {
-        padding: 5%;
-        position: relative;
-        top:-20px;
-        background-color: white;
+            padding: 5%;
+            position: relative;
+            top:-20px;
+            background-color: white;
         }
         .contents {
            margin-top: -10px;
@@ -141,26 +126,25 @@
             height:1000px;
             margin-bottom: 30px;
         }
-}
+    }
 
-@media screen and (min-width:401px) and (max-width:450px)
-{
-  .title {
-    animation: fromBack 1s linear forwards;
-    height: auto;
-    min-height: 120px;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.76);
-    filter: alpha(Opacity=80);
-    -moz-opacity: 0.5;
-    opacity: 0.5;
-    z-index: 10;
-    top: -30px;
-    box-shadow: 0 0 10px #ad7e59;
-    width: 100%;
-    /* margin-left: 2.5%; */
-    position: relative;
-}
+    @media screen and (min-width:401px) and (max-width:450px){
+          .title {
+            animation: fromBack 1s linear forwards;
+            height: auto;
+            min-height: 120px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.76);
+            filter: alpha(Opacity=80);
+            -moz-opacity: 0.5;
+            opacity: 0.5;
+            z-index: 10;
+            top: -30px;
+            box-shadow: 0 0 10px #ad7e59;
+            width: 100%;
+            /* margin-left: 2.5%; */
+            position: relative;
+        }
         .tit {
         padding: 5%;
         position: relative;
@@ -173,17 +157,17 @@
             height:1000px;
             margin-bottom: 30px;
         }
-}
+    }
 
-@media screen and (min-width:451px) and (max-width:500px)
-{
-}
+    @media screen and (min-width:451px) and (max-width:500px)
+    {
+    }
 
-@media screen and (min-width:501px)
-{ 
- 
-    
-}
+    @media screen and (min-width:501px)
+    { 
+     
+        
+    }
 
         .spinner {
         background-color: rgba(0, 0, 0, 0.9);
@@ -237,53 +221,54 @@
         }
         }
         body {
-        font-family: 微软雅黑;
-        background-color: #f3f1f1;
+            font-family: 微软雅黑;
+            background-color: #f3f1f1;
         }
         .top{
-        z-index: 5;
+            z-index: 5;
         }
         .main .top img{
-        width: 100%
+            width: 100%
         }
         .main .zs {
-        float: left;
-        width: 30%;
-        margin-left: 3%;
-        position: relative;
-        text-align: center;
-        margin-top: 10%;
-        height:60px;
+            float: left;
+            width: 30%;
+            margin-left: 3%;
+            position: relative;
+            text-align: center;
+            margin-top: 10%;
+            height:60px;
         }
         .num {
-        color: #e5a700;
+            color: #e5a700;
         }
         
         
         .tit a{
-        color: #e5a700;
+            color: #e5a700;
         }
        .tit1 {
-    animation: fromBack 1s linear forwards;
-    color: #b52727;
-}
+            animation: fromBack 1s linear forwards;
+            color: #b52727;
+            height: 30px;
+        }
         
        .gdmk {
-    width: 100%;
-    height: 210px;
-    overflow: hidden;
-    margin-bottom: 50px;
-}
+            width: 100%;
+            height: 210px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
         .gdmk .bt {
-        width: 100%;
-        height: 40px;
-        line-height: 40px;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
         }
         .gdmk .bt span {
-        font-size: 16px;
-        margin-left: 10px;
-        font-weight: 600;
-        font-family: "Droid Sans Fallback", "Microsoft YaHei",arial,serif,monospace;
+            font-size: 16px;
+            margin-left: 10px;
+            font-weight: 600;
+            font-family: "Droid Sans Fallback", "Microsoft YaHei",arial,serif,monospace;
         }
        .bt a {
             float: right;
@@ -291,50 +276,49 @@
             color: #8a8a8a;
         }
         .gdmk ul {
-        padding-bottom: 10px;
+            padding-bottom: 10px;
         }
 
         .list-unstyled {
-        padding-left: 0;
-        list-style: none;
+            padding-left: 0;
+            list-style: none;
         }
         .category-tags {
-        display: block;
-        overflow-y: hidden;
-        overflow-x: scroll;
-        -webkit-overflow-scrolling: touch;
-        white-space: nowrap;
+            display: block;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
         }
        .category-tags::-webkit-scrollbar {
             display: none;
         }
         .list-unstyled {
-        padding-left: 0;
-        list-style: none;
+            padding-left: 0;
+            list-style: none;
         }
 
         ul, ol {
-        margin-top: 0;
-        margin-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
 
         ol, ul {
-        list-style: none;
+            list-style: none;
         }
-.category-tags .tbg {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-        li {
-        list-style-type: none;
+        .category-tags .tbg {
+            display: inline-block;
+            margin-right: 20px;
         }
 
         li {
-        display: list-item;
-        text-align: -webkit-match-parent;
+            list-style-type: none;
         }
 
+        li {
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
         .gdmk .xtbmk {
             width: 100px;
             height: 170px;
@@ -344,24 +328,52 @@
             height: 110px;
            
         }
- .line {
-    left: 2%;
-    position: relative;
-    width: 3px;
-    height: 40px;
-    border: 3px solid #eab558;
-    margin-right: 10px;
-}
-.gdmk .xtbmk .icon img {
-    width: 110px;
-    height: 110px;
-    border-radius: 15px;
-}
+         .line {
+            left: 2%;
+            position: relative;
+            width: 3px;
+            height: 40px;
+            border: 3px solid #eab558;
+            margin-right: 10px;
+        }
+        .gdmk .xtbmk .icon img {
+            width: 110px;
+            height: 110px;
+            border-radius: 15px;
+        }
         img {
-        vertical-align: middle;
+            vertical-align: middle;
         }
         .gdmk .xtbmk .yxm {
-        width: 100%;
+            width: 100%;
+            height: 30px;
+            padding: 0 5px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .yxbq {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #FF9800;
+            border-radius: 20px;
+            padding: 0 5px;
+            font-size: 12px;
+            line-height: 30px;
+            color: #FF9800;
+            text-align: center;
+        }
+        .gdmk .xtbmk .yxbq span {
+            margin: 0 2px;
+        }
+    .piao {
+        position: relative;
+        margin-top: -30px;
+        color: white;
+        width: 110%;
         height: 30px;
         padding: 0 5px;
         font-size: 14px;
@@ -370,63 +382,32 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        }
-        .yxbq {
-    width: 100%;
-    height: 30px;
-    border: 1px solid #FF9800;
-    border-radius: 20px;
-    padding: 0 5px;
-    font-size: 12px;
-    line-height: 30px;
-    color: #FF9800;
-    text-align: center;
-}
-        .gdmk .xtbmk .yxbq span {
-        margin: 0 2px;
-        }
-.piao {
-    position: relative;
-    margin-top: -30px;
-    color: white;
-    width: 110%;
-    height: 30px;
-    padding: 0 5px;
-    font-size: 14px;
-    line-height: 30px;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    background-color: rgba(214, 129, 68, 0.88);
-}
-        .num img{
+        background-color: rgba(214, 129, 68, 0.88);
+    }
+    .num img{
     width:20px;
-}
-.dark{
-    border: 1px solid #bfb9b9;
-    color: black;
-}
-.countdown{
-        display: inline-flex;
-      
-}
-.tishi {
-    left: 25%;
-    width: 50%;
-    border-radius: 30px;
-    height: 50px;
-    top: 50%;
-    line-height: 50px;
-    position: fixed;
-    display: none;
-    z-index: 1000;
-    color: red;
-    font-size: 12px;
-    background-color: #e0dad9;
-    text-align: center;
-}
-        </style>
+    }
+    .dark{
+        border: 1px solid #bfb9b9;
+        color: black;
+    }
+    
+    .tishi {
+        left: 25%;
+        width: 50%;
+        border-radius: 30px;
+        height: 50px;
+        top: 50%;
+        line-height: 50px;
+        position: fixed;
+        display: none;
+        z-index: 1000;
+        color: red;
+        font-size: 12px;
+        background-color: #e0dad9;
+        text-align: center;
+    }
+    </style>
     </head>
     <body>
         <div class="tishi">
@@ -466,7 +447,7 @@
                     
                         <input type="hidden" name="countDown" data-prefix="" value="{{$voteInfo->time}}"> 
                         <span class="payment-time">
-                            <span class="active-time pull-right">
+                            <span class="active-time">
                                 <t class="time_prefix"></t>
                                 <em class="time_d">379</em>天<em class="time_h">12</em>:<em class="time_m">08</em>:<em class="time_s">53</em>
                                 <t class="time_suffix"></t>

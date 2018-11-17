@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class voterecords extends Model
+class VoteRecords extends Model
 {
     protected $fillable = ['nickname', 'openid', 'sex', 'headerimg', 'isguanzhu'];
 }

@@ -12,7 +12,7 @@ use Validator;
 use Redirect, Input, Response;
 use Illuminate\Support\Facades\Session; 
 use App\Models\VoteRegister;
-use App\voterecords; 
+use App\Models\voterecord; 
 use App\Models\VoteInfo; 
 use App\Models\About;
 use App\Repositories\AboutRepository;
@@ -62,7 +62,7 @@ class VoteController extends BaseController
 
              
             
-            $has=VoteRecordwhere('openid',$openid)
+            $has=VoteRecord::where('openid',$openid)
               ->where('cid',$lists[$key]['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();

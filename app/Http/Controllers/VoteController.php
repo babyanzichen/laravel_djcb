@@ -9,6 +9,7 @@ use convert;
 use shouquan;
 use JSSDK;
 use Validator;
+use Auth;
 use Redirect, Input, Response;
 use Illuminate\Support\Facades\Session; 
 use App\Models\VoteRegister;

@@ -258,8 +258,11 @@ class VoteController extends BaseController
         $VoteRegister->position = $request->get('position'); // 同上
         $VoteRegister->projectname= $request->get('projectname'); // 同上
         $VoteRegister->reason = $request->get('reason'); // 同上
-        $VoteRegister->openid=$openid= $request->session()->get('user')['openid'];
-       $nickname= $request->session()->get('user')['nickname'];
+         $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['openid'];
+        $nickname= $userInfo['nickname'];
+        $VoteRegister->openid=$openid;
+      
         
         // 将数据保存到数据库，通过判断保存结果，控制页面进行不同跳转
         if ($VoteRegister->save()) {
@@ -458,7 +461,7 @@ class VoteController extends BaseController
       *@param
     */
 
-    public function send(){
+    public function send($openid,$nickname,$phone,$award){
            
             $shouquan=new shouquan();
             $shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法

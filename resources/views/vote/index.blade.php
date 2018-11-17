@@ -449,7 +449,7 @@
                         <span class="payment-time">
                             <span class="active-time">
                                 <t class="time_prefix"></t>
-                                <em class="time_d">379</em>天<em class="time_h">12</em>:<em class="time_m">08</em>:<em class="time_s">53</em>
+                                <em class="time_d">379</em>天<em class="time_h">12</em>小时<em class="time_m">08</em>分<em class="time_s">53</em>秒
                                 <t class="time_suffix"></t>
                             </span>
                         </span>

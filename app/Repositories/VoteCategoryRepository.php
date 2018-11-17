@@ -8,7 +8,7 @@ class VoteCategoryRepository
 {
     use BaseRepository;
     protected $model;
-
+    
     public function __construct(VoteCategory $VoteCategory)
     {
         $this->model = $VoteCategory;

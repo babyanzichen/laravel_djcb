@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\VoteRegister;
 use App\Models\voteRecord;
 use App\Models\voteAward; 
-
+use App\Models\voteCategory; 
 use App\Models\VoteInfo; 
 use App\Models\About;
 use App\Repositories\AboutRepository;

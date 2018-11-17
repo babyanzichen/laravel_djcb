@@ -396,7 +396,7 @@ class VoteController extends BaseController
              $openid= $request->session()->get('user')['openid'];
            
             $has=VoteRecord::where('openid',$openid)
-              ->where('cid',$lists[$key]['id'])
+              ->where('rid',$lists[$key]['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();
                if($has->first()==''){
@@ -490,7 +490,7 @@ class VoteController extends BaseController
         //echo $news->title;
           
           $list=DB::table('vote_records')->leftJoin('users', 'voterecords.openid', '=', 'users.openid')
-       ->where('voterecords.cid',$id)->groupBy('users.openid')->get();
+       ->where('vote_records.rid',$id)->groupBy('users.openid')->get();
          
             if ($info['c2']==33) {   //
               $info['photo']=$info['logo'];
@@ -508,7 +508,7 @@ class VoteController extends BaseController
           
            
             $has=VoteRecord::where('openid',$openid)
-              ->where('cid',$info['id'])
+              ->where('rid',$info['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();
                if($has->first()==''){
@@ -572,17 +572,17 @@ class VoteController extends BaseController
         $voterecords = new voterecords;
         $has=$voterecords
               ->where('openid',$openid)
-              ->where('cid',$id)
+              ->where('rid',$id)
               ->where('date',date('Y-m-d', time()))
               ->get();
           if($has->first()==''){
                $VoteRegister = new VoteRegister;
                $voterecords->openid =$openid;
-               $voterecords->cid =$id;
+               $voterecords->rid =$id;
                $voterecords->date =date('Y-m-d', time());
                $voterecords->save();
               // $voterecords->insert(
-       // ['openid' => $openid, 'cid'=>$id,'date' => date('Y-m-d', time())]);
+       // ['openid' => $openid, 'rid'=>$id,'date' => date('Y-m-d', time())]);
                $handle= $VoteRegister->where('id',$id)->increment('votes');
               if ($handle) {
                  return Response::json(

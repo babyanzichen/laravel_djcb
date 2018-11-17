@@ -488,6 +488,7 @@
                         
                     </ul>
                 </div>
+                @endforeach
                  @endforeach
                  @endforeach
                 

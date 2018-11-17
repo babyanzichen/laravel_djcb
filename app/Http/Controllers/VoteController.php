@@ -113,8 +113,7 @@ class VoteController extends BaseController
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
-      $VoteRegister = new VoteRegister;
-      $is= $VoteRegister->where('openid','=',$openid)->get();
+      $is= VoteRegister::where('openid','=',$userInfo['openid'])->get();
       //print_r($is);
       
           

@@ -467,7 +467,7 @@
                         <li class="tbg">
                            
                             <div class="xtbmk">
-                                <a  href="{{asset('/')}}vote/detail/{{$l1->id}}">
+                                <a  href="{{asset('/')}}vote/detail/">
                                     <div class="icon">
                                         <img src="{{$l1->photo}}">
                                     </div>
@@ -476,7 +476,7 @@
                                         
                                     </div>
                                 </a>
-                                <div class="yxbq {{$l1->style}}" onclick="vote(this,)">
+                                <div class="yxbq " onclick="vote(this,)">
                                   
                                 </div>
                             </div>

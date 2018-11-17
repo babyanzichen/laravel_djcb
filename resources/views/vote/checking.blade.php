@@ -31,8 +31,8 @@
 	<img src="{{asset('/')}}index/vote/checking.png">
   <h3 >恭喜您，奖项申报成功！</h3>
 <br>
-  <h5>您已报名奖项:</h5>
-   
+  <h4>您已报名奖项:</h4>
+<h5 style="color:red">(点击已通过奖项名称即可查看详情)</h5>
   <ul>
      @foreach ($is as $i)
      @if($i->award_id>40)
@@ -56,7 +56,7 @@
             
       @endif       
   @endforeach
-  <h5 style="color:red">(点击已通过奖项名称即可查看详情)</h5>
+ 
 
 
   <br>

@@ -458,6 +458,9 @@
             </div>
             <div class="contents">
                 @foreach ($lists as $list)
+                     @foreach ($list['award'] as $award)
+                     {{$award->name}}
+                     @endforeach
                 <div class="gdmk">
                     <div class="bt">
                        <span class="line"></span> <span>{{$list->name}}</span><a href="{{ asset('/vote/lists') }}">更多</a>

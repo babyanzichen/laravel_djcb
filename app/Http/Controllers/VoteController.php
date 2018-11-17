@@ -53,7 +53,7 @@ class VoteController extends BaseController
         foreach ($lists as $key => $value) {
           $value['award']=VoteAward::where('category_id',$value['id']);
         }
-        var_dump($lists);
+       
          // foreach($lists as $key=>$val) {
          //    if ($lists[$key]['award_id']==1) {   //
          //      $lists[$key]['photo']=$lists[$key]['head'];
@@ -84,7 +84,7 @@ class VoteController extends BaseController
                   
          //     }
            
-         //var_dump($lists);
+        // var_dump($lists);
             
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);

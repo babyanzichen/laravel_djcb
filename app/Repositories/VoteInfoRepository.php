@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\VoteRule;
+use App\Models\VoteInfo;
 
-class VoteRuleRepository
+class VoteInfoRepository
 {
     use BaseRepository;
     protected $model;
 
-    public function __construct(VoteRule $VoteRule)
+    public function __construct(VoteInfo $VoteInfo)
     {
-        $this->model = $VoteRule;
+        $this->model = $VoteInfo;
     }
 
     /**

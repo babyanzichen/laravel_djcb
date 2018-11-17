@@ -32,8 +32,8 @@ return [
                     'href' => '/dashboard/vote',
                 ],
                 [
-                    'name' => '活动规则',
-                    'href' => '/dashboard/vote/rules',
+                    'name' => '活动信息',
+                    'href' => '/dashboard/vote/infos',
                 ],
                 [
                     'name' => '奖项列表',

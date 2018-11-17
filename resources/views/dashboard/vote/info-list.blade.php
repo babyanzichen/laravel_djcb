@@ -62,7 +62,7 @@
     $(document).ready(function(){
         form = 'subForm';//表单id 全局变量
         p = 1;//当前分页
-        turl = '/dashboard/vote/ajaxGetRules?page='+p;//url
+        turl = '/dashboard/vote/ajaxGetInfos?page='+p;//url
         ajaxList(form,turl);
     });
 </script>

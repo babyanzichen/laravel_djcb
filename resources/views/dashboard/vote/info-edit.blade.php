@@ -18,19 +18,45 @@
                     <form class="form-horizontal m-t" id="btnForm" accept-charset="UTF-8">
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">规则标题：</label>
+                            <label class="col-sm-3 control-label">活动标题：</label>
                             <div class="input-group col-sm-4">
                                 <input type="text" class="form-control" name="name"
-                                       placeholder="公司名" value="{{ $info->name }}">
+                                       placeholder="活动标题" value="{{ $info->name }}">
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>  不建议修改</span>
+                            </div>
+                        </div>
+                         <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">举办地点：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" name="address"
+                                       placeholder="举办地点" value="{{ $info->address }}">
                                 <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>  不建议修改</span>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">举办时间：</label>
+                            <div class="input-group col-sm-4">
+                                <input type="text" class="form-control" name="hold_at"
+                                       placeholder="举办时间" value="{{ $info->hold_at }}">
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 非倒计时用的举办时间</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group avalue">
-                            <label class="col-sm-3 control-label">内容：</label>
+                            <label class="col-sm-3 control-label">报名提示：</label>
                             <div class="input-group col-sm-8">
-                                <script id="editor" name="content" type="text/plain" style="width:724px;height:500px;">{!!$info->content!!}</script>
-                                <textarea name="content" style="display:none"></textarea>
+                                <script id="editor1" name="tips" type="text/plain" style="width:724px;height:500px;">{!!$info->tips!!}</script>
+                                <textarea name="tips" style="display:none"></textarea>
+                            </div>
+                        </div>
+                         <div class="hr-line-dashed"></div>
+                        <div class="form-group avalue">
+                            <label class="col-sm-3 control-label">投票规则：</label>
+                            <div class="input-group col-sm-8">
+                                <script id="editor2" name="rules" type="text/plain" style="width:724px;height:500px;">{!!$info->rules!!}</script>
+                                <textarea name="rules" style="display:none"></textarea>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -63,7 +89,8 @@
 @include('dashboard.layouts.partials.footer')
 @include('UEditor::head')
 <script type="text/javascript">
-     var ue = UE.getEditor('editor'); 
+     var ue1 = UE.getEditor('editor1'); 
+      var ue2 = UE.getEditor('editor2'); 
 </script>
 <script>
     // /*Markdown ------------start */
@@ -78,14 +105,18 @@
     /*表单提交*/
     $("#saveBtn").click(function () {
 
-        $("textarea[name=content]").val(ue.getContent());
-        if (isEmpty('', $("input[name=name]").val(), '请输入活动规则标题') == false) {
+        $("textarea[name=tips]").val(ue1.getContent());
+        $("textarea[name=rules]").val(ue2.getContent());
+        if (isEmpty('', $("input[name=name]").val(), '请输入活动标题') == false) {
             return false;
         }
-        if (isEmpty('', $("textarea[name=content]").val(), '请输入 content') == false) {
+        if (isEmpty('', $("textarea[name=rules]").val(), '请输入 投票规则') == false) {
             return false;
         }
-        ajaxFormBtn("{{ dashboardUrl('/vote/rule/'.$info->id.'/update') }}", 'btnForm');
+        if (isEmpty('', $("textarea[name=tips]").val(), '请输入 报名提示') == false) {
+            return false;
+        }
+        ajaxFormBtn("{{ dashboardUrl('/vote/info/'.$info->id.'/update') }}", 'btnForm');
     });
 
 </script>

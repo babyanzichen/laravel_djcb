@@ -19,7 +19,7 @@ use App\Models\voteAward;
 use App\Models\VoteInfo; 
 use App\Models\About;
 use App\Repositories\AboutRepository;
-use App\Repositories\VoteRuleRepository;
+use App\Repositories\VoteInfoRepository;
 use App\Repositories\VoteCategoryRepository;
 
 class VoteController extends BaseController
@@ -30,12 +30,12 @@ class VoteController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-     public function __construct(AboutRepository $about,VoteRuleRepository $VoteRuleRepository,VoteCategoryRepository $VoteCategoryRepository)
+     public function __construct(AboutRepository $about,VoteInfoRepository $VoteInfoRepository,VoteCategoryRepository $VoteCategoryRepository)
     {
 
       $this->middleware(['wechat.oauth']);
       $this->about = $about;
-      $this->VoteRuleRepository = $VoteRuleRepository;
+      $this->VoteInfoRepository = $VoteInfoRepository;
       $this->VoteCateryRepository = $VoteCategoryRepository;
     }
     protected function index(Request $request)
@@ -439,7 +439,7 @@ class VoteController extends BaseController
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'laws','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
-      $info=$this->VoteRuleRepository->getById(1);
+      $info=$this->VoteInfoRepository->getById(1);
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'5']);
         return view('vote/laws', 

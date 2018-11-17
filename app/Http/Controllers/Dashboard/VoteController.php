@@ -8,10 +8,10 @@ use App\Http\Requests\StoreVoteRegisterRequest;
 use App\Http\Requests\StoreVoteCategoryRequest;
 use App\Http\Requests\StoreVoteAwardRequest;
 use App\Http\Requests\UpdateVoteRegisterRequest;
-use App\Http\Requests\UpdateVoteRuleRequest;
+use App\Http\Requests\UpdateVoteInfoRequest;
 use App\Http\Requests\UpdateVoteAwardRequest;
 use App\Http\Requests\UpdateVoteCategoryRequest;
-use App\Repositories\VoteRuleRepository;
+use App\Repositories\VoteInfoRepository;
 use App\Repositories\VoteRegisterRepository;
 use App\Repositories\VoteAwardRepository;
 use App\Repositories\VoteCategoryRepository;
@@ -29,10 +29,10 @@ class VoteController extends Controller
 
 
 
-    public function __construct(VoteRegisterRepository $VoteRegisterRepository, VoteRuleRepository $VoteRuleRepository, VoteAwardRepository $VoteAwardRepository, VoteCategoryRepository $VoteCategoryRepository)
+    public function __construct(VoteRegisterRepository $VoteRegisterRepository, VoteInfoRepository $VoteInfoRepository, VoteAwardRepository $VoteAwardRepository, VoteCategoryRepository $VoteCategoryRepository)
     {
         $this->VoteRegisterRepository = $VoteRegisterRepository;
-        $this->VoteRuleRepository = $VoteRuleRepository;
+        $this->VoteInfoRepository = $VoteInfoRepository;
         $this->VoteAwardRepository = $VoteAwardRepository;
         $this->VoteCategoryRepository = $VoteCategoryRepository;
     }
@@ -133,12 +133,12 @@ class VoteController extends Controller
     /*
     活动规则
     */
-    public function rules()
+    public function infos()
     {
-        return view('dashboard.vote.rule-list');
+        return view('dashboard.vote.info-list');
     }
 
-    public function ajaxGetRules(Request $request)
+    public function ajaxGetInfos(Request $request)
     {
         $keywords = $request->keywords;
         $where = [];
@@ -149,25 +149,25 @@ class VoteController extends Controller
             $where['k4'][] = ['brandname', 'like', "%$keywords%"];
         }
 
-        $lists = $this->VoteRuleRepository->page($where, Config::get('dashboard.pagesize'));
+        $lists = $this->VoteInfoRepository->page($where, Config::get('dashboard.pagesize'));
         
-        return view('dashboard.vote.ajax-rule-list', compact('lists'));
+        return view('dashboard.vote.ajax-info-list', compact('lists'));
 
     }
     
 
-    public function rule_edit($id)
+    public function info_edit($id)
     {
-        $info=$this->VoteRuleRepository->getById($id);
+        $info=$this->VoteInfoRepository->getById($id);
 
-        return view('dashboard.vote.rule-edit', compact('info'));
+        return view('dashboard.vote.info-edit', compact('info'));
     }
-    public function rule_update(UpdateVoteRuleRequest $request, $id)
+    public function info_update(UpdateVoteInfoRequest $request, $id)
     {
         $data = $request->all();
         
-        $this->VoteRuleRepository->update($id, $data);
-        return ajaxReturn(dashboardUrl('/vote/rules'));
+        $this->VoteInfoRepository->update($id, $data);
+        return ajaxReturn(dashboardUrl('/vote/infos'));
     }
     
     /*

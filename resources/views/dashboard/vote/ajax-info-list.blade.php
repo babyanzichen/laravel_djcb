@@ -26,11 +26,11 @@
                                             @endif
                 </td>
                 <td>
-                    <a href="{{ dashboardUrl('/vote/rule/'.$v->id.'/edit') }}" class="btn btn-primary btn-xs">
+                    <a href="{{ dashboardUrl('/vote/info/'.$v->id.'/edit') }}" class="btn btn-primary btn-xs">
                         <i class="fa fa-pencil-square-o"></i> 编辑
                     </a>&nbsp;&nbsp;
                     <a href="javascript:;" class="btn btn-danger btn-xs" onclick="delBtn(this)" data-id="0"
-                       data-name="{{ $v->companyname }}" data-url="{{ dashboardUrl('/vote/rule/'.$v->id.'/delete') }}">
+                       data-name="{{ $v->companyname }}" data-url="{{ dashboardUrl('/vote/info/'.$v->id.'/delete') }}">
                         <i class="fa fa-trash-o"></i> 删除
                     </a>
                 </td>
@@ -51,7 +51,7 @@
     $('.pagination a').click(function () {
         form = 'subForm';//表单id 全局变量
         p = $(this).data('p');//当前分页
-        turl = "/dashboard/vote/ajaxGets" + "?page=" + p;//url
+        turl = "/dashboard/vote/ajaxGetInfos" + "?page=" + p;//url
         ajaxList(form, turl);
     });
 

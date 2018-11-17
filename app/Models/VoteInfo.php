@@ -17,7 +17,9 @@ class VoteInfo extends Model
         'hold_time',
         'status',
         'address',
-        'is_enabled'
+        'is_enabled',
+        'rules',
+        'tips'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];

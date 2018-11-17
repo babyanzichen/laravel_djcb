@@ -395,7 +395,7 @@ button
                             <div class="layui-form-item">
                                 <button class="layui-btn"  lay-filter="demo1">申请报名</button></div>
                         </form>
-                         {{$info->tips}}
+                         {!!$info->tips!!}
                         <!--数量自己定义,只要总宽度跟content的宽度一样就好-->
                       </ul>
                       <!--人物奖-->
@@ -465,7 +465,7 @@ button
                             <div class="layui-form-item">
                                 <button  class="layui-btn"  lay-filter="demo2">申请报名</button></div>
                         </form>
-                         {{$info->tips}}
+                         {!!$info->tips!!}
                     </ul>
                     <!--项目奖-->
                     <ul>
@@ -529,7 +529,7 @@ button
 
                         </form>
                         <!--数量自己定义,只要总宽度跟content的宽度一样就好-->
-                        {{$info->tips}}
+                        {!!$info->tips!!}
                       </ul>
                 </div>
             </div>

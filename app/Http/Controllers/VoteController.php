@@ -313,15 +313,15 @@ class VoteController extends BaseController
          
           if($keyword){
              $lists= VoteRegister::where(function ($query)use ($keyword) {
-              $query->where('status', 1)->where('companyname', 'like','%'.$keyword.'%');
+              $query->where('is_enabled', 1)->where('companyname', 'like','%'.$keyword.'%');
           })->orWhere(function ($query)use ($keyword) {
-              $query->where('status', 1)->where('username', 'like','%'.$keyword.'%');
+              $query->where('is_enabled', 1)->where('username', 'like','%'.$keyword.'%');
           })
           ->orWhere(function ($query)use ($keyword) {
-              $query->where('status', 1)->where('brandname', 'like','%'.$keyword.'%');
+              $query->where('is_enabled', 1)->where('brandname', 'like','%'.$keyword.'%');
           })
           ->orWhere(function ($query)use ($keyword) {
-              $query->where('status', 1)->where('projectname', 'like','%'.$keyword.'%');
+              $query->where('is_enabled', 1)->where('projectname', 'like','%'.$keyword.'%');
           })
           ->orderBy('votes', 'desc')
           ->get();
@@ -336,7 +336,7 @@ class VoteController extends BaseController
           ->orWhere('projectname', 'like','%'.$keyword.'%')
           ->orderBy('votes', 'desc')
           ->where(function ($query) {
-              $query->where('status', 1);
+              $query->where('is_enabled', 1);
           })
           ->get();
 
@@ -344,7 +344,7 @@ class VoteController extends BaseController
           */
       }
      else{
-         $lists= $VoteRegister->where('c2','=',$c2)->where('status','1') ->orderBy('votes', 'desc')->get();
+         $lists=VoteRegister::where('award_id','=',$award_id)->where('is_enabled','yes') ->orderBy('votes', 'desc')->get();
      }
      foreach($lists as $key=>$val) {
             
@@ -478,8 +478,8 @@ class VoteController extends BaseController
          DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>$id,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
          
-         $VoteRegister=new VoteRegister;
-        $info=$VoteRegister->where('id', '=',$id)->first();
+        
+        $info=VoteRegister::where('id', '=',$id)->first();
         // print_r($news);
         //echo $news->title;
           $voterecords = new voterecords;

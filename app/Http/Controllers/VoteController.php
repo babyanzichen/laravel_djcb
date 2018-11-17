@@ -81,15 +81,14 @@ class VoteController extends BaseController
     { 
       
         $this->autoLogin();
-        $user_id=Auth::User()->id;
-        echo $user_id;
-        $openid= $request->session()->get('user')['openid'];
+        
+       
         $nickname= $request->session()->get('user')['nickname'];
        // DB::table('chebao_visittable')->insert(
        // ['visitip' => $IP, 'addr' => $addr,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
          $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$openId,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);

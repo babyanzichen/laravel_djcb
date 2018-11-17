@@ -14,12 +14,11 @@ class SelfAuthController extends Controller
 
     public function autoLogin()
     {   
-        echo '1111';
+        
         $userInfo = $this->getEasyWechatSession();
         var_dump($userInfo);
         $openId = $userInfo['id'];
-        echo $openId;
-        echo '88888';
+       
         //查看对应的openid是否已被注册
         $userModel = User::where('openid', $openId)->first();
         //如果未注册，跳转到注册
@@ -38,7 +37,7 @@ class SelfAuthController extends Controller
            // return redirect()->intended('/vote/index');
            // return redirect()->route('register');
         } else {
-            echo '有';
+           
             User::where('openid',$openId)->update(
                 array(
                     'nickname'=>$userInfo['original']['nickname'],

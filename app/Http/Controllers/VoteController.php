@@ -253,7 +253,7 @@ class VoteController extends BaseController
          $VoteRegister->companyname = $request->get('companyname'); // 同上
          $VoteRegister->head = $request->get('head'); // 同上
           $VoteRegister->logo = $request->get('logo'); // 同上
-        $VoteRegister->awards=$awards= $request->get('awards'); // 同上
+        $VoteRegister->award_id=$awards= $request->get('award_id'); // 同上
          $VoteRegister->brandname= $request->get('brandname'); // 同上
         $VoteRegister->position = $request->get('position'); // 同上
         $VoteRegister->projectname= $request->get('projectname'); // 同上

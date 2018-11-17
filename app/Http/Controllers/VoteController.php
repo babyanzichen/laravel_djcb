@@ -80,7 +80,7 @@ class VoteController extends BaseController
     { 
       
         $this->autoLogin();
-        $user_id=user()->id;
+        $user_id=Auth::User()->id;
         echo $user_id;
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];

@@ -388,12 +388,12 @@ button
                                                    <option value="{{$caward->id}}">{{$caward->name}}</option>
                                                 </optgroup>
                                                
-                                                @elseif($caward->category_id=='7')
+                                                
 
                                                
                                                    <option value="{{$caward->id}}">{{$caward->name}}</option>
                                                 
-                                              @endif
+                                              
                                               @endforeach
                                         </select>
                                     </div>

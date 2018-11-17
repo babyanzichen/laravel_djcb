@@ -1,4 +1,4 @@
-/*
+﻿/*
 * 倒计时 小插件
 * @since 2018/11/7 12:39
 * @author FlyTiger
@@ -9,7 +9,7 @@
     var ___=window;
     //模板
     var $defaultTitle=["距离","活动结束","："];
-    var $template="<span class=\"active-time pull-right\"><t class='time_prefix'></t><em class=\"time_d\"></em>天<em class=\"time_h\"></em>:<em class=\"time_m\"></em>:<em class=\"time_s\"></em><t class='time_suffix'></span>";
+    var $template="<span class=\"active-time\"><t class='time_prefix'></t><em class=\"time_d\"></em>天<em class=\"time_h\"></em>时<em class=\"time_m\"></em>分<em class=\"time_s\">秒</em><t class='time_suffix'></span>";
 
     //事件
     var events={

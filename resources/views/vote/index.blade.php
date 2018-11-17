@@ -1,4 +1,4 @@
-<html>
+﻿<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
          <meta name="_token" content="{!! csrf_token() !!}" />
@@ -447,7 +447,6 @@
                     
                         <input type="hidden" name="countDown" data-prefix="" value="{{$voteInfo->time}}"> 
                         <span class="payment-time">
-                            
                             <span class="active-time">
                                 <t class="time_prefix"></t>
                                 <em class="time_d">379</em>天<em class="time_h">12</em>小时<em class="time_m">08</em>分<em class="time_s">53</em>秒

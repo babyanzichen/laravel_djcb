@@ -307,14 +307,12 @@ class VoteController extends BaseController
 
     public function get(Request $request){
        $this->autoLogin();
-          $c1= $request->get('c1'); // 同上
-          $c2= $request->get('c2'); // 同上
+          $award_id= $request->get('award_id'); // 同上
           $keyword= $request->get('keyword');
-           $VoteRegister = new VoteRegister;
+          
          
           if($keyword){
-             $lists= $VoteRegister
-             ->where(function ($query)use ($keyword) {
+             $lists= VoteRegister::where(function ($query)use ($keyword) {
               $query->where('status', 1)->where('companyname', 'like','%'.$keyword.'%');
           })->orWhere(function ($query)use ($keyword) {
               $query->where('status', 1)->where('username', 'like','%'.$keyword.'%');

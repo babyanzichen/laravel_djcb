@@ -390,7 +390,7 @@ button
                                                
                                                 @elseif($caward->category_id=='7')
 
-                                                <optgroup label="{{$cward->category->name}}">
+                                                <optgroup label="{{$caward->category->name}}">
                                                    <option value="{{$caward->id}}">{{$caward->name}}</option>
                                                 </optgroup>
                                               @endif

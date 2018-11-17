@@ -14,8 +14,8 @@
 }
 </style>
 	<body class="mui-ios mui-ios-9 mui-ios-9-1" style="padding: 5%;">
-<div style="text-align: center;padding: 5%;color: #FF5722;font-size: 16px;">{{$info->name}}</div>
-{!!$info->content!!}
+<div style="text-align: center;padding: 5%;color: #FF5722;font-size: 16px;">投票规则：</div>
+{!!$info->rules!!}
 	 @include('layout.app')
 </body>
 </html>

@@ -52,6 +52,9 @@ class VoteController extends BaseController
 
         foreach ($lists as $key => $value) {
           $value['award']=VoteAward::where('category_id',$value['id'])->get();
+          foreach ($value['award'] as $k => $v) {
+          $v['register']=VoteRegister::where('award_id',$v['id'])->get();
+          }
         }
        
          // foreach($lists as $key=>$val) {

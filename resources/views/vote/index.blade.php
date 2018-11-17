@@ -459,8 +459,8 @@
             <div class="contents">
                 @foreach ($lists as $list)
                      @foreach ($list['award'] as $award)
-                     {{$award->name}}
-                     @endforeach
+                      @foreach ($award['register'] as $register)
+                    
                 <div class="gdmk">
                     <div class="bt">
                        <span class="line"></span> <span>{{$list->name}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
@@ -470,17 +470,17 @@
                         <li class="tbg">
                            
                             <div class="xtbmk">
-                                <a  href="{{asset('/')}}vote/detail/">
+                                <a  href="{{asset('/')}}vote/detail/{{$register->id}}">
                                     <div class="icon">
                                         <img src="">
                                     </div>
                                     <div class="piao">票</div>
                                     <div class="yxm">
-                                        55
+                                        {{$register->votes}}
                                     </div>
                                 </a>
-                                <div class="yxbq " onclick="vote(this,55)">
-                                  
+                                <div class="yxbq " onclick="vote(this,{{$register->id}})">
+                                  {{$register->name}}
                                 </div>
                             </div>
                         </li>
@@ -488,6 +488,7 @@
                         
                     </ul>
                 </div>
+                 @endforeach
                  @endforeach
                 
 

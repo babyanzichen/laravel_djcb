@@ -124,7 +124,7 @@ class VoteController extends BaseController
       if($is->first()){
         return view('vote/checking',compact('is','signPackage','nickname')); 
       }
-      return view('vote/reg',compact('info','is','signPackage','nickname')); 
+      return view('vote/reg',compact('info','award','is','signPackage','nickname')); 
           
     }
 

@@ -83,14 +83,14 @@ class VoteController extends BaseController
       $data['regcount']= VoteRegister::distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
       $data['visitcount']=$data['visitcount']+60000;
-      $data['votecount']=RoteRecord::distinct('openid')->count();
+      $data['votecount']=VoteRecord::distinct('openid')->count();
       $data['votecount']=$data['votecount']+10000;
      
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
       	$signPackage = $JSSDK->getSignPackage();
        session(['index'=>'1']);
     	return view('vote/index', 
-          compact( 'lists1','lists2','lists3','lists4','data','ip','voteInfo','signPackage')
+          compact( 'lists','data','ip','voteInfo','signPackage')
         //  'addr'=>$addr,
         );
     }

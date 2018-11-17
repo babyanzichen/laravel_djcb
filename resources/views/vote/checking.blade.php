@@ -35,7 +35,7 @@
    
   <ul>
      @foreach ($is as $i)
-     @if($is->awrd_id>40)
+     @if($is->award_id>40)
            
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
                 <font style="color:red"><li>{{ $i -> award->name  }}（ @if ($i -> is_enabled == 'yes')已通过 @else
@@ -46,7 +46,7 @@
       @endif  
       历届财富金字塔奖项申报记录：
       <p>2017</p>
-      @if($is->awrd_id<=40)
+      @if($is->award_id<=40)
            
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
                 <font style="color:red"><li>{{ $i -> award->name  }}</li></font>

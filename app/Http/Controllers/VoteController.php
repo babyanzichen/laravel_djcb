@@ -83,12 +83,14 @@ class VoteController extends BaseController
         $this->autoLogin();
         
        
-        $nickname= $request->session()->get('user')['nickname'];
+       $userInfo = $this->getEasyWechatSession();
+        
+        
        // DB::table('chebao_visittable')->insert(
        // ['visitip' => $IP, 'addr' => $addr,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
          $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$openId,'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['openId'],'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
@@ -97,7 +99,7 @@ class VoteController extends BaseController
         return view('vote/reg', 
           [
           
-          'nickname'=>$nickname,
+          'nickname'=>$userInfo['nickname'],
          
           'signPackage' => $signPackage
           ]

@@ -675,7 +675,7 @@ $(function () {
 
 	window.onload=function(){
 	  get(62);
-      $('nav').children(':first').addClass('active');
+      $('.nav').children(':first').addClass('active');
       $('.box ul').children(':first').addClass('active');
 	}
 

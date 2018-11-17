@@ -126,8 +126,8 @@ class shouquan {
       'data' => array(
         'first' => array('value' => '财富金字塔奖项申报成功',
           'color'=>'#ff0f0f'),
-        'keyword1' => array('value' => '第六届财富金字塔颁奖盛典'),
-        'keyword2' => array('value' =>'2017年11月18日'),
+        'keyword1' => array('value' => '第七届财富金字塔颁奖盛典'),
+        'keyword2' => array('value' =>'2019年2月24日下午至晚上'),
         'keyword3' => array('value' =>'点金国际传媒'),
         'remark' => array('value' => '尊敬的'.$nickame.'，您申报的奖项为“'.$award."”，请保持".$phone.'电话畅通，以便主办方与您核实信息，点击查看申请结果',
           'color'=>'#173177'),

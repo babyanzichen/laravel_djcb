@@ -35,16 +35,24 @@
    
   <ul>
      @foreach ($is as $i)
-            @if ($i -> status == 1)
+     @if($is->awrd_id>40)
+           
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
-                <font style="color:red"><li>{{ $i -> awards  }}（已通过）</li></font>
+                <font style="color:red"><li>{{ $i -> award->name  }}（ @if ($i -> is_enabled == 'yes')已通过 @else
+              审核中
+            @endif）</li></font>
             </a>
-            @elseif ($i -> status ==3)
-            <font style="color: #b9bbb4;"> <li style="text-decoration:line-through">{{ $i -> awards  }}(不通过)</li></font>
-            @else
-              <li>{{ $i -> awards  }}(审核中)</li>
-            @endif
+           
+      @endif  
+      历届财富金字塔奖项申报记录：
+      <p>2017</p>
+      @if($is->awrd_id<=40)
+           
+            <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
+                <font style="color:red"><li>{{ $i -> award->name  }}</li></font>
+            </a>
             
+      @endif       
   @endforeach
   <h5 style="color:red">(点击已通过奖项名称即可查看详情)</h5>
 

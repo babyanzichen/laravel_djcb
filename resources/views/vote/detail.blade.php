@@ -227,7 +227,12 @@ button{
      <div class="tips">我正在参加2017财富金字塔“{{$data->awards}}”评选，请为我投票</div>
         <div class="buttons">
              <a  href="{{asset('/')}}vote/lists"><button>查看总榜</button></a>
-            <button class="{{$data->style}}" onclick="vote(this,{{$data->id}})">{{$data->tips}}</button></div>
+             @if($data->is_enabled=='no')
+              <button class="{{$data->style}}" onclick="vote(this,{{$data->id}})">暂不支持投票</button>
+              @else
+            <button class="{{$data->style}}" onclick="vote(this,{{$data->id}})">{{$data->tips}}</button>
+            @endif
+        </div>
     </div>
     <div class="guanggao">
             <h2>

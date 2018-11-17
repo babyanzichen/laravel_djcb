@@ -469,14 +469,14 @@
                             <div class="xtbmk">
                                 <a  href="{{asset('/')}}vote/detail/">
                                     <div class="icon">
-                                        <img src="{{$l1->photo}}">
+                                        <img src="">
                                     </div>
                                     <div class="piao">票</div>
                                     <div class="yxm">
-                                        
+                                        55
                                     </div>
                                 </a>
-                                <div class="yxbq " onclick="vote(this,)">
+                                <div class="yxbq " onclick="vote(this,55)">
                                   
                                 </div>
                             </div>

@@ -460,7 +460,7 @@
                 @foreach ($lists as $list)
                 <div class="gdmk">
                     <div class="bt">
-                       <span class="line"></span> <span>{{}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
+                       <span class="line"></span> <span></span><a href="{{ asset('/vote/lists') }}">更多</a>
                     </div>
                     <ul class="list-unstyled category-tags">
                         
@@ -471,13 +471,13 @@
                                     <div class="icon">
                                         <img src="{{$l1->photo}}">
                                     </div>
-                                    <div class="piao">{{$list->votes}}票</div>
+                                    <div class="piao">票</div>
                                     <div class="yxm">
-                                        {{$l1->name}}
+                                        
                                     </div>
                                 </a>
-                                <div class="yxbq {{$l1->style}}" onclick="vote(this,{{$l1->id}})">
-                                   {{$list->tips}}
+                                <div class="yxbq {{$l1->style}}" onclick="vote(this,)">
+                                  
                                 </div>
                             </div>
                         </li>

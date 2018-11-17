@@ -566,6 +566,7 @@ class VoteController extends BaseController
 
       public function detail(Request $request){
          $this->autoLogin();
+         $id=$request->id;
         $IP=$_SERVER['REMOTE_ADDR'];
            $openid= $request->session()->get('user')['openid'];
         $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));

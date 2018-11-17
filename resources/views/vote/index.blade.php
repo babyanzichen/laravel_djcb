@@ -611,8 +611,17 @@
         
             @include('layout.app')
     <script class="source" type="text/javascript">
+       
+        var date=new Date("{{$voteInfo->time}}");
+        Y = date.getFullYear() + ' ';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1)+'/' : date.getMonth()+1) + '-';
+        D = date.getDate() + '/';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds(); 
+        var datetime=M+D+Y+h+m+s; //呀麻碟
         $('.countdown').downCount({
-            date: '{{$voteInfo->time}}',
+            date: datetime,
             offset: +10
         }, function () {
             alert('倒计时结束!');

@@ -12,12 +12,15 @@ use Validator;
 use Redirect, Input, Response;
 use Illuminate\Support\Facades\Session; 
 use App\Models\VoteRegister;
-use App\Models\voterecord; 
+use App\Models\voteRecord;
+use App\Models\voteAward; 
+
 use App\Models\VoteInfo; 
 use App\Models\About;
 use App\Repositories\AboutRepository;
 use App\Repositories\VoteRuleRepository;
 use App\Repositories\VoteCategoryRepository;
+
 class VoteController extends BaseController
 {   
 
@@ -48,7 +51,7 @@ class VoteController extends BaseController
         $lists= $this->VoteCateryRepository->getAllData(['id', 'name'], false);
 
         foreach ($lists as $key => $value) {
-          $value['award']=VoteReward::where('category_id',$value['id']);
+          $value['award']=VoteAward::where('category_id',$value['id']);
         }
         var_dump($lists);
          // foreach($lists as $key=>$val) {

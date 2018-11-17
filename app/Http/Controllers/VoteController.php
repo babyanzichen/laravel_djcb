@@ -263,7 +263,7 @@ class VoteController extends BaseController
         
         // 将数据保存到数据库，通过判断保存结果，控制页面进行不同跳转
         if ($VoteRegister->save()) {
-            $this->send($request,$openid,$award_id->award->name,$phone,$nickname);
+            $this->send($request,$openid,VoteReward::where('id',$award_id)->value('name'),$phone,$nickname);
            return Response::json(
             [
                 'success' => true,

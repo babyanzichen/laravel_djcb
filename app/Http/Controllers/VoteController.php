@@ -395,7 +395,7 @@ class VoteController extends BaseController
             
              $openid= $request->session()->get('user')['openid'];
            
-            $has=Roterecord::where('openid',$openid)
+            $has=VoteRecord::where('openid',$openid)
               ->where('cid',$lists[$key]['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();

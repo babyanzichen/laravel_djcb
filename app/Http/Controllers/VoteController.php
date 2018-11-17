@@ -323,6 +323,7 @@ class VoteController extends BaseController
             $shouquan=new shouquan();
             $res=$shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法
             return $res;
+            exit();
              // $shouquan->sendMessage('o4d_8stUOsFxmq-Cll9HHPM8E3pI','zp','15827400208','777');//调用方法
           }
 

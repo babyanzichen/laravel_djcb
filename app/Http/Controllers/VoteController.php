@@ -32,7 +32,7 @@ class VoteController extends BaseController
       $this->middleware(['wechat.oauth']);
       $this->about = $about;
       $this->VoteRuleRepository = $VoteRuleRepository;
-      $this->VoteCatoryRepository = $VoteCategoryRepository;
+      $this->VoteCateryRepository = $VoteCategoryRepository;
     }
     protected function index(Request $request)
     { 
@@ -45,7 +45,7 @@ class VoteController extends BaseController
          $voteInfo=VoteInfo::where('status','ON')->first();
          
          
-        $lists= $this->VoteCatoryRepository->with(['award.register'])->getAllData(['id', 'name'], false);
+        $lists= $this->VoteCateryRepository->with(['award.register'])->getAllData(['id', 'name'], false);
          foreach($lists1 as $key=>$val) {
             if ($lists1[$key]['award_id']==1) {   //
               $lists1[$key]['photo']=$lists1[$key]['head'];

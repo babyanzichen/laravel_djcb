@@ -30,8 +30,8 @@
 
           wx.ready(function(){
             wx.onMenuShareAppMessage({
-             title: '点金传媒邀请您关注2017汽车服务行业财富金字塔颁奖盛典', // 分享标题
-              desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
+             title: '点金传媒邀请您关注2018-2019汽车服务行业财富金字塔颁奖盛典', // 分享标题
+              desc: '2019年2月24日  东莞·广东现代国际会展中心', // 分享描述
               link: 'http://www.djcb123.cn/vote', // 分享链接
               imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
               type: '', // 分享类型,music、video或link，不填默认为link
@@ -45,17 +45,11 @@
           });
 
           wx.onMenuShareTimeline({
-              title: '点金传媒邀请您关注2017汽车服务行业财富金字塔颁奖盛典', // 分享标题
-              desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
+              title: '点金传媒邀请您关注2018-2019汽车服务行业财富金字塔颁奖盛典', // 分享标题
+              desc: '2019年2月24日  东莞·广东现代国际会展中心', // 分享描述
               link: 'http://www.djcb123.cn/vote', // 分享链接
               imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
-              success: function () {
-                  
-                  
-                  
-                  
-                  
-                  
+              success: function () { 
                   
               },
               cancel: function () {
@@ -463,12 +457,13 @@
                 </h4><a href="{{ asset('/vote/laws') }}">活动详细介绍&gt;&gt;</a>
             </div>
             <div class="contents">
+                @foreach ($lists as $list)
                 <div class="gdmk">
                     <div class="bt">
-                       <span class="line"></span> <span>十大年度大奖</span><a href="{{ asset('/vote/lists') }}">更多</a>
+                       <span class="line"></span> <span>{{}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
                     </div>
                     <ul class="list-unstyled category-tags">
-                         @foreach ($lists1 as $l1)
+                        
                         <li class="tbg">
                            
                             <div class="xtbmk">
@@ -476,109 +471,24 @@
                                     <div class="icon">
                                         <img src="{{$l1->photo}}">
                                     </div>
-                                    <div class="piao">{{$l1->votes}}票</div>
+                                    <div class="piao">{{$list->votes}}票</div>
                                     <div class="yxm">
                                         {{$l1->name}}
                                     </div>
                                 </a>
                                 <div class="yxbq {{$l1->style}}" onclick="vote(this,{{$l1->id}})">
-                                   {{$l1->tips}}
+                                   {{$list->tips}}
                                 </div>
                             </div>
                         </li>
-                          @endforeach
+                         
                         
                     </ul>
                 </div>
+                 @endforeach
+                
 
-                <div class="gdmk">
-                    <div class="bt">
-                       <span class="line"></span> <span>百强大奖</span><a  href="{{asset('/vote/lists')}}">更多</a>
-                    </div>
-                    <ul class="list-unstyled category-tags">
-                         @foreach ($lists4 as $l4)
-   
-             
-
-                        <li class="tbg">
-                            <div class="xtbmk">
-                                <a  href="{{asset('/')}}vote/detail/{{$l4->id}}">
-                                    <div class="icon">
-                                        <img src="{{$l4->photo}}">
-                                    </div>
-
-                                    <div class="piao">{{$l4->votes}}票</div>
-                                
-                                    <div class="yxm">
-                                        {{$l4->name}}
-                                    </div>
-                                </a>
-                                <div class="yxbq {{$l4->style}}" onclick="vote(this,{{$l4->id}})">
-                                   {{$l4->tips}}
-                                </div>
-                            </div>
-                        </li>
-                          @endforeach
-                    </ul>
-                </div>
-
-                <div class="gdmk">
-                    <div class="bt">
-                       <span class="line"></span> <span>十强企业大奖（非电子类）</span><a  href="{{ asset('/vote/lists') }}">更多</a>
-                    </div>
-                    <ul class="list-unstyled category-tags">
-                         @foreach ($lists2 as $l2)
-   
-             
-
-                        <li class="tbg">
-                            <div class="xtbmk">
-                                <a  href="{{asset('/')}}vote/detail/{{$l2->id}}">
-                                <div class="icon">
-                                    <img src="{{$l2->photo}}">
-                                </div>
-                                <div class="piao">{{$l2->votes}}票</div>
-                                <div class="yxm">
-                                    {{$l2->brandname}}
-                                </div>
-                             </a>
-                                <div class="yxbq {{$l2->style}}" onclick="vote(this,{{$l2->id}})">
-                                   {{$l2->tips}}
-                                </div>
-                            </div>
-                        </li>
-                          @endforeach
-                    </ul>
-                </div>
-
-                <div class="gdmk">
-                    <div class="bt">
-                       <span class="line"></span> <span>十强企业大奖（电子类）</span><a  href="{{ asset('/vote/lists') }}">更多</a>
-                    </div>
-                    <ul class="list-unstyled category-tags">
-                         @foreach ($lists3 as $l3)
-   
-             
-
-                        <li class="tbg">
-                            <div class="xtbmk">
-                                 <a  href="{{asset('/')}}vote/detail/{{$l3->id}}">
-                                <div class="icon">
-                                    <img src="{{$l3->photo}}">
-                                </div>
-                                <div class="piao">{{$l3->votes}}票</div>
-                                <div class="yxm">
-                                    {{$l3->brandname}}
-                                </div>
-                            </a>
-                                <div class="yxbq {{$l3->style}}" onclick="vote(this,{{$l3->id}})">
-                                   {{$l3->tips}}
-                                </div>
-                            </div>
-                        </li>
-                          @endforeach
-                    </ul>
-                </div>
+                
             </div>
         </div>
         

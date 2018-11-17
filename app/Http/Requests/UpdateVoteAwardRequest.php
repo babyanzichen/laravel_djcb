@@ -17,6 +17,7 @@ class UpdateVoteAwardRequest extends FormRequest
         $id = $this->route('id');
         return [
             'name' => 'required', 
+            'category_id'=> 'required', 
             'is_enabled'=>'nullable'
         ];
     }

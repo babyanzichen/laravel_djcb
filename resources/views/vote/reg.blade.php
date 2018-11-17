@@ -386,12 +386,12 @@ button
                                                 
                                                 
                                                    <option value="{{$caward->id}}">{{$caward->name}}</option>
-                                                </optgroup>
+                                              
                                                
                                                 
 
                                                
-                                                   <option value="{{$caward->id}}">{{$caward->name}}</option>
+                                                 
                                                 
                                               
                                               @endforeach

@@ -321,7 +321,8 @@ class VoteController extends BaseController
     public function send($openid,$nickname,$phone,$award){
            
             $shouquan=new shouquan();
-            $shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法
+            $res=$shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法
+            return $res;
              // $shouquan->sendMessage('o4d_8stUOsFxmq-Cll9HHPM8E3pI','zp','15827400208','777');//调用方法
           }
 

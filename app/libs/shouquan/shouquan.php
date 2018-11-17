@@ -155,7 +155,7 @@ class shouquan {
    // print_r($data);
     $data = json_decode($data,true);
     //将json数据转成数组
-   // return $data;
+    return $data;
   }
 
 

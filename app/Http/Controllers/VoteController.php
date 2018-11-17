@@ -46,13 +46,13 @@ class VoteController extends BaseController
          
          
         $lists= $this->VoteCateryRepository->getAllData(['id', 'name'], false);
-         foreach($lists1 as $key=>$val) {
-            if ($lists1[$key]['award_id']==1) {   //
-              $lists1[$key]['photo']=$lists1[$key]['head'];
-              $lists1[$key]['name']=$lists1[$key]['username']; 
+         foreach($lists as $key=>$val) {
+            if ($lists[$key]['award_id']==1) {   //
+              $lists[$key]['photo']=$lists[$key]['head'];
+              $lists[$key]['name']=$lists[$key]['username']; 
             } else{
-              $lists1[$key]['photo']=$lists1[$key]['logo'];
-              $lists1[$key]['name']=$lists1[$key]['brandname']; 
+              $lists[$key]['photo']=$lists[$key]['logo'];
+              $lists[$key]['name']=$lists[$key]['brandname']; 
             }            
 
 
@@ -60,10 +60,9 @@ class VoteController extends BaseController
 
 
 
-                
-            $voterecords = new voterecords;
-            $has=$voterecords
-              ->where('openid',$openid)
+             exit();   
+            
+            $has=VoteRecordwhere('openid',$openid)
               ->where('cid',$lists1[$key]['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();
@@ -77,78 +76,7 @@ class VoteController extends BaseController
                   
             }
            
-          $lists2= VoteRegister::where('award_id','=','2')->where('is_enabled','yes')  ->orderBy('votes', 'desc')->limit(10)->get();
          
-         foreach($lists2 as $key=>$val) {
-                //
-                $lists2[$key]['photo']=$lists2[$key]['logo'].$lists2[$key]['head']; 
-                $voterecords = new voterecords;
-            $has=$voterecords
-              ->where('openid',$openid)
-              ->where('cid',$lists2[$key]['id'])
-              ->where('date',date('Y-m-d', time()))
-              ->get();
-               if($has->first()==''){
-                 $lists2[$key]['tips']='立即投票';
-                  $lists2[$key]['style']='';
-               }else{
-                  $lists2[$key]['tips']='已投票';
-                  $lists2[$key]['style']="dark";
-               }
-                  
-            }
-            
-          $lists3= VoteRegister::where('award_id','=','3')->where('is_enabled','1')  ->orderBy('votes', 'desc')->limit(10)->get();
-         
-         foreach($lists3 as $key=>$val) {
-                //
-                $lists3[$key]['photo']=$lists3[$key]['logo'].$lists3[$key]['head']; 
-                $voterecords = new voterecords;
-            $has=$voterecords
-              ->where('openid',$openid)
-              ->where('cid',$lists3[$key]['id'])
-              ->where('date',date('Y-m-d', time()))
-              ->get();
-               if($has->first()==''){
-                 $lists3[$key]['tips']='立即投票';
-                  $lists3[$key]['style']='';
-               }else{
-                  $lists3[$key]['tips']='已投票';
-                  $lists3[$key]['style']="dark";
-               }
-                  
-            }
-            
-          $lists4= VoteRegister::where('award_id','=','4')->where('is_enabled','yes')  ->orderBy('votes', 'desc')->limit(10)->get();
-         
-         foreach($lists4 as $key=>$val) {
-               if ($lists4[$key]['c2']==33) {   //
-              $lists4[$key]['photo']=$lists4[$key]['logo'];
-              $lists4[$key]['name']=$lists4[$key]['projectname']; 
-            }elseif ($lists4[$key]['c2']==34){
-              $lists4[$key]['photo']=$lists4[$key]['head'];
-              $lists4[$key]['name']=$lists4[$key]['username']; 
-            }      
-            else{
-              $lists4[$key]['photo']=$lists4[$key]['logo'];
-              $lists4[$key]['name']=$lists4[$key]['companyname']; 
-            }        
-
-           
-            $has=$VoteRecord::where('openid',$openid)
-              ->where('cid',$lists4[$key]['id'])
-              ->where('date',date('Y-m-d', time()))
-              ->first();
-               if($has==''){
-                 $lists4[$key]['tips']='立即投票';
-                  $lists4[$key]['style']='';
-               }else{
-                  $lists4[$key]['tips']='已投票';
-                  $lists4[$key]['style']="dark";
-               }
-                  
-            }
-       
             
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);

@@ -15,7 +15,7 @@
                                     <div class="input-group">
                                         <input type="text"  class="form-control" name="keywords" value="" placeholder="输入奖项名" />
                                         <span class="input-group-btn">
-                                        <button type="submit"  onclick="ajaxList('subForm','/dashboard/vote/awards/ajaxGets')" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="submit"  onclick="ajaxList('subForm','/dashboard/vote/awards/ajaxGetAwards')" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
                                     </span>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
     $(document).ready(function(){
         form = 'subForm';//表单id 全局变量
         p = 1;//当前分页
-        turl = '/dashboard/vote/ajaxGetAwards?page='+p;//url
+        turl = '/dashboard/vote/awards/ajaxGetAwards?page='+p;//url
         ajaxList(form,turl);
     });
 </script>

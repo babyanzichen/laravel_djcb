@@ -7,23 +7,23 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>用户列表</h5>
+                    <h5>活动列表</h5>
                     <div class="ibox-content">
                         <form action="" id="subForm" onsubmit="return false" method="post">
                             <div class="row">
                                 <div class="col-sm-4" >
                                     <div class="input-group">
-                                        <input type="text"  class="form-control" name="keywords" value="" placeholder="输入公司名或用户名" />
+                                        <input type="text"  class="form-control" name="keywords" value="" placeholder="输入活动名" />
                                         <span class="input-group-btn">
-                                        <button type="submit"  onclick="ajaxList('subForm','/dashboard/vote/ajaxGets')" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                                        <button type="submit"  onclick="ajaxList('subForm','/dashboard/vote/ajaxGetInfos')" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
                                     </span>
                                     </div>
                                 </div>
-                                <div class="col-sm-2 pull-right">
+                               <!--  <div class="col-sm-2 pull-right">
                                     <div class="btn-group pull-right"  role="group" style="clear: both">
                                         <a href="{{ dashboardUrl('/user/create') }}" class="btn btn-outline btn-default "><i class="fa fa-plus"></i> </a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </form>
 

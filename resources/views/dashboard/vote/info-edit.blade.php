@@ -38,9 +38,19 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">举办时间：</label>
                             <div class="input-group col-sm-4">
-                                <input type="text" class="form-control" name="hold_at"
-                                       placeholder="举办时间" value="{{ $info->hold_at }}">
+                                <input type="text" class="form-control" name="hold_time"
+                                       placeholder="举办时间" value="{{ $info->hold_time }}">
                                 <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 非倒计时用的举办时间</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group avalue">
+                            <label class="col-sm-3 control-label">活动时间：</label>
+                            <div class="input-group col-sm-4">
+                                <input class="form-control layer-date" time_plugin="start_time" placeholder="请填写活动时间"
+                                       name="time" value="{{ $info->time }}">
+                                <label class="laydate-icon"></label>
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 倒计时调用的时间</span>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>

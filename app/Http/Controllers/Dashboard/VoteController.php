@@ -143,10 +143,8 @@ class VoteController extends Controller
         $keywords = $request->keywords;
         $where = [];
         if ($request->keywords) {
-            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
-            $where['k2'][] = ['username', 'like', "%$keywords%"];
-            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
-            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
+            $where['k1'][] = ['name', 'like', "%$keywords%"];
+            $where['k2'][] = ['address', 'like', "%$keywords%"];
         }
 
         $lists = $this->VoteInfoRepository->page($where, Config::get('dashboard.pagesize'));
@@ -183,10 +181,7 @@ class VoteController extends Controller
         $keywords = $request->keywords;
         $where = [];
         if ($request->keywords) {
-            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
-            $where['k2'][] = ['username', 'like', "%$keywords%"];
-            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
-            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
+            $where['k1'][] = ['name', 'like', "%$keywords%"];
         }
 
         $lists = $this->VoteAwardRepository->page($where, Config::get('dashboard.pagesize'));
@@ -235,10 +230,8 @@ class VoteController extends Controller
         $keywords = $request->keywords;
         $where = [];
         if ($request->keywords) {
-            $where['k1'][] = ['companyname', 'like', "%$keywords%"];
-            $where['k2'][] = ['username', 'like', "%$keywords%"];
-            $where['k3'][] = ['projectname', 'like', "%$keywords%"];
-            $where['k4'][] = ['brandname', 'like', "%$keywords%"];
+            $where['k1'][] = ['name', 'like', "%$keywords%"];
+            
         }
 
         $lists = $this->VoteCategoryRepository->page($where, Config::get('dashboard.pagesize'));

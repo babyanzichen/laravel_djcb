@@ -17,7 +17,11 @@ class UpdateVoteInfoRequest extends FormRequest
         $id = $this->route('id');
         return [
             'name' => 'required', 
-            'content' => 'required',
+            'tips' => 'required',
+            'rules'=>'required',
+            'hold_time'=>'required',
+            'time'=>'required',
+            'address'=>'required',
             'is_enabled'=>'nullable'
         ];
     }

@@ -3,9 +3,10 @@
         <thead>
         <tr class="long-tr">
             <th><input type="checkbox" onclick="checkAll(this)">ID</th>
-            <th>规则名称</th>
-            
-            <th>更新时间</th>
+            <th>活动名称</th>
+            <th>活动地点</th>
+            <th>举办时间</th>
+            <th>倒计时时间</th>
             <th>更改状态</th>
             <th>操作</th>
         </tr>
@@ -15,8 +16,9 @@
             <tr class="long-td">
                 <td><input type="checkbox" name="ids[]" value="{{ $v->id }}">{{ $v->id }}</td>
                 <td>{{ $v->name}}</td>
-                
-                <td>{{ $v->updated_at }}</td>
+                <td>{{ $v->address}}</td>
+                <td>{{ $v->hold_time }}</td>
+                <td>{{ $v->time }}</td>
                 <td>
                     @if( $v->is_enabled == 'no')
                         <i class="fa fa-close text-navy change-status hover-point" data-value="yes" data-cv="no" data-id="{{ $v->id }}" data-column="is_enabled" data-table="vote_rules" data-msg="启用" data-todo="1"

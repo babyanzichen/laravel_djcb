@@ -382,46 +382,20 @@ button
                                                 <option value="2017-2018十大年度品牌奖">2017-2018十大年度品牌奖</option>
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
-                                                <optgroup label="企业百强大奖">
-                                                <option value="100强汽车集团（精品运营）">100强汽车集团（精品运营）</option>
-                                                <option value="100强服务商（汽车集团服务）">100强服务商（汽车集团服务）</option>
-                                                <option value="50强代理商">50强代理商</option></optgroup>
-                                           
+                                                foreach($award['companyAward'] as $caward)
+                                                @if($cward->category_id=='5')
+                                                <optgroup label="{{$cward->category->name}}">
+                                                   <option value="{{$caward->id}}">{{$caward->name}}</option>
+                                                </optgroup>
+                                                @endif
+                                                
+                                                @if($cward->category_id=='7')
 
-
-
-                                            <optgroup label="厂家十强大奖（非电子类）">
-                                                <option value="2017-2018年度汽车美容十强品牌">2017-2018年度汽车美容十强品牌</option>
-                                                <option value="2017-2018年度汽车养护十强品牌">2017-2018年度汽车养护十强品牌</option>
-                                                <option value="2017-2018年度汽车钣金十强品牌">2017-2018年度汽车钣金十强品牌</option>
-                                                <option value="2017-2018年度汽车精品十强品牌">2017-2018年度汽车精品十强品牌</option>
-                                                <option value="2017-2018年度汽车改装十强品牌">2017-2018年度汽车改装十强品牌</option>
-                                                <option value="2017-2018年度汽车隔热膜十强品牌">2017-2018年度汽车隔热膜十强品牌</option>
-                                                <option value="2017-2018年度汽车车漆保护膜十强品牌">2017-2018年度汽车车漆保护膜十强品牌</option>
-                                                <option value="2017-2018年度汽车服务连锁十强品牌">2017-2018年度汽车服务连锁十强品牌</option>
-                                                <option value="2017-2018年度汽车互联网+平台十强品牌">2017-2018年度汽车互联网+平台十强品牌</option>
-                                                <option value="2017-2018年度汽车洗车设备十强品牌">2017-2018年度汽车洗车设备十强品牌</option></optgroup>
-                                            <optgroup label="厂家十强大奖（电子类）">
-                                                <option value="2017-2018年度汽车电子（行车记录仪）十强品牌">2017-2018年度汽车电子行车记录仪十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（车载智能导航）十强品牌">2017-2018年度汽车电子车载智能导航十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（云镜）十强品牌">2017-2018年度汽车电子（云镜）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（ADAS系统）十强品牌">2017-2018年度汽车电子（ADAS系统）十强品牌</option>
-                                                <option value="2017-2018年度汽车（安全智能）电子十强品牌">2017-2018年度汽车（安全智能）电子十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（车联网）十强品牌">2017-2018年度汽车电子（车联网）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（智能车灯）十强品牌">2017-2018年度汽车电子（智能车灯）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（胎压仪）十年品牌">2017-2018年度汽车电子（胎压仪）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（电动尾门）十强品牌">2017-2018年度汽车电子（电动尾门）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（360全景）十强品牌">2017-2018年度汽车电子（360全景）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（HUD）十强品牌">2017-2018年度汽车电子（HUD）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（隐藏式行车记录仪）十强品牌">2017-2018年度汽车电子（隐藏式行车记录仪）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（大屏导航）十强品牌">2017-2018年度汽车电子（大屏导航）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（方案商）十强品牌">2017-2018年度汽车电子（方案商）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（手机掌控）十强品牌">2017-2018年度汽车电子手机掌控十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（流媒体）十强品牌">2017-2018年度汽车电子（流媒体）十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（手机掌控）十强品牌">2017-2018年度汽车电子手机掌控十强品牌</option>
-                                                <option value="2017-2018年度汽车电子（液晶仪表）十强品牌">2017-2018年度汽车电子（液晶仪表）十强品牌</option>
-                                              
-                                              </optgroup>
+                                                <optgroup label="{{$cward->category->name}}">
+                                                   <option value="{{$caward->id}}">{{$caward->name}}</option>
+                                                </optgroup>
+                                              @endif
+                                              @endforeach
                                         </select>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@ class SelfAuthController extends Controller
     {   
         
         $userInfo = $this->getEasyWechatSession();
-        var_dump($userInfo);
+        
         $openId = $userInfo['id'];
        
         //查看对应的openid是否已被注册

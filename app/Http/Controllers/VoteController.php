@@ -132,8 +132,9 @@ class VoteController extends BaseController
     { 
       
          $this->autoLogin();
-        $openid= $request->session()->get('user')['openid'];
-        $nickname= $request->session()->get('user')['nickname'];
+         $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['openid'];
+        $nickname= $userInfo['nickname'];
        $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'lists','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
@@ -141,14 +142,11 @@ class VoteController extends BaseController
       	$signPackage = $JSSDK->getSignPackage();
          session(['index'=>'2']);
          $VoteRegister = new VoteRegister;
-      $lists= $VoteRegister->where('is_enabled','=','yes')->get();
+      //$lists= $VoteRegister->where('is_enabled','=','yes')->get();
+      $cateList=VoteCategory::where('is_enabled','=','yes')->get();
+      $awardList=VoteAward::where('is_enabled','=','yes')->get();
       //var_dump($lists);
-    	return view('vote/lists', 
-          [
-          'signPackage' => $signPackage,
-          'lists' => $lists
-          ]
-        );
+    	return view('vote/lists',compact('signPackage','cateList','awardList'));
     }
     public function positive(Request $request)
     {  

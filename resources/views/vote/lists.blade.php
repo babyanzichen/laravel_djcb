@@ -447,76 +447,43 @@ $(function() {
         </div>
         <div class="container">
             <div class="nav">
-                <span ><p class="active">十大年度大奖</p></span>  <span class=""><p>厂家十强大奖（电子类）</p></span> <span class=""><p>厂家十强大奖（非电子类）</p></span><span class=""><p>百强大奖</p></span>
+                @foreach($cateList as $clist)
+                    <span ><p class="">十大年度大奖</p></span>   
+                @endforeach
             </div>
             <div class="content">
                 <div class="box" style="width: 5505px; left: 0px;">
                     <ul>
-                        <li class="active" onclick="get(1,1)">人物奖
+                        @foreach($awardList as $alist)
+                         @if(alist->category_id=='5')
+                        <li class="" onclick="get(1,1)">{{$alist->name}}
                         </li>
-                        <li onclick="get(1,2)">品牌奖
-                        </li>
-                        <li onclick="get(1,3)">营销奖
-                        </li>
-                        <li onclick="get(1,4)">创新奖
-                        </li>
+                        @endif
+                        @endforeach
                     </ul>
                     
                     <ul>
-                         <li onclick="get(3,15)">行车记录仪十强品牌</li>
-                         <li onclick="get(3,16)">车载智能导航十强品牌</li>
-                         <li onclick="get(3,17)">车载云镜十强品牌</li>
-                         <li onclick="get(3,18)">ADAS系统十强品牌</li>
-                         <li onclick="get(3,19)">智能电子十强品牌</li>
-                         <li onclick="get(3,20)">车联网十强品牌</li>
-                         <li onclick="get(2,21)">智能车灯十强品牌</li>
-                          <li onclick="get(3,22)">胎压仪十强品牌</li>
-                          <li onclick="get(3,23)">电动尾门十强品牌</li>
-                          <li onclick="get(3,24)">360全景十强品牌</li>
-                          <li onclick="get(3,25)">HUD十强品牌</li>
-                          <li onclick="get(3,26)">隐藏式行车记录仪十强品牌</li>
-                          <li onclick="get(3,27)">大屏导航十强品牌</li>
-                          <li onclick="get(3,28)">方案商十强品牌</li>
-                          <li onclick="get(3,29)">手机掌控十强品牌</li>
-                          <li onclick="get(3,30)">流媒体十强品牌</li>
-                          <li onclick="get(3,35)">汽车音响十强品牌</li>
-                          <li onclick="get(3,36)">液晶仪表十强品牌</li>
+                         @foreach($awardList as $alist)
+                         @if(alist->category_id=='6')
+                         <li onclick="get(3,15)">{{$alist->name}}</li>
+                         @endif
+                         @endforeach
                     </ul>
                     <ul>
-                        <li onclick="get(2,5)">汽车美容十强品牌
+                        @foreach($awardList as $alist)
+                        @if(alist->category_id=='7')
+                        <li onclick="get(2,5)">{{$alist->name}}
                         </li>
-                        <li onclick="get(2,6)">汽车养护十强品牌
-                        </li>
-                        <li onclick="get(2,7)">汽车钣金十强品牌
-                        </li>
-                        <li onclick="get(2,8)">汽车精品十强品牌
-                        </li>
-                        <li onclick="get(2,9)">汽车改装十强品牌
-                        </li>
-                        <li onclick="get(2,10)">汽车隔热膜十强品牌
-                        </li>
-                        <li onclick="get(2,11)">汽车车漆保护膜十强品牌
-                        </li>
-                        <li onclick="get(2,12)">汽车城服务连锁十强品牌
-                        </li>
-                        <li onclick="get(2,13)">汽车互联网+平台十强品牌
-                        </li>
-                        <li onclick="get(2,14)">汽车洗车设备十强品牌
-                        </li>
-                       
+                        @endif
+                        @endforeach
                     </ul>
                     <ul>
-                        
-                        <li onclick="get(4,33)">100强汽车集团黄金项目
+                         @foreach($awardList as $alist)
+                        @if(alist->category_id=='8')
+                        <li onclick="get(4,33)">{{$alist->name}}
                         </li>
-                        </li>
-                        <li onclick="get(4,34)">100匠榜
-                        </li>
-                        <li onclick="get(4,31)">100强汽车集团（精品运营）
-                        </li>
-                         <li onclick="get(4,32)">100强服务商（汽车集团服务）
-                        </li>
-                         <li onclick="get(4,36)">50强代理商
+                        @endif
+                        @endforeach
                     </ul>
                 </div>
             </div>

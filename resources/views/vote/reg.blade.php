@@ -376,7 +376,7 @@ button
                                     <label class="layui-form-label">申报奖项
                                         <font style="color:red">*</font></label>
                                     <div class="layui-input-block">
-                                        <select name="awards">
+                                        <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
                                          <!--   <optgroup label="十大年度大奖">
                                                 <option value="2017-2018十大年度品牌奖">2017-2018十大年度品牌奖</option>
@@ -451,7 +451,7 @@ button
                                     <label class="layui-form-label">申报奖项
                                         <font style="color:red">*</font></label>
                                     <div class="layui-input-block">
-                                        <select name="awards">
+                                        <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
                                             <optgroup>
                                               @foreach($award['peopleAward'] as $paward)
@@ -513,7 +513,7 @@ button
                                     <label class="layui-form-label">申报奖项
                                         <font style="color:red">*</font></label>
                                     <div class="layui-input-block">
-                                        <select name="awards">
+                                        <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
                                             <optgroup>
                                                @foreach($award['projectAward'] as $paward)

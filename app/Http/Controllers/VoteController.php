@@ -325,7 +325,7 @@ class VoteController extends BaseController
             $shouquan=new shouquan();
             $res=$shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法
             
-            
+
              // $shouquan->sendMessage('o4d_8stUOsFxmq-Cll9HHPM8E3pI','zp','15827400208','777');//调用方法
           }
 
@@ -394,9 +394,8 @@ class VoteController extends BaseController
 
             
              $openid= $request->session()->get('user')['openid'];
-           $voterecords = new voterecords;
-            $has=$voterecords
-              ->where('openid',$openid)
+           
+            $has=Roterecord::where('openid',$openid)
               ->where('cid',$lists[$key]['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();

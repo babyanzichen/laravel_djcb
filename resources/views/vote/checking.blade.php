@@ -32,7 +32,9 @@
   <h3 >恭喜您，奖项申报成功！</h3>
 <br>
   <h4>您已报名奖项:</h4>
-<h5 style="color:red">(点击已通过奖项名称即可查看详情)</h5>
+    <h5 style="color:red">(点击已通过奖项名称即可查看详情)</h5>
+    <br>
+    <br>
   <ul>
      @foreach ($is as $i)
      @if($i->award_id>40)

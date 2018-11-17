@@ -8,7 +8,7 @@
             财富金字塔颁奖盛典
         </title>
          <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
-          <script src="{{asset('/')}}index/vote/jquery.downCount.js" type="text/javascript"></script>
+          <script src="{{asset('/')}}index/vote/CountDown.js" type="text/javascript"></script>
         <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
       wx.checkJsApi({
@@ -463,24 +463,9 @@
             </div>
             <div class="tit">
                 <h3 class="tit1">
-                    距离活动结束：<ul class="countdown">
-                                    <li> <span class="days">2998</span>
-                                        
-                                    </li>
-                                    <li class="seperator">天</li>
-                                    <li> <span class="hours">06</span>
-                                        
-                                    </li>
-                                    <li class="seperator">小时</li>
-                                    <li> <span class="minutes">07</span>
-                                        
-                                    </li>
-                                    <li class="seperator">分</li>
-                                    <li> <span class="seconds">27</span>
-                                        
-                                    </li>
-                                    <li class="seperator">秒</li>
-                                </ul>
+                    距离活动结束：<p>
+    <input type="hidden" name="countDown" data-prefix="距离活动结束仅有" value="{{$info->time}}"> <span class="payment-time"><span class="active-time pull-right"><t class="time_prefix">距离活动结束仅有</t><em class="time_d">379</em>天<em class="time_h">12</em>:<em class="time_m">08</em>:<em class="time_s">53</em><t class="time_suffix"></t></span></span>
+</p>
                 </h3>
                 <h4>
                 颁奖时间：  {{$voteInfo->hold_time}}
@@ -610,24 +595,24 @@
         </div>
         
             @include('layout.app')
-    <script class="source" type="text/javascript">
-       
-        var date=new Date('{{$voteInfo->time}}');
-        Y = date.getFullYear() + ' ';
-        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1)+'/' : date.getMonth()+1) + '/';
-        D = date.getDate() + '/';
-        h = date.getHours() + ':';
-        m = date.getMinutes() + ':';
-        s = date.getSeconds(); 
-        var datetime=M+D+Y+h+m+s; //呀麻碟
-        console.log(datetime);
-        $('.countdown').downCount({
-            date: datetime,
-            offset: +10
-        }, function () {
-            alert('倒计时结束!');
+   <script type="text/javascript">
+    $("input[name='countDown']").each(function () {
+        var time_end=this.value;
+        var con=$(this).next("span");
+        var _=this.dataset;
+        countDown(con,{
+            title:_.title,//优先级最高,填充在prefix位置
+            prefix:_.prefix,//前缀部分
+            suffix:_.suffix,//后缀部分
+            time_end:time_end//要到达的时间
+        })
+        //提供3个事件分别为:启动,重启,停止
+        .on("countDownStarted countDownRestarted  countDownEnded ",function (arguments) {
+            console.info(arguments);
         });
-    </script>
+    });
+
+</script>
 <script type="text/javascript">
     
     url = '/vote/';

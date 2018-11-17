@@ -488,7 +488,7 @@ class VoteController extends BaseController
         $info=VoteRegister::where('id', '=',$id)->first();
         // print_r($news);
         //echo $news->title;
-          $voterecords = new voterecords;
+          
           $list=DB::table('voterecords')->leftJoin('users', 'voterecords.openid', '=', 'users.openid')
        ->where('voterecords.cid',$id)->groupBy('users.openid')->get();
          
@@ -507,8 +507,7 @@ class VoteController extends BaseController
             }     
           
            
-            $has=$voterecords
-              ->where('openid',$openid)
+            $has=VoteRecord::where('openid',$openid)
               ->where('cid',$info['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();

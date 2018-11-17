@@ -457,10 +457,10 @@
                 </h4><a href="{{ asset('/vote/laws') }}">活动详细介绍&gt;&gt;</a>
             </div>
             <div class="contents">
-                @foreach ($lists as $list)
+                @foreach ($lists as $l)
                 <div class="gdmk">
                     <div class="bt">
-                       <span class="line"></span> <span>{{$list->name}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
+                       <span class="line"></span> <span>{{$l->name}}</span><a href="{{ asset('/vote/lists') }}">更多</a>
                     </div>
                     <ul class="list-unstyled category-tags">
                         

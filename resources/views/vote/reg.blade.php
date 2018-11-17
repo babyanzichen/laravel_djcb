@@ -383,7 +383,7 @@ button
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
                                                 @foreach($award['companyAward'] as $caward)
-                                                @if($caward->category_id=='5')
+                                                
                                                 <optgroup label="{{$caward->category->name}}">
                                                    <option value="{{$caward->id}}">{{$caward->name}}</option>
                                                 </optgroup>
@@ -468,8 +468,9 @@ button
                                         <select name="awards">
                                             <option value="">请选择想要参评奖项</option>
                                             <optgroup>
-                                                <option value="2017-2018十大年度人物奖">2017-2018十大年度人物奖</option>
-                                                 <option value="2017-2018年度汽车后市场百匠奖">2017-2018年度汽车后市场百匠奖</option>
+                                              @foreach($award['peopleAward'] as $paward)
+                                                <option value="{{$paward->id}}">{{$paward->name}}</option>
+                                                @endforeach
                                                </optgroup>
                                         </select>
                                     </div>

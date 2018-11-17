@@ -113,12 +113,16 @@ class VoteController extends BaseController
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
-      $is= VoteRegister::where('openid','=',$userInfo['openid'])->get();
+        $nickname=$userInfo['nickname'];
+      $is= VoteRegister::where('openid','=',$userInfo['openid'])->where('award_id','>','40')->get();
       //print_r($is);
       
-          $nickname=$userInfo['nickname'];
-    
-          return view('vote/checking',compact('is','signPackage','nickname')); 
+       
+      if($is->first()){
+        return view('vote/checking',compact('is','signPackage','nickname')); 
+      }
+      return view('vote/reg',compact('is','signPackage','nickname')); 
+          
     }
 
     public function lists(Request $request)

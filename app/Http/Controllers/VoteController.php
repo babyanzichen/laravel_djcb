@@ -51,9 +51,9 @@ class VoteController extends BaseController
         $lists= $this->VoteCateryRepository->getAllData(['id', 'name'], false);
 
         foreach ($lists as $key => $value) {
-          $value['award']=VoteAward::where('category_id',$value['id'])->get();
+          $value['award']=VoteAward::where(array('category_id'=>$value['id'],'is_enabled'=>'yes'))->get();
           foreach ($value['award'] as $k => $v) {
-          $v['register']=VoteRegister::where('award_id',$v['id'])->get();
+          $v['register']=VoteRegister::where(array('award_id'=>$v['id'],'is_enabled'=>'yes'))->get();
           }
         }
        

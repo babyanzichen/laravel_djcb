@@ -57,45 +57,15 @@ class VoteController extends BaseController
           }
         }
        
-         // foreach($lists as $key=>$val) {
-         //    if ($lists[$key]['award_id']==1) {   //
-         //      $lists[$key]['photo']=$lists[$key]['head'];
-         //      $lists[$key]['name']=$lists[$key]['username']; 
-         //    } else{
-         //      $lists[$key]['photo']=$lists[$key]['logo'];
-         //      $lists[$key]['name']=$lists[$key]['brandname']; 
-         //    }            
-
-
-
-
-
-
-             
-            
-         //    // $has=VoteRecord::where('openid',$openid)
-         //    //   ->where('cid',$lists[$key]['id'])
-         //    //   ->where('date',date('Y-m-d', time()))
-         //    //   ->get();
-         //    //    if($has->first()==''){
-         //    //      $lists[$key]['tips']='立即投票';
-         //    //       $lists[$key]['style']='';
-         //    //    }else{
-         //    //       $lists[$key]['tips']='已投票';
-         //    //       $lists[$key]['style']="dark";
-         //    //    }
-                  
-         //     }
-           
-        // var_dump($lists);
+         
             
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $data['regcount']= VoteRegister::distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
-      $data['visitcount']=$data['visitcount']+60000;
+      $data['visitcount']=$data['visitcount'];
       $data['votecount']=VoteRecord::distinct('openid')->count();
-      $data['votecount']=$data['votecount']+10000;
+      $data['votecount']=$data['votecount'];
      
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
       	$signPackage = $JSSDK->getSignPackage();
@@ -110,6 +80,8 @@ class VoteController extends BaseController
     { 
       
         $this->autoLogin();
+        $user_id=user()->id;
+        echo $user_id;
         $openid= $request->session()->get('user')['openid'];
         $nickname= $request->session()->get('user')['nickname'];
        // DB::table('chebao_visittable')->insert(
@@ -139,8 +111,7 @@ class VoteController extends BaseController
     {  
        
          $this->autoLogin();
-        $openid= $request->session()->get('user')['openid'];
-        $nickname= $request->session()->get('user')['nickname'];
+
         $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);

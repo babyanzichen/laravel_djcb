@@ -60,18 +60,18 @@ class VoteController extends BaseController
 
 
 
-             exit();   
+             
             
             $has=VoteRecordwhere('openid',$openid)
-              ->where('cid',$lists1[$key]['id'])
+              ->where('cid',$lists[$key]['id'])
               ->where('date',date('Y-m-d', time()))
               ->get();
                if($has->first()==''){
-                 $lists1[$key]['tips']='立即投票';
-                  $lists1[$key]['style']='';
+                 $lists[$key]['tips']='立即投票';
+                  $lists[$key]['style']='';
                }else{
-                  $lists1[$key]['tips']='已投票';
-                  $lists1[$key]['style']="dark";
+                  $lists[$key]['tips']='已投票';
+                  $lists[$key]['style']="dark";
                }
                   
             }

@@ -474,9 +474,9 @@
                                     <div class="icon">
                                         <img src="">
                                     </div>
-                                    <div class="piao">票</div>
+                                    <div class="piao"> {{$register->votes}}票</div>
                                     <div class="yxm">
-                                        {{$register->votes}}
+                                        {{$register->name}}
                                     </div>
                                 </a>
                                 <div class="yxbq " onclick="vote(this,{{$register->id}})">

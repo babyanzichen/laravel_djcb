@@ -44,8 +44,10 @@
             </a>
            
       @endif  
+      @endforeach
       历届财富金字塔奖项申报记录：
-      <p>2017</p>
+      <p>2017届</p>
+       @foreach ($is as $i)
       @if($i->award_id<=40)
            
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">

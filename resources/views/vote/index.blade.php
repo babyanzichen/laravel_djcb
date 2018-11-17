@@ -612,7 +612,7 @@
             @include('layout.app')
     <script class="source" type="text/javascript">
        
-        var date=new Date({{$voteInfo->time}});
+        var date=new Date('{{$voteInfo->time}}');
         Y = date.getFullYear() + ' ';
         M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1)+'/' : date.getMonth()+1) + '-';
         D = date.getDate() + '/';
@@ -620,6 +620,7 @@
         m = date.getMinutes() + ':';
         s = date.getSeconds(); 
         var datetime=M+D+Y+h+m+s; //呀麻碟
+        console.log(datetime);
         $('.countdown').downCount({
             date: datetime,
             offset: +10

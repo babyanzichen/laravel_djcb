@@ -83,7 +83,7 @@ class VoteController extends BaseController
       $data['regcount']= VoteRegister::distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
       $data['visitcount']=$data['visitcount']+60000;
-      $data['votecount']= DB::table('voterecords')->distinct('openid')->count();
+      $data['votecount']=RoteRecord::distinct('openid')->count();
       $data['votecount']=$data['votecount']+10000;
      
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));

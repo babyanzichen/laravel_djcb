@@ -489,7 +489,7 @@ class VoteController extends BaseController
         // print_r($news);
         //echo $news->title;
           
-          $list=DB::table('vote_records')->leftJoin('users', 'votere_cords.openid', '=', 'users.openid')
+          $list=DB::table('vote_records')->leftJoin('users', 'vote_records.openid', '=', 'users.openid')
        ->where('vote_records.rid',$id)->groupBy('users.openid')->get();
          
             if ($info['c2']==33) {   //

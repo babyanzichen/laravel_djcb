@@ -76,7 +76,7 @@ class VoteController extends BaseController
                   
              }
            
-         
+         var_dump($lists);
             
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);

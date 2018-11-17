@@ -448,14 +448,14 @@ $(function() {
         <div class="container">
             <div class="nav">
                 @foreach($cateList as $clist)
-                    <span ><p class="">十大年度大奖</p></span>   
+                    <span ><p class="">{{$clist->name}}</p></span>   
                 @endforeach
             </div>
             <div class="content">
                 <div class="box" style="width: 5505px; left: 0px;">
                     <ul>
                         @foreach($awardList as $alist)
-                         @if(alist->category_id=='5')
+                         @if($alist->category_id=='5')
                         <li class="" onclick="get(1,1)">{{$alist->name}}
                         </li>
                         @endif
@@ -464,14 +464,14 @@ $(function() {
                     
                     <ul>
                          @foreach($awardList as $alist)
-                         @if(alist->category_id=='6')
+                         @if($alist->category_id=='6')
                          <li onclick="get(3,15)">{{$alist->name}}</li>
                          @endif
                          @endforeach
                     </ul>
                     <ul>
                         @foreach($awardList as $alist)
-                        @if(alist->category_id=='7')
+                        @if($alist->category_id=='7')
                         <li onclick="get(2,5)">{{$alist->name}}
                         </li>
                         @endif
@@ -479,7 +479,7 @@ $(function() {
                     </ul>
                     <ul>
                          @foreach($awardList as $alist)
-                        @if(alist->category_id=='8')
+                        @if($alist->category_id=='8')
                         <li onclick="get(4,33)">{{$alist->name}}
                         </li>
                         @endif

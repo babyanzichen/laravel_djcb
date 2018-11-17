@@ -691,7 +691,7 @@ $(function () {
         }
         else {
            var data = {
-           award_id: c1,
+           award_id: award_id,
         };
            // var type = "PUT"; // edit
         }

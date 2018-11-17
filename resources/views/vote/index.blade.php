@@ -445,11 +445,8 @@
             <div class="tit">
                 <h3 class="tit1">
                         <input type="hidden" name="countDown" data-prefix="" value="{{$voteInfo->time}}"> 
-<<<<<<< HEAD
-                        <span class="payment-time"> 
-=======
+
                         <span class="payment-time">
->>>>>>> 2d845f0d49df3ec969b3bb1a82d3c1d20d49bdea
                             <span class="active-time">
                                 <t class="time_prefix"></t>
                                 <em class="time_d">379</em>天<em class="time_h">12</em>小时<em class="time_m">08</em>分<em class="time_s">53</em>秒

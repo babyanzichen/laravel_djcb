@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVoteRegisterRequest;
+use App\Http\Requests\StoreVoteCategoryRequest;
 use App\Http\Requests\UpdateVoteRegisterRequest;
 use App\Http\Requests\UpdateVoteRuleRequest;
 use App\Http\Requests\UpdateVoteAwardRequest;
@@ -72,7 +73,7 @@ class VoteController extends Controller
         return view('dashboard.users.create');
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreVoteRegisterRequest $request)
     {
         $data = array_merge($request->all(), [
             'avatar' => '/assets/dashboard/images/head_default.gif',
@@ -197,8 +198,8 @@ class VoteController extends Controller
     public function award_edit($id)
     {
         $info=$this->VoteAwardRepository->getById($id);
-
-        return view('dashboard.vote.award-edit', compact('info'));
+         $cateLists = $this->VoteCategoryRepository->getAllData(['id', 'name'], false);
+        return view('dashboard.vote.award-edit', compact('info','cateLists'));
     }
     public function award_update(UpdateVoteAwardRequest $request, $id)
     {
@@ -206,6 +207,18 @@ class VoteController extends Controller
         
         $this->VoteAwardRepository->update($id, $data);
         return ajaxReturn(dashboardUrl('/vote/awards'));
+    }
+    public function award_create()
+    {   
+        $cateLists = $this->VoteCategoryRepository->getAllData(['id', 'name'], false);
+        return view('dashboard.vote.award-create',compact('cateLists'));
+    }
+
+    public function award_store(StoreAwardRequest $request)
+    {
+        $data = $request->all();
+        $this->awardRepository->store($data);
+        return ajaxReturn(dashboardUrl('/vote/award'));
     }
     
     /*
@@ -244,11 +257,22 @@ class VoteController extends Controller
     {
         $data = $request->all();
         
-        $this->VoteAwardRepository->update($id, $data);
-        return ajaxReturn(dashboardUrl('/vote/awards'));
+        $this->VoteCategoryRepository->update($id, $data);
+        return ajaxReturn(dashboardUrl('/vote/categorys'));
     }
 
+    public function category_create()
+    {   
+        
+        return view('dashboard.vote.category-create');
+    }
 
+    public function category_store(StoreVoteCategoryRequest $request)
+    {
+        $data = $request->all();
+        $this->VoteCategoryRepository->store($data);
+        return ajaxReturn(dashboardUrl('/vote/categorys'));
+    }
    
 
 

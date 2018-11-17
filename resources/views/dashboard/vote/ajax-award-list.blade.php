@@ -16,7 +16,7 @@
                 <td><input type="checkbox" name="ids[]" value="{{ $v->id }}">{{ $v->id }}</td>
                 <td>{{ $v->name }}</td>
                 <td>
-                    {{ $v->created_at }}
+                    {{ $v->category->name }}
                 </td>
                  <td>
                     {{ $v->created_at }}
@@ -54,7 +54,7 @@
     $('.pagination a').click(function () {
         form = 'subForm';//表单id 全局变量
         p = $(this).data('p');//当前分页
-        turl = "/dashboard/user/ajaxUsers" + "?page=" + p;//url
+        turl = "/dashboard/vote/ajaxGetAwards" + "?page=" + p;//url
         ajaxList(form, turl);
     });
 

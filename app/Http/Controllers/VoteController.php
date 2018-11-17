@@ -234,7 +234,7 @@ class VoteController extends BaseController
       	$signPackage = $JSSDK->getSignPackage();
          session(['index'=>'2']);
          $VoteRegister = new VoteRegister;
-      $lists= $VoteRegister->where('status','=','1')->get();
+      $lists= $VoteRegister->where('is_enabled','=','yes')->get();
       //var_dump($lists);
     	return view('vote/lists', 
           [

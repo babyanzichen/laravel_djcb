@@ -267,7 +267,8 @@ class VoteController extends BaseController
         // 将数据保存到数据库，通过判断保存结果，控制页面进行不同跳转
         if ($VoteRegister->save()) {
             $this->send($openid,$nickname,$phone,VoteAward::where('id',$VoteRegister->award_id)->value('name'));
-            exit();
+           
+
            return Response::json(
             [
                 'success' => true,
@@ -323,8 +324,8 @@ class VoteController extends BaseController
            
             $shouquan=new shouquan();
             $res=$shouquan->sendMessage($openid,$nickname,$phone,$award);//调用方法
-            var_dump( $res);
-            exit();
+            
+            
              // $shouquan->sendMessage('o4d_8stUOsFxmq-Cll9HHPM8E3pI','zp','15827400208','777');//调用方法
           }
 

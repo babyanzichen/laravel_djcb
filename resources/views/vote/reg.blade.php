@@ -395,14 +395,7 @@ button
                             <div class="layui-form-item">
                                 <button class="layui-btn"  lay-filter="demo1">申请报名</button></div>
                         </form>
-                         <div class="tips"> 
-                          <p style="color:red">注意:</p>
-                          <p class="lists">（1）申报成功后则会在投票页面对应奖项中出现logo；</p>
-                          <p class="lists">（2）请填写准确的联系方式，便于主办方联系申请评奖方；</p>
-                          <p class="lists">（3）请勿重复提奖；</p>
-                          <p class="lists">（4）活动咨询热线：4001688880； QQ:2410065918</p>
-                          <p class="lists">（5）客服：程小姐；18922350780 黄小姐：18022383897</p>
-                        </div>
+                         {{$info->tips}}
                         <!--数量自己定义,只要总宽度跟content的宽度一样就好-->
                       </ul>
                       <!--人物奖-->
@@ -472,14 +465,7 @@ button
                             <div class="layui-form-item">
                                 <button  class="layui-btn"  lay-filter="demo2">申请报名</button></div>
                         </form>
-                         <div class="tips"> 
-                          <p style="color:red">注意:</p>
-                          <p class="lists">（1）申报成功后则会在投票页面对应奖项中出现logo；</p>
-                          <p class="lists">（2）请填写准确的联系方式，便于主办方联系申请评奖方；</p>
-                          <p class="lists">（3）请勿重复提奖；</p>
-                          <p class="lists">（4）活动咨询热线：4001688880； QQ:2410065918</p>
-                          <p class="lists">（5）客服：程小姐；18922350780 黄小姐：18022383897</p>
-                        </div>
+                         {{$info->tips}}
                     </ul>
                     <!--项目奖-->
                     <ul>
@@ -543,14 +529,7 @@ button
 
                         </form>
                         <!--数量自己定义,只要总宽度跟content的宽度一样就好-->
-                        <div class="tips"> 
-                          <p style="color:red">注意:</p>
-                          <p class="lists">（1）申报成功后则会在投票页面对应奖项中出现logo；</p>
-                          <p class="lists">（2）请填写准确的联系方式，便于主办方联系申请评奖方；</p>
-                          <p class="lists">（3）请勿重复提奖；</p>
-                          <p class="lists">（4）活动咨询热线：4001688880； QQ:2410065918</p>
-                          <p class="lists">（5）客服：程小姐；18922350780 黄小姐：18022383897</p>
-                        </div>
+                        {{$info->tips}}
                       </ul>
                 </div>
             </div>

@@ -382,7 +382,7 @@ button
                                                 <option value="2017-2018十大年度品牌奖">2017-2018十大年度品牌奖</option>
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
-                                                foreach($award['companyAward'] as $caward)
+                                                @foreach($award['companyAward'] as $caward)
                                                 @if($cward->category_id=='5')
                                                 <optgroup label="{{$cward->category->name}}">
                                                    <option value="{{$caward->id}}">{{$caward->name}}</option>

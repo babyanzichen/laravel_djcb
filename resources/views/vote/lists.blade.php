@@ -456,7 +456,7 @@ $(function() {
                     <ul>
                         @foreach($awardList as $alist)
                          @if($alist->category_id=='5')
-                        <li class="" onclick="get(1,1)">{{$alist->name}}
+                        <li class="" onclick="get({{$alist->id}})">{{$alist->name}}
                         </li>
                         @endif
                         @endforeach
@@ -465,14 +465,14 @@ $(function() {
                     <ul>
                          @foreach($awardList as $alist)
                          @if($alist->category_id=='6')
-                         <li onclick="get(3,15)">{{$alist->name}}</li>
+                         <li onclick="get({{$alist->id}})">{{$alist->name}}</li>
                          @endif
                          @endforeach
                     </ul>
                     <ul>
                         @foreach($awardList as $alist)
                         @if($alist->category_id=='7')
-                        <li onclick="get(2,5)">{{$alist->name}}
+                        <li onclick="get({{$alist->id}})">{{$alist->name}}
                         </li>
                         @endif
                         @endforeach
@@ -480,7 +480,7 @@ $(function() {
                     <ul>
                          @foreach($awardList as $alist)
                         @if($alist->category_id=='8')
-                        <li onclick="get(4,33)">{{$alist->name}}
+                        <li onclick="get({{$alist->id}})">{{$alist->name}}
                         </li>
                         @endif
                         @endforeach
@@ -674,14 +674,14 @@ $(function () {
     };
 
 	window.onload=function(){
-	  get(1,1);
+	  get(62);
 	}
 
 
 
 
 
-    function get(c1,c2,keyword) {
+    function get(award_id,keyword) {
     
         if($('#search-input').val() != '') {
            var data = {
@@ -691,8 +691,7 @@ $(function () {
         }
         else {
            var data = {
-           c1: c1,
-           c2:c2
+           award_id: c1,
         };
            // var type = "PUT"; // edit
         }

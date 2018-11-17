@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVoteCategoryRequest extends FormRequest
+class StoreVoteAwardRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,7 +14,8 @@ class StoreVoteCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:vote_categories',
+            'name' => 'required|unique:vote_awards',
+            'category_id' => 'required',
             'is_enabled' => 'required',
             
         ];

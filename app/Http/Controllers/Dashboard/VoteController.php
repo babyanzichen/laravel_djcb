@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreVoteRegisterRequest;
 use App\Http\Requests\StoreVoteCategoryRequest;
+use App\Http\Requests\StoreVoteAwardRequest;
 use App\Http\Requests\UpdateVoteRegisterRequest;
 use App\Http\Requests\UpdateVoteRuleRequest;
 use App\Http\Requests\UpdateVoteAwardRequest;
@@ -214,11 +215,11 @@ class VoteController extends Controller
         return view('dashboard.vote.award-create',compact('cateLists'));
     }
 
-    public function award_store(StoreAwardRequest $request)
+    public function award_store(StoreVoteAwardRequest $request)
     {
         $data = $request->all();
-        $this->awardRepository->store($data);
-        return ajaxReturn(dashboardUrl('/vote/award'));
+        $this->VoteAwardRepository->store($data);
+        return ajaxReturn(dashboardUrl('/vote/awards'));
     }
     
     /*
@@ -253,7 +254,7 @@ class VoteController extends Controller
 
         return view('dashboard.vote.category-edit', compact('info'));
     }
-    public function category_update(UpdateVoteAwardRequest $request, $id)
+    public function category_update(UpdateVoteCategoryRequest $request, $id)
     {
         $data = $request->all();
         

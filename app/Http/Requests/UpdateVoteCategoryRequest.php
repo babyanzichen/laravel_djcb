@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreVoteCategoryRequest extends FormRequest
+class UpdateVoteCategoryRequest extends FormRequest
 {
     public function authorize()
     {
@@ -13,10 +14,10 @@ class StoreVoteCategoryRequest extends FormRequest
 
     public function rules()
     {
+        $id = $this->route('id');
         return [
-            'name' => 'required|unique:vote_categories',
-            'is_enabled' => 'required',
-            
+            'name' => 'required', 
+            'is_enabled'=>'nullable'
         ];
     }
 }

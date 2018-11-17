@@ -30,7 +30,7 @@
                             <label class="col-sm-3 control-label">奖项分类：</label>
                             <div class="form-group">
                                 <div class="col-md-2">
-                                    <select class="form-control m-b chosen-select" name="award_id">
+                                    <select class="form-control m-b chosen-select" name="category_id">
                                         <option value="">选择奖项分类</option>
                                         @foreach($cateLists as $v)
                                             <option value="{{ $v->id }}">{{ $v->name }}
@@ -80,7 +80,7 @@
             return false;
         }
 
-        ajaxFormBtn("{{ dashboardUrl('/vote/award/award_store') }}", 'btnForm');
+        ajaxFormBtn("{{ dashboardUrl('/vote/award/store') }}", 'btnForm');
     });
 
 </script>

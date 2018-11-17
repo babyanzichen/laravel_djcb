@@ -88,7 +88,7 @@ class VoteController extends BaseController
         $award['companyAward']=VoteAward::where('is_enabled','yes')->whereIn('category_id', [5,7])->get();
          $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['openId'],'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['original']['openid'],'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
         session(['index'=>'4']);
@@ -108,7 +108,7 @@ class VoteController extends BaseController
         $userInfo = $this->getEasyWechatSession();
         $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['openid'],'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['original']['openid'],'visittime' => date('Y-m-d H:i:s', time())]);
        $info=VoteInfo::where('status','ON')->first();
         $award['peopleAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'8'))->get();
         $award['projectAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'6'))->get();
@@ -117,7 +117,7 @@ class VoteController extends BaseController
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
         $nickname=$userInfo['nickname'];
-      $is= VoteRegister::where('openid','=',$userInfo['openid'])->where('award_id','>','40')->get();
+      $is= VoteRegister::where('openid','=',$userInfo['original']['openid'])->where('award_id','>','40')->get();
       //print_r($is);
       
        
@@ -133,8 +133,8 @@ class VoteController extends BaseController
       
          $this->autoLogin();
          $userInfo = $this->getEasyWechatSession();
-        $openid= $userInfo['openid'];
-        $nickname= $userInfo['nickname'];
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
        $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'lists','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
@@ -259,8 +259,8 @@ class VoteController extends BaseController
         $VoteRegister->projectname= $request->get('projectname'); // 同上
         $VoteRegister->reason = $request->get('reason'); // 同上
          $userInfo = $this->getEasyWechatSession();
-        $openid= $userInfo['openid'];
-        $nickname= $userInfo['nickname'];
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
         $VoteRegister->openid=$openid;
       
         

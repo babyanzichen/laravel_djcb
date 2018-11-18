@@ -32,9 +32,8 @@
   <h3 >恭喜您，奖项申报成功！</h3>
 <br>
   <h4>您已报名奖项:</h4>
-    <h5 style="color:red">(点击已通过奖项名称即可查看详情)</h5>
-    <br>
-    <br>
+    <h5 style="color:red">(点击已通过奖项名称即可预览详情)</h5>
+    
   <ul>
      @foreach ($is as $i)
      @if($i->award_id>40)
@@ -63,13 +62,17 @@
     <h6 style="color:blue">18922350780（微信、电话同号）  </h6>
   </ul>
   <a class="more" href="{{asset('/')}}vote/regs">报名更多</a>
-
-      <p>2017届财富金字塔奖项申报记录：</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>2017届财富金字塔奖项申报记录：</p>
     @foreach ($is as $i)
-      @if($i->award_id<=40)
-            @if($i->award_id=='')
+    @if(count($i->award_id<=40)=0)
             暂无
             @endif
+      @if($i->award_id<=40)
+            
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
                 <font style="color:red"><li>{{ $i -> award->name  }}</li></font>
             </a>

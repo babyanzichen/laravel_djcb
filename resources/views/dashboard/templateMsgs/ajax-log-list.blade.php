@@ -20,7 +20,11 @@
                 <td>{{ $v->category}}</td>
                 <td>定时推送</td>
                 <td>{{ $v->user->nickname }}</td>
-                <td>{{ $v->user->avatar }}</td>
+                <td><a>
+                        <img src="{{  $v->user->avatar }}" class="img-circle fancybox" href="{{ $v->avatar }}" title="{{ $v->user_name }}" style="width:35px;height:35px"
+                             onerror="this.src='/assets/dashboard/images/head_default.gif'"/>
+                    </a>
+                </td>
                 <td>{{ $v->code }}</td>
                 <td>
                     @if( $v->msg == 'ok')

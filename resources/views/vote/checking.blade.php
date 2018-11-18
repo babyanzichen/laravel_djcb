@@ -87,7 +87,7 @@
         if(is_guanzhu!='T'){
         swal({ 
           title:'<h6>系统检测到您可能未关注武汉改装车展微信公众号，为了您及时收到活动信息，请先长按以下二维码识别关注</h6>',
-          text: "<img src='__PUBLIC__/index/imgs/kakaqr.jpg'>", 
+          text: "<img src='{{asset('/')}}index/vote/utsqrcode.jpg'>", 
           html: true 
         });
       }      

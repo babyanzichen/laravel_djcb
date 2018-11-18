@@ -114,20 +114,18 @@ class VoteController extends BaseController
         $userInfo = $this->getEasyWechatSession();
         $openid= $userInfo['original']['openid'];
         $nickname=$userInfo['original']['nickname'];
-        $is_guanzhu=User::where('openid',$openid)->value('is_guanzhu');
         $info=VoteInfo::where('status','ON')->first();
         $award['peopleAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'8'))->get();
         $award['projectAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'6'))->get();
         $award['companyAward']=VoteAward::where('is_enabled','yes')->whereIn('category_id', [5,7])->get();
          $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['original']['openid'],'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
         session(['index'=>'4']);
-        $nickname=$userInfo['nickname'];
       
-        return view('vote/reg',compact('nickname','is_guanzhu','award','signPackage','info')
+        return view('vote/reg',compact('nickname','award','signPackage','info')
         );
       
     

@@ -79,6 +79,17 @@
  @include('layout.app')
 <script type="text/javascript" src="{{asset('/')}}index/vote/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript">
+    window.onload=function(){
+  if(is_guanzhu!='T'){
+    swal({ 
+      title:'<h6>'+系统检测到您未关注武汉改装车展微信公众号，为了您及时收到活动信息，请先长按以下二维码识别关注+'</h6>',
+      text: "<img src='__PUBLIC__/index/imgs/kakaqr.jpg'>", 
+      html: true 
+    });
+  }      
+}
+</script>
  <script>
         wx.checkJsApi({
         jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
@@ -126,14 +137,5 @@
         });
         </script> 
 
-<script>
-	var oOpen = document.getElementById("open");
-	var oClose = document.getElementById("open");
-	var oContainer = document.getElementById("container");
-
-	oChai.onclick = function (){
-		oChai.setAttribute("class", "rotate");
-	};
-</script>
 
 </body></html>

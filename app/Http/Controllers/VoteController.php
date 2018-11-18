@@ -112,6 +112,9 @@ class VoteController extends BaseController
       
         $this->autoLogin();
         $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
+        $is_guanzhu=User::where('openid',$openid)->value('is_guanzhu');
         $info=VoteInfo::where('status','ON')->first();
         $award['peopleAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'8'))->get();
         $award['projectAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'6'))->get();
@@ -124,7 +127,7 @@ class VoteController extends BaseController
         session(['index'=>'4']);
         $nickname=$userInfo['nickname'];
       
-        return view('vote/reg',compact('nickname','award','signPackage','info')
+        return view('vote/reg',compact('nickname','is_guanzhu','award','signPackage','info')
         );
       
     

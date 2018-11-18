@@ -114,7 +114,14 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' 
 
     });
 
+    // ## =================================
+    // 模板消息
+    // ================================ ##
+    Route::group(['prefix' => 'templateMsg'], function () {
+        Route::get('log', 'TemplateMsgController@logs');
+        Route::post('ajaxLogs/{page?}', 'TemplateMsgController@ajaxLogs');
 
+    });
     Route::group(['prefix' => 'vote'], function () {
         Route::get('/', 'VoteController@lists');
         Route::post('ajaxGets/{page?}', 'VoteController@ajaxGets');

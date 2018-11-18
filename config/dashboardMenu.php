@@ -45,7 +45,25 @@ return [
                 ],
             ]
         ],
-
+        [
+            'name' => '模板消息管理',
+            'style' => 'ils',
+            'sun'  => [
+                [
+                    'name' => '推送日志',
+                    'href' => '/dashboard/templateMsg/log',
+                ],
+                [
+                    'name' => '指定推送',
+                    'href' => '/dashboard/templateMsg/push',
+                ],
+                [
+                    'name' => '定时推送',
+                    'href' => '/dashboard/templateMsg/push',
+                ],
+                
+            ]
+        ],
         [
             'name' => '飘移活动管理',
             'style' => 'sticky-note',

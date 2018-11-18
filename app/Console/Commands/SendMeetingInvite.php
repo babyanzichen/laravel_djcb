@@ -39,8 +39,9 @@ class SendMeetingInvite extends Command {
     public function handle()
     {
         $shouquan=new shouquan();
-        $users=DB::table('users')->where('openid','><','0')->get();
+        $users=DB::table('users')->where('openid','<>','0')->get();
         foreach ($users as $key => $value) {
+            echo $value->id;
            $res=  $shouquan->sendMeetingInvite($value->openid,$value->nickname);//调用方法
            if($res['errcode']=='0'){
             $users=DB::table('users')->where('id',$value->id)->update(array('is_guanzhu'=>'T'));

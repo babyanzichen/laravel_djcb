@@ -479,7 +479,7 @@
                                         {{$register->name}}
                                     </div>
                                 </a>
-                                <div class="yxbq " onclick="vote(this,{{$register->id}})">
+                                <div class="yxbq {{$register->style}}" onclick="vote(this,{{$register->id}})">
                                   {{$register->tips}}
                                 </div>
                             </div>

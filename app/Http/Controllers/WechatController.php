@@ -164,9 +164,11 @@ class WechatController extends Controller
         {
             case "subscribe":
                  DB::table('users')->where('openid',$object->FromUserName)->update(array('is_guanzhu'=>'T'));
-                $contentStr = "参观「武汉国际改装车展」：\n点菜单“门票”，\n登记信息提交就可以免费拿到门票啦！
-快把消息告诉小伙伴吧~！\n获取更多帮助请回复“h”。";    //关注后回复内容
-                $resultStr = $this->transmitText($object, $contentStr);
+                 $arr_item["title"]="武汉车博会|心在哪，风景就在哪";
+            $arr_item["description"]="2017年第15届中国（武汉）国际汽车服务产业博览会暨第3届中国（武汉）国际汽车升级及改装展览会（简称武汉车博会）将于6月16日-18日，在中国之“心”——武汉盛大召开。";
+            $arr_item["picurl"]="http://mmbiz.qpic.cn/mmbiz_jpg/jPjAicia0GJV8VaDqYfMnlE4Kxfum2cS8eFlw7MdLicYwRK5d2L8aPLibp1NkkkwfLS3g39xTU6Rb4rInicYvRRKiaKQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1";
+            $arr_item["url"]="http://mp.weixin.qq.com/s/rqqpfxVJcO4-OLPC25ploA";
+               $resultStr = $this->transmitNews($object,$arr_item);
                 return $resultStr;
                 break;
             case "unsubscribe":

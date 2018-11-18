@@ -307,7 +307,7 @@ Route::get('/', function()
  */
 Route::get('authe', 'HomeController@authe');
 Route::get('callback', 'HomeController@callback');
-Route::any('wechat/api', 'WechatController@serve');
+Route::any('wechat/api', 'WechatController@api');
 
 /*
     微信支付测试demo

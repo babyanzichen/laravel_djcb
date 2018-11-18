@@ -47,10 +47,12 @@ class SendMeetingInvite extends Command {
            }elseif($res['errcode']=='43004'){
                 $users=DB::table('users')->where('id',$value->id)->update(array('is_guanzhu'=>'F'));
            }
-           DB::table('logs')->create([
+           DB::table('logs')->insert([
             'user_id'=>$value->id,
             'code'=>$res['errcode'],
-            'msg'=>$res['errmsg']
+            'msg'=>$res['errmsg'],
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
            ]);
 
         }

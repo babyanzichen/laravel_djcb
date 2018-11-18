@@ -86,7 +86,7 @@
         var is_guanzhu='{{$is_guanzhu}}';
         if(is_guanzhu!='T'){
         swal({ 
-          title:'<h6 style="font-size:12px">系统检测到您可能未关注武汉改装车展微信公众号，为了您及时收到活动信息，请先长按以下二维码识别关注</h6>',
+          title:'<h6 style="font-size:12px">系统检测到您可能未关注活动官方微信公众号，为了您及时收到活动信息，请先长按以下二维码识别关注，若已关注请忽略</h6>',
           text: "<img style='width:100px' src='{{asset('/')}}index/vote/utsqrcode.jpg'>", 
           html: true 
         });

@@ -569,9 +569,8 @@ class VoteController extends BaseController
 
     public function vote(Request $request){
        $this->autoLogin();
-        $voterecords = new voterecords;
-        $has=$voterecords
-              ->where('openid',$openid)
+        
+        $has=VoteRecord::where('openid',$openid)
               ->where('rid',$id)
               ->where('date',date('Y-m-d', time()))
               ->get();

@@ -576,6 +576,7 @@ class VoteController extends BaseController
         $userInfo = $this->getEasyWechatSession();
         $openid= $userInfo['original']['openid'];
         $nickname=$userInfo['original']['nickname'];
+        $id=$request->id;
         $voterecords = new VoteRecord;
         $has=$voterecords
               ->where('openid',$openid)

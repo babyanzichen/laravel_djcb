@@ -44,12 +44,14 @@ class VoteController extends BaseController
         $this->autoLogin();
        $IP=$_SERVER['REMOTE_ADDR'];
      
-         $openid= $request->session()->get('user')['openid'];
+         $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
         
          $voteInfo=VoteInfo::where('status','ON')->first();
          
          
-        $lists= $this->VoteCatery::where('is_enabled','yes')->get();
+        $lists=VoteCatery::where('is_enabled','yes')->get();
 
         foreach ($lists as $key => $value) {
           $value['award']=VoteAward::where(array('category_id'=>$value['id'],'is_enabled'=>'yes'))->get();
@@ -72,7 +74,18 @@ class VoteController extends BaseController
             }else{
               $n['photo']=$n['logo'];
               $n['name']=$n['brandname']; 
-            }  
+            }
+            $has=VoteRecord::where('openid',$openid)
+              ->where('rid',$n['id'])
+              ->where('date',date('Y-m-d', time()))
+              ->get();
+               if($has->first()==''){
+                 $info['tips']='立即投票';
+                  $info['style']='';
+               }else{
+                  $info['tips']='已投票';
+                  $info['style']="dark";
+               }  
           }  
         }
       }

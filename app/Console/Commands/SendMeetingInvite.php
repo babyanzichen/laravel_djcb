@@ -51,6 +51,7 @@ class SendMeetingInvite extends Command {
             'user_id'=>$value->id,
             'code'=>$res['errcode'],
             'msg'=>$res['errmsg'],
+            'category'=>'meetinginvite',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
            ]);

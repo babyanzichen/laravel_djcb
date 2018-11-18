@@ -19,9 +19,9 @@
                 <td>{{ $v->category}}</td>
                 <td>定时推送</td>
                 <td>{{ $v->user->nickname }}</td>
-                <td>{{ $v->errcode }}</td>
+                <td>{{ $v->code }}</td>
                 <td>
-                    @if( $v->errmsg == 'ok')
+                    @if( $v->msg == 'ok')
                         推送成功
                     @else
                         推送失败，用户未关注公众号

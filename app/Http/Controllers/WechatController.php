@@ -16,7 +16,7 @@ class WechatController extends Controller
 
     public function api()
     {   
-         echo "进入api接口了";
+         //echo "进入api接口了";
         $content ='进入api接口';
         if($this->logger($content)){
             echo "写入成功。<br />";
@@ -66,6 +66,8 @@ class WechatController extends Controller
     public function responseMsg()
     {
     $postStr = file_get_contents("php://input", 'r');
+    $content ='收到用户消息'.$postStr.'';
+        $this->logger($content); 
     if (!empty($postStr)){
          $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
         $RX_TYPE = trim($postObj->MsgType);

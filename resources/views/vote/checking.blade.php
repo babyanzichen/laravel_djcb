@@ -47,17 +47,7 @@
            
       @endif  
       @endforeach
-      历届财富金字塔奖项申报记录：
-      <p>2017届</p>
-       @foreach ($is as $i)
-      @if($i->award_id<=40)
-           
-            <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
-                <font style="color:red"><li>{{ $i -> award->name  }}</li></font>
-            </a>
-            
-      @endif       
-  @endforeach
+      
  
 
 
@@ -74,6 +64,18 @@
   </ul>
   <a class="more" href="{{asset('/')}}vote/regs">报名更多</a>
 
+      <p>2017届财富金字塔奖项申报记录：</p>
+    @foreach ($is as $i)
+      @if($i->award_id<=40)
+            @if($i->award_id=='')
+            暂无
+            @endif
+            <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
+                <font style="color:red"><li>{{ $i -> award->name  }}</li></font>
+            </a>
+            
+      @endif       
+  @endforeach
 </div>
  @include('layout.app')
 <script type="text/javascript" src="{{asset('/')}}index/vote/jquery-1.9.1.min.js"></script>

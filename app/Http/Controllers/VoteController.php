@@ -80,11 +80,11 @@ class VoteController extends BaseController
               ->where('date',date('Y-m-d', time()))
               ->get();
                if($has->first()==''){
-                 $info['tips']='立即投票';
-                  $info['style']='';
+                 $n['tips']='立即投票';
+                  $n['style']='';
                }else{
-                  $info['tips']='已投票';
-                  $info['style']="dark";
+                  $n['tips']='已投票';
+                  $n['style']="dark";
                }  
           }  
         }

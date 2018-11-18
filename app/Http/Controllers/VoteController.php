@@ -496,13 +496,13 @@ class VoteController extends BaseController
           $list=DB::table('vote_records')->leftJoin('users', 'vote_records.openid', '=', 'users.openid')
        ->where('vote_records.rid',$id)->groupBy('users.openid')->get();
          
-            if ($info['c2']==33) {   //
+            if ($info['award_id']>=41&&$info['award_id']<=56) {   //
               $info['photo']=$info['logo'];
               $info['name']=$info['projectname']; 
-            }elseif ($info['c2']==1||$info['c2']==34){
+            }elseif ($info['award_id']>=65&&$info['award_id']<=69){
               $info['photo']=$info['head'];
               $info['name']=$info['username']; 
-            } elseif ($info['c2']==31||$info['c2']==32||$info['c2']==36){
+            } elseif ($info['award_id']>=59&&$info['award_id']<=64){
               $info['photo']=$info['head'];
               $info['name']=$info['companyname']; 
             }else{

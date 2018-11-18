@@ -57,9 +57,25 @@ class VoteController extends BaseController
           $v['register']=VoteRegister::where(array('award_id'=>$v['id'],'is_enabled'=>'yes'))->get();
           }
         }
-       
-         
-            
+       foreach ($lists as $key => $value) {
+          foreach ($value['award'] as $k => $v) {
+             foreach ($v['register'] as $m => $n) {
+          if ($n['award_id']>=41&&$n['award_id']<=56) {   //
+              $n['photo']=$n['logo'];
+              $n['name']=$n['projectname']; 
+            }elseif ($n['award_id']>=65&&$n['award_id']<=69){
+              $n['photo']=$n['head'];
+              $n['name']=$n['username']; 
+            } elseif ($n['award_id']>=59&&$n['award_id']<=64){
+              $n['photo']=$n['head'];
+              $n['name']=$n['companyname']; 
+            }else{
+              $n['photo']=$n['logo'];
+              $n['name']=$n['brandname']; 
+            }  
+          }  
+        }
+      }
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
       $data['regcount']= VoteRegister::distinct('openid')->count();

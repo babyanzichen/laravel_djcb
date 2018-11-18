@@ -8,11 +8,22 @@ use App\libs\ipCity;
 use jssdk; 
 class WechatController extends Controller
 {   
-
+    private function logger($content){//开发调试写入log
+        $file  = 'log.html';//要写入文件的文件名（可以是任意文件名），如果文件不存在，将会创建一个
+        $content='【'.date("Y-m-d H:i:s").$content.'】</br>';
+        file_put_contents($file, $content,FILE_APPEND);
+    }
 
     public function api()
-    {
-        if (isset($_GET['echostr'])) {     //验证微信
+    {   
+         echo "进入api接口了";
+        $content ='进入api接口';
+        if($this->logger($content)){
+            echo "写入成功。<br />";
+        };
+        if (isset($_GET['echostr'])) { 
+            //验证微信
+            $content ='验证api接口正确性';
             $this->valid();
         }else{                     //回复消息
              $this->responseMsg();
@@ -54,7 +65,7 @@ class WechatController extends Controller
     //回复消息
     public function responseMsg()
     {
-    $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+    $postStr = file_get_contents("php://input", 'r');
     if (!empty($postStr)){
          $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
         $RX_TYPE = trim($postObj->MsgType);

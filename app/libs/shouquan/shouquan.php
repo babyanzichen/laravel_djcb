@@ -212,6 +212,54 @@ class shouquan {
 
 
 
+  //推送会议邀请模板信息    参数：发送给谁的openid,客户姓名，客户电话，推荐楼盘（参数自定）
+  public function sendMeetingInvite($openid,$nickame) {
+    //获取全局token
+   // echo"1111";
+    $token=$this->get_token();
+    //echo $token;
+    $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$token;
+   // echo $url;
+    //模板信息请求地址
+    //发送的模板信息(微信要求json格式，这里为数组（方便添加变量）格式，然后转为json)
+    $post_data = array(
+      "touser"=>$openid,//推送给谁,openid
+      "template_id"=>"OTOnDCB3QOTDUioqJp3v3G3Dp_gp5Dyj2cb60qf86fI",//微信后台的模板信息id
+      "url"=>"https://mp.weixin.qq.com/s/im69nrtKg40bfcCJyZEFCQ",//下面为预约看房模板示例
+      'data' => array(
+        'first' => array('value' => '中国汽车服务商联合会（军师联盟）筹备大会举办提醒',
+          'color'=>'#ff0f0f'),
+        'keyword1' => array('value' => '中国汽车服务商联合会（军师联盟）筹备大会'),
+        'keyword2' => array('value' =>'2018.11.30-12.2'),
+        'remark' => array('value' => '尊敬的'.$nickame.'，诚邀您参加中国汽车服务商联合会（军师联盟）筹备大会',
+          'color'=>'#173177'),
+          )
+      );
+    //将上面的数组数据转为json格式
+    $post_data = json_encode($post_data);
+    //发送数据，post方式<br>//配置curl请求
+    $ch = curl_init();
+    //创建curl请求
+    curl_setopt($ch, CURLOPT_URL,$url);
+    //设置发送数据的网址
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    //设置有返回值，0，直接显示
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,0);
+    //禁用证书验证
+    curl_setopt($ch, CURLOPT_POST, 1);
+    //post方法请求
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    //post请求发送的数据包
+    //接收执行返回的数据
+    $data = curl_exec($ch);
+    //关闭句柄
+    curl_close($ch);
+   // print_r($data);
+    $data = json_decode($data,true);
+    //将json数据转成数组
+    return $data;
+  }
+
   //获取模板信息-行业信息（参考，示例未使用）
   public function getHangye(){
     //用户同意授权后，会传过来一个code

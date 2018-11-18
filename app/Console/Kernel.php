@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         CodehaoshiInstall::class,
         BindAdmin::class,
         'App\Console\Commands\SendTemplateMsg',
+        'App\Console\Commands\SendMeetingInvite',
     ];
 
     /**

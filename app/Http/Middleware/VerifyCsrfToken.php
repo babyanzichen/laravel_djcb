@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         'file/upload',
         'upload/upimg',
-        'ticket/notify'
+        'ticket/notify',
+        'wechat/api'
     ];
 }

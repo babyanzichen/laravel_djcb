@@ -4,6 +4,8 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
+  <script src="{{asset('/')}}index/js/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/css/sweetalert.min.css"">
   <style>
   ul li{
     font-size: 18px;

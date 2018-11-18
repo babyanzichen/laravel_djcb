@@ -10,8 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="{{asset('/')}}index/vote/layui/css/layui.css" media="all" />
         <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css?v=323" />
-         <script src="{{asset('/')}}index/js/sweetalert.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/css/sweetalert.min.css"">
+         
         <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
         <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的-->
        

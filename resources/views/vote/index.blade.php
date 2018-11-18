@@ -472,7 +472,7 @@
                             <div class="xtbmk">
                                 <a  href="{{asset('/')}}vote/detail/{{$register->id}}">
                                     <div class="icon">
-                                        <img src="">
+                                        <img src="{{$register->photo}}">
                                     </div>
                                     <div class="piao"> {{$register->votes}}票</div>
                                     <div class="yxm">
@@ -480,7 +480,7 @@
                                     </div>
                                 </a>
                                 <div class="yxbq " onclick="vote(this,{{$register->id}})">
-                                  {{$register->name}}
+                                  {{$register->tips}}
                                 </div>
                             </div>
                         </li>

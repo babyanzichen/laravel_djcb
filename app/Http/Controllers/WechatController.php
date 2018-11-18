@@ -163,12 +163,14 @@ class WechatController extends Controller
         switch ($eventType)
         {
             case "subscribe":
+                 DB::table('users')->where('openid',$object->FromUserName)->update(array('is_guanzhu'=>'T'));
                 $contentStr = "参观「武汉国际改装车展」：\n点菜单“门票”，\n登记信息提交就可以免费拿到门票啦！
 快把消息告诉小伙伴吧~！\n获取更多帮助请回复“h”。";    //关注后回复内容
                 $resultStr = $this->transmitText($object, $contentStr);
                 return $resultStr;
                 break;
             case "unsubscribe":
+                 DB::table('users')->where('openid',$object->FromUserName)->update(array('is_guanzhu'=>'F'));
                 $contentStr = "";
                 break;
             case "CLICK":

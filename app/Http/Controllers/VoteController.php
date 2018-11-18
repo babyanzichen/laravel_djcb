@@ -49,7 +49,7 @@ class VoteController extends BaseController
          $voteInfo=VoteInfo::where('status','ON')->first();
          
          
-        $lists= $this->VoteCateryRepository->getAllData(['id', 'name'], false);
+        $lists= $this->VoteCatery::where('is_enabled','yes')->get();
 
         foreach ($lists as $key => $value) {
           $value['award']=VoteAward::where(array('category_id'=>$value['id'],'is_enabled'=>'yes'))->get();

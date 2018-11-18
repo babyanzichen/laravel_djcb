@@ -81,7 +81,7 @@
 <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/javascript">
     window.onload=function(){
-        var is_guanzhu={{$is_guanzhu}};
+        var is_guanzhu='{{$is_guanzhu}}';
         if(is_guanzhu!='T'){
         swal({ 
           title:'<h6>系统检测到您可能未关注武汉改装车展微信公众号，为了您及时收到活动信息，请先长按以下二维码识别关注</h6>',

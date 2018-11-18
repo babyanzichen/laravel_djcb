@@ -18,6 +18,7 @@ use App\Models\voteAward;
 use App\Models\voteCategory; 
 use App\Models\VoteInfo; 
 use App\Models\About;
+use App\Models\User;
 use App\Repositories\AboutRepository;
 use App\Repositories\VoteInfoRepository;
 use App\Repositories\VoteCategoryRepository;
@@ -135,9 +136,13 @@ class VoteController extends BaseController
        
          $this->autoLogin();
         $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
+        $is_guanzhu=User::where('openid',$openid)->value('is_guanzhu');
+        
         $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
-        ['visitip' => $IP, 'page'=>'reg','openid'=>$userInfo['original']['openid'],'visittime' => date('Y-m-d H:i:s', time())]);
+        ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
        $info=VoteInfo::where('status','ON')->first();
         $award['peopleAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'8'))->get();
         $award['projectAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'6'))->get();
@@ -146,14 +151,14 @@ class VoteController extends BaseController
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
         $nickname=$userInfo['nickname'];
-      $is= VoteRegister::where('openid','=',$userInfo['original']['openid'])->where('award_id','>','40')->get();
+      $is= VoteRegister::where('openid','=',$openid)->where('award_id','>','40')->get();
       //print_r($is);
       
        
       if($is->first()){
-        return view('vote/checking',compact('is','signPackage','nickname')); 
+        return view('vote/checking',compact('is','is_guanzhu','signPackage','nickname')); 
       }
-      return view('vote/reg',compact('info','award','is','signPackage','nickname')); 
+      return view('vote/reg',compact('info','is_guanzhu','award','is','signPackage','nickname')); 
           
     }
 
@@ -274,9 +279,24 @@ class VoteController extends BaseController
       $validator = Validator::make($request->all(),  [
             'phone'=> 'required|max:20',
             'companyname' => 'required', // 必填
+            'award_id'=>'required|int'
         ]);
+       $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
+       $VoteRegister = new VoteRegister;
         if ($validator->passes()){
-         $VoteRegister = new VoteRegister; // 初始化 Article 对象
+          $has=$VoteRegister->where(array('openid'=>$openid,'award_id'=> $request->get('award_id')))->first();
+          if($has){
+             return Response::json(
+            [
+                'success' => false,
+                'msg' => '您已经申报过该奖项啦，换个奖项再申请哦，就酱紫',
+                'status' => '300'
+            ]
+        );
+          }
+         // 初始化 Article 对象
          $VoteRegister->username = $request->get('username'); // 将 POST 提交过了的 title 字段的值赋给 article 的 title 属性
          $VoteRegister->phone=$phone = $request->get('phone'); // 同上
          $VoteRegister->companyname = $request->get('companyname'); // 同上
@@ -287,9 +307,7 @@ class VoteController extends BaseController
         $VoteRegister->position = $request->get('position'); // 同上
         $VoteRegister->projectname= $request->get('projectname'); // 同上
         $VoteRegister->reason = $request->get('reason'); // 同上
-         $userInfo = $this->getEasyWechatSession();
-        $openid= $userInfo['original']['openid'];
-        $nickname=$userInfo['original']['nickname'];
+        
         $VoteRegister->openid=$openid;
       
         
@@ -309,7 +327,7 @@ class VoteController extends BaseController
              return Response::json(
             [
                 'success' => false,
-                'msg' => '添加失败',
+                'msg' => '嗯，由于大家参与热情太高，服务器已经被挤炸了导致添加失败，技术GG正在火速处理中，请稍候再试吧',
                 'status' => '300'
             ]
         );
@@ -318,7 +336,7 @@ class VoteController extends BaseController
            return Response::json(
             [
                 'success' => false,
-                'msg' => '数据未通过验证，请检查表单是否填写正确',
+                'msg' => '呃，数据未通过验证，请检查表单是否填写正确再提交吧',
                 'status' => '500'
             ]
             );

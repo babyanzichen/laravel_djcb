@@ -68,16 +68,12 @@
     <br>
     <p>2017届财富金字塔奖项申报记录：</p>
     @foreach ($is as $i)
-    @if(count($i->award_id<=40)=0)
-            暂无
-            @endif
-      @if($i->award_id<=40)
-            
+       
+        @if($i->award_id<=40)
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
                 <font style="color:red"><li>{{ $i -> award->name  }}</li></font>
-            </a>
-            
-      @endif       
+            </a>    
+        @endif       
   @endforeach
 </div>
  @include('layout.app')

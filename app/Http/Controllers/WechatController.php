@@ -164,10 +164,10 @@ class WechatController extends Controller
         {
             case "subscribe":
                  DB::table('users')->where('openid',$object->FromUserName)->update(array('is_guanzhu'=>'T'));
-                 $arr_item["title"]="武汉车博会|心在哪，风景就在哪";
-            $arr_item["description"]="2017年第15届中国（武汉）国际汽车服务产业博览会暨第3届中国（武汉）国际汽车升级及改装展览会（简称武汉车博会）将于6月16日-18日，在中国之“心”——武汉盛大召开。";
-            $arr_item["picurl"]="http://mmbiz.qpic.cn/mmbiz_jpg/jPjAicia0GJV8VaDqYfMnlE4Kxfum2cS8eFlw7MdLicYwRK5d2L8aPLibp1NkkkwfLS3g39xTU6Rb4rInicYvRRKiaKQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1";
-            $arr_item["url"]="http://mp.weixin.qq.com/s/rqqpfxVJcO4-OLPC25ploA";
+                 $arr_item["title"]="财富金字塔颁奖盛典投票请点击";
+            $arr_item["description"]="2018-2019年第七届汽车服务行业财富金字塔颁奖盛典将在广东东莞盛大召开。";
+            $arr_item["picurl"]="http://www.djcb123.cn/index/vote/banner.png";
+            $arr_item["url"]="http://www.djcb123.cn/vote";
                $resultStr = $this->transmitNews($object,$arr_item);
                 return $resultStr;
                 break;

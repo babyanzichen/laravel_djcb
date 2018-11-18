@@ -393,8 +393,8 @@ class VoteController extends BaseController
 
 
             
-             $openid= $request->session()->get('user')['openid'];
-           
+            $userInfo = $this->getEasyWechatSession();
+            $openid= $userInfo['original']['openid'];
             $has=VoteRecord::where('openid',$openid)
               ->where('rid',$lists[$key]['id'])
               ->where('date',date('Y-m-d', time()))
@@ -438,8 +438,9 @@ class VoteController extends BaseController
   public function contact(Request $request){
      
        $this->autoLogin();
-        $openid= $request->session()->get('user')['openid'];
-        $nickname= $request->session()->get('user')['nickname'];
+        $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
          $IP=$_SERVER['REMOTE_ADDR'];
         $about=About::where('is_enabled','yes')->first();
         DB::table('chebao_visittable')->insert(
@@ -454,8 +455,9 @@ class VoteController extends BaseController
      public function laws(Request $request){
        $this->autoLogin();
      
-        $openid= $request->session()->get('user')['openid'];
-        $nickname= $request->session()->get('user')['nickname'];
+        $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
          $IP=$_SERVER['REMOTE_ADDR'];
 
         DB::table('chebao_visittable')->insert(
@@ -477,7 +479,9 @@ class VoteController extends BaseController
          $this->autoLogin();
          $id=$request->id;
         $IP=$_SERVER['REMOTE_ADDR'];
-           $openid= $request->session()->get('user')['openid'];
+          $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
         $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
         session(['index'=>'']);
@@ -569,6 +573,9 @@ class VoteController extends BaseController
 
     public function vote(Request $request){
        $this->autoLogin();
+        $userInfo = $this->getEasyWechatSession();
+        $openid= $userInfo['original']['openid'];
+        $nickname=$userInfo['original']['nickname'];
         $voterecords = new VoteRecord;
         $has=$voterecords
               ->where('openid',$openid)

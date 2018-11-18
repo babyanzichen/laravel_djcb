@@ -6,6 +6,7 @@
             <th>推送类型</th>
             <th>推送方式</th>
             <th>推送用户</th>
+            <th>用户头像</th>
             <th>状态码</th>
             <th>推送结果</th>
             <th>推送时间</th>
@@ -19,6 +20,7 @@
                 <td>{{ $v->category}}</td>
                 <td>定时推送</td>
                 <td>{{ $v->user->nickname }}</td>
+                <td>{{ $v->user->avatar }}</td>
                 <td>{{ $v->code }}</td>
                 <td>
                     @if( $v->msg == 'ok')

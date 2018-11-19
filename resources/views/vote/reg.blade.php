@@ -456,10 +456,10 @@ button
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
                                             <optgroup>
-                                              @foreach($awardCategory as $category)
+                                              @foreach($category as $category)
                                                @if($category->id=="8")
                                                @foreach($award as $award)
-                                                <option value=""></option>
+                                                <option value="{{$award->id}}">{{$award->name}}</option>
                                                 @endforeach
                                                 @endif
                                                 @endforeach
@@ -521,7 +521,7 @@ button
                                     <div class="layui-input-block">
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
-                                            @foreach($awardCategory as $category)
+                                            @foreach($category as $category)
                                                @if($category->id=="5")
                                                
                                             <optgroup label="{{$category->name}}">
@@ -531,7 +531,7 @@ button
                                                  @endif
                                                 @endforeach
                                             </optgroup>
-                                             @foreach($awardCategory as $category)
+                                             @foreach($category as $category)
                                                @if($category->id=="6")
                                                
                                             <optgroup label="{{$category->name}}">

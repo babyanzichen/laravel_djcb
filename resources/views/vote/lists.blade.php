@@ -195,6 +195,7 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 17px;
 }
 .piao {
    
@@ -678,7 +679,7 @@ $(function () {
 
 	window.onload=function(){
 	  get(62);
-      $('.nav').children(':first').addClass('active');
+      $('.nav').children(':first').children('p').addClass('active');
       $('.box ul').children(':first').addClass('active');
 	}
 

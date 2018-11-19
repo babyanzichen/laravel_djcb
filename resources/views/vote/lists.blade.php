@@ -148,7 +148,7 @@ body{
 }
        
 .main {
-    margin-top: 360px;
+    margin-top: 375px;
     padding: 1%;
     background-color: white;
 }

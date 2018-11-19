@@ -34,14 +34,14 @@
   <h3 >恭喜您，奖项申报成功！</h3>
 <br>
   <h4>您已报名奖项:</h4>
-    <h5 style="color:red">(点击已通过奖项名称即可预览详情)</h5>
+    <h5 style="color:red">(点击奖项名称即可立即预览详情)</h5>
     
   <ul>
      @foreach ($is as $i)
      @if($i->award_id>40)
            
             <a  href="{{asset('/')}}vote/detail/{{$i->id}}">
-                <font style="color:red"><li>{{ $i -> award->name  }}（ @if ($i -> is_enabled == 'yes')已通过 @else
+                <font><li>{{ $i -> award->name  }}（ @if ($i -> is_enabled == 'yes')已通过 @else
               审核中
             @endif）</li></font>
             </a>

@@ -388,6 +388,7 @@ button
                                                    <option value="{{$award->id}}">{{$award->name}}</option>
                                                    @endforeach
                                                 </optgroup>
+                                                @endif
                                               @endforeach
                                         </select>
                                     </div>

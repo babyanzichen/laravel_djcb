@@ -130,7 +130,7 @@ body{
 .content ul li {
     height: 30px;
     font-size: 12px;
-    width: 45%;
+    width:90%;
     float: left;
     border: 1px solid #aaa;
     text-align: center;

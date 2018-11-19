@@ -382,7 +382,7 @@ button
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
                                                 @foreach($awardCategory as $category)
-                                               @if($category->id=="8")
+                                               @if($category->id=="7")
                                                 <optgroup label="{{$category->name}}">
                                                   @foreach($category->award as $award)
                                                    <option value="{{$award->id}}">{{$award->name}}</option>
@@ -456,8 +456,12 @@ button
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
                                             <optgroup>
-                                              @foreach($award['peopleAward'] as $paward)
-                                                <option value="{{$paward->id}}">{{$paward->name}}</option>
+                                              @foreach($awardCategory as $category)
+                                               @if($category->id=="8")
+                                               @foreach($award as $award)
+                                                <option value="{{$award->id}}">{{$award->name}}</option>
+                                                @endforeach
+                                                @endif
                                                 @endforeach
                                                </optgroup>
                                         </select>
@@ -517,9 +521,24 @@ button
                                     <div class="layui-input-block">
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
-                                            <optgroup>
-                                               @foreach($award['projectAward'] as $paward)
-                                                <option value="{{$paward->id}}">{{$paward->name}}</option>
+                                            @foreach($awardCategory as $category)
+                                               @if($category->id=="5")
+                                               
+                                            <optgroup label="{{$category->name}}">
+                                               @foreach($award as $award)
+                                                <option value="{{$award->id}}">{{$award->name}}</option>
+                                                 @endforeach
+                                                 @endif
+                                                @endforeach
+                                            </optgroup>
+                                             @foreach($awardCategory as $category)
+                                               @if($category->id=="6")
+                                               
+                                            <optgroup label="{{$category->name}}">
+                                               @foreach($award as $award)
+                                                <option value="{{$award->id}}">{{$award->name}}</option>
+                                                 @endforeach
+                                                 @endif
                                                 @endforeach
                                             </optgroup>
                                         </select>

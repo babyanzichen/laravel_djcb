@@ -382,10 +382,10 @@ button
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
                                                 @foreach($awardCategory as category)
-                                               @if($category->id=8)
+                                               @if($category->id==8)
                                                 <optgroup label="{{$category->name}}">
                                                   @foreach($category->award as award)
-                                                   <option value="{{$category->award->id}}">{{{{$award->name}}}}</option>
+                                                   <option value="{{$category->award->id}}">{{$award->name}}</option>
                                                    @endforeach
                                                 </optgroup>
                                               @endforeach

@@ -623,6 +623,7 @@ class VoteController extends BaseController
         $openid= $userInfo['original']['openid'];
         $nickname=$userInfo['original']['nickname'];
         $id=$request->id;
+        $register=VoteRegister::where('id',$id)->first();
         $voterecords = new VoteRecord;
         $has=$voterecords
               ->where('openid',$openid)
@@ -639,6 +640,22 @@ class VoteController extends BaseController
        // ['openid' => $openid, 'rid'=>$id,'date' => date('Y-m-d', time())]);
                $handle= $VoteRegister->where('id',$id)->increment('votes');
               if ($handle) {
+            $openid1=$openid;
+            $title1='恭喜您投票成功!';
+            $keyword1=$register->companyname.$register->username;
+            $keyword2=date('Y-m-d H:i:s',time());
+            $remark1='尊敬的用户“'.$nickname.'”您已经在2018-2019汽车服务行业财富金字塔颁奖盛典投票活动中为“'.$register->companyname.$register->username.'”成功投上一票，赶紧点击此处分享到朋友圈为TA拉到更多票数吧，感谢您对本次活动的积极参与。';
+            $template_id1='N4IYJRgoJjHgQ4wdGfgsrVz1duLczJRfkTELRMIUgOw';
+           
+            $redirect_url='http://www.djcb123.cn/vote/detail/'.$id;
+
+             $template_id2='mOV9Thh16Qg1wBqY6hwibWBmhF_eQmfADvaGnisjFCE';
+             $keyword3=$raceinfo->votes;
+            $openid2=$raceinfo->openid;
+            $title2='又有小伙伴为您投了一票';
+             $remark2='尊敬的用户，又有小伙伴“'.$nickname.'”在2018-2019汽车服务行业财富金字塔颁奖盛典投票活动中为您您申报的“'.$register->companyname.$register->username.'”成功投上一票，赶紧点击此处查看活动详情吧，感谢您的对本次的活动的积极参与。';
+            $this->send1($request,$openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);
+            $this->send2($request,$openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url);
                  return Response::json(
                   [
                       'success' => true,

@@ -36,8 +36,8 @@
 
   wx.ready(function(){
     wx.onMenuShareAppMessage({
-     title: '2017汽车服务行业财富金字塔颁奖盛典投票', // 分享标题
-      desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
+     title: '我在参加汽车服务行业“财富金字塔”颁奖盛典', // 分享标题
+      desc: '2019年2月24日 东莞·广东现代国际展览中心邀您共鉴荣耀时刻', // 分享描述
       link: 'http://www.djcb123.cn/vote/lists', // 分享链接
       imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
       type: '', // 分享类型,music、video或link，不填默认为link
@@ -51,7 +51,7 @@
   });
 
   wx.onMenuShareTimeline({
-      title: '2017汽车服务行业财富金字塔颁奖盛典投票', // 分享标题
+      title: '我在参加汽车服务行业“财富金字塔”颁奖盛典', // 分享标题
       desc: '2017年11月18日  广州长隆酒店国际会展中心', // 分享描述
       link: 'http://www.djcb123.cn/vote/lists', // 分享链接
       imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
@@ -91,7 +91,7 @@ body{
 
 .container .nav span {
     display: block;
-    width: 45%;
+    width:90%;
     text-align: center;
    height:40px;
     float: left;
@@ -249,11 +249,14 @@ a {
   
     color: #aaa;
 }
-  p {
-    color: #000;
-    font-size: 14px;
+  .nav p {
+   
+    font-size:18px;
 }
-
+p {
+    color: #000;
+    font-size:14px;
+}
  .delete {
     display: inline-block;
     float: right;

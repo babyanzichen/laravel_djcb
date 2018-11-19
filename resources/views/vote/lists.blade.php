@@ -79,7 +79,7 @@ body{
     width: 100%;
     overflow: inherit;
     color: black !important;
-    height:300px;
+    height:310px;
     background-color: white;
     margin-top: 50px;
 }
@@ -105,7 +105,7 @@ body{
         }
       .content {
     width: 100%;
-    height:200px;
+    height:120px;
     top: -3px;
     position: relative;
     min-height: 50px;

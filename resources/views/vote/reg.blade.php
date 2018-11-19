@@ -456,7 +456,7 @@ button
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
                                             <optgroup>
-                                              @foreach($category as $category)
+                                              @foreach($awardCategory as $category)
                                                @if($category->id=="8")
                                                @foreach($category->award as $award)
                                                 <option value="{{$award->id}}">{{$award->name}}</option>
@@ -521,21 +521,21 @@ button
                                     <div class="layui-input-block">
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
-                                            @foreach($category as $category)
+                                            @foreach($awardCategory as $category)
                                                @if($category->id=="5")
                                                
                                             <optgroup label="{{$category->name}}">
-                                               @foreach($award as $award)
+                                               @foreach($category->award as $award)
                                                 <option value="{{$award->id}}">{{$award->name}}</option>
                                                  @endforeach
                                                  @endif
                                                 @endforeach
                                             </optgroup>
-                                             @foreach($category as $category)
+                                             @foreach($awardCategory as $category)
                                                @if($category->id=="6")
                                                
                                             <optgroup label="{{$category->name}}">
-                                               @foreach($award as $award)
+                                               @foreach($category->award as $award)
                                                 <option value="{{$award->id}}">{{$award->name}}</option>
                                                  @endforeach
                                                  @endif

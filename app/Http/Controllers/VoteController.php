@@ -650,8 +650,8 @@ class VoteController extends BaseController
             $redirect_url='http://www.djcb123.cn/vote/detail/'.$id;
 
              $template_id2='mOV9Thh16Qg1wBqY6hwibWBmhF_eQmfADvaGnisjFCE';
-             $keyword3=$raceinfo->votes;
-            $openid2=$raceinfo->openid;
+             $keyword3=$register->votes;
+            $openid2=$register->openid;
             $title2='又有小伙伴为您投了一票';
              $remark2='尊敬的用户，又有小伙伴“'.$nickname.'”在2018-2019汽车服务行业财富金字塔颁奖盛典投票活动中为您您申报的“'.$register->companyname.$register->username.'”成功投上一票，赶紧点击此处查看活动详情吧，感谢您的对本次的活动的积极参与。';
             $this->send1($request,$openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);

@@ -115,9 +115,8 @@ class VoteController extends BaseController
         $openid= $userInfo['original']['openid'];
         $nickname=$userInfo['original']['nickname'];
         $info=VoteInfo::where('status','ON')->first();
-        $award['peopleAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'8'))->get();
-        $award['projectAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'6'))->get();
-        $award['companyAward']=VoteAward::where('is_enabled','yes')->whereIn('category_id', [5,7])->get();
+        $awardCategory=VoteCategory::where(array('is_enabled'=>'yes'))->get();
+        
          $IP=$_SERVER['REMOTE_ADDR'];
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
@@ -125,7 +124,7 @@ class VoteController extends BaseController
         $signPackage = $JSSDK->getSignPackage();
         session(['index'=>'4']);
       
-        return view('vote/reg',compact('nickname','award','signPackage','info')
+        return view('vote/reg',compact('nickname','$awardCategory','signPackage','info')
         );
       
     

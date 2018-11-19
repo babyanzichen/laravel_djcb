@@ -381,14 +381,7 @@ button
                                                 <option value="2017-2018十大年度品牌奖">2017-2018十大年度品牌奖</option>
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
-                                                @foreach($awardCategory as category)
-                                               
-                                                <optgroup label="{{$category->name}}">
-                                                  @foreach($category->award as award)
-                                                   <option value="{{$award->id}}">{{$award->name}}</option>
-                                                  
-                                                </optgroup>
-                                              @endforeach
+                                                
                                         </select>
                                     </div>
                                 </div>

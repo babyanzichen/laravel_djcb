@@ -576,7 +576,8 @@ class VoteController extends BaseController
           [
           'data'=>$info,
           'list'=>$list,
-          'signPackage' => $signPackage
+          'signPackage' => $signPackage,
+          'nickname'=>$nickname
           ]);
     
 }

@@ -2,7 +2,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		 <meta name="_token" content="{!! csrf_token() !!}" />
 	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-	    <title>{{$data->name}}——2017财富金字塔投票</title>
+	    <title>{{$data->name}}——2018-2019年度汽车服务行业财富金字塔颁奖盛典投票</title>
 	     <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
 	    <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
 	    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
@@ -282,8 +282,8 @@ return(Min + Math.round(Rand * Range));
 
   wx.ready(function(){
     wx.onMenuShareAppMessage({
-     title: '{{$data->name}}', // 分享标题
-      desc: '我是{{$data->name}}，正在参加2017财富金字塔“{{$data->awards}}”评选，请为我投票', // 分享描述
+     title: '{{$nickname}}祝贺 {{$data->name}}入围财富金字塔“{{$data->awards}}”奖项', // 分享标题
+      desc: '2019年2月24日东莞·颁奖典礼，邀您共鉴荣耀时刻', // 分享描述
       link: 'http://www.djcb123.cn/vote/detail/{{$data->id}}', // 分享链接
       imgUrl: '{{$data->photo}}', // 分享图标
       type: '', // 分享类型,music、video或link，不填默认为link
@@ -297,8 +297,8 @@ return(Min + Math.round(Rand * Range));
   });
 
   wx.onMenuShareTimeline({
-      title: '我是{{$data->name}}，正在参加2017财富金字塔“{{$data->awards}}”评选，请为我投票', // 分享标题
-      desc: '我正在参加2017财富金字塔“{{$data->awards}}”评选，请为我投票', // 分享描述
+      title: '{{$nickname}}祝贺 {{$data->name}}入围财富金字塔“{{$data->awards}}”奖项', // 分享标题
+      desc: '2019年2月24日东莞·颁奖典礼，邀您共鉴荣耀时刻', // 分享描述
       link: 'http://www.djcb123.cn/vote/detail/{{$data->id}}', // 分享链接
       imgUrl: '{{$data->photo}}', // 分享图标分享图标
       success: function () {

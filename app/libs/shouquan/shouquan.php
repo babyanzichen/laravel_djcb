@@ -478,6 +478,6 @@ public function sendOrderSuccess($openid,$template_id,$username,$activity,$phone
     //print_r($data);
     $data = json_decode($data,true);
     //将json数据转成数组
-    var_dump($data) ;
+    //var_dump($data) ;
   }
 }

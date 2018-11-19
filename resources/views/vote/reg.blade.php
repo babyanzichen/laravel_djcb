@@ -385,7 +385,7 @@ button
                                                @if($category->id==8)
                                                 <optgroup label="{{$category->name}}">
                                                   @foreach($category->award as award)
-                                                   <option value="{{$category->award->id}}">{{$award->name}}</option>
+                                                   <option value="{{$award->id}}">{{$award->name}}</option>
                                                    @endforeach
                                                 </optgroup>
                                               @endforeach

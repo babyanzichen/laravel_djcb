@@ -458,7 +458,7 @@ button
                                             <optgroup>
                                               @foreach($category as $category)
                                                @if($category->id=="8")
-                                               @foreach($award as $award)
+                                               @foreach($category->award as $award)
                                                 <option value="{{$award->id}}">{{$award->name}}</option>
                                                 @endforeach
                                                 @endif

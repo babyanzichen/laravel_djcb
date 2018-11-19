@@ -381,6 +381,17 @@ button
                                                 <option value="2017-2018十大年度品牌奖">2017-2018十大年度品牌奖</option>
                                                 <option value="2017-2018十大年度营销奖">2017-2018十大年度营销奖</option>
                                                 <option value="2017-2018十大年度创新奖">2017-2018十大年度创新奖</option></optgroup>-->
+                                                 @foreach($awardCategory as $category)
+                                               @if($category->id=="5")
+                                               
+                                            <optgroup label="{{$category->name}}">
+                                               @foreach($category->award as $award)
+                                                <option value="{{$award->id}}">{{$award->name}}</option>
+                                                 @endforeach
+                                                 @endif
+                                                
+                                            </optgroup>
+                                            @endforeach
                                                 @foreach($awardCategory as $category)
                                                @if($category->id=="7")
                                                 <optgroup label="{{$category->name}}">
@@ -455,7 +466,7 @@ button
                                     <div class="layui-input-block">
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
-                                            <optgroup>
+                                            <optgroup label="{{$category->name}}">
                                               @foreach($awardCategory as $category)
                                                @if($category->id=="8")
                                                @foreach($category->award as $award)
@@ -521,16 +532,7 @@ button
                                     <div class="layui-input-block">
                                         <select name="award_id">
                                             <option value="">请选择想要参评奖项</option>
-                                            @foreach($awardCategory as $category)
-                                               @if($category->id=="5")
-                                               
-                                            <optgroup label="{{$category->name}}">
-                                               @foreach($category->award as $award)
-                                                <option value="{{$award->id}}">{{$award->name}}</option>
-                                                 @endforeach
-                                                 @endif
-                                                @endforeach
-                                            </optgroup>
+                                           
                                              @foreach($awardCategory as $category)
                                                @if($category->id=="6")
                                                
@@ -539,8 +541,9 @@ button
                                                 <option value="{{$award->id}}">{{$award->name}}</option>
                                                  @endforeach
                                                  @endif
-                                                @endforeach
+                                               
                                             </optgroup>
+                                             @endforeach
                                         </select>
                                     </div>
                                 </div>

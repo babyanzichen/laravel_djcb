@@ -144,9 +144,7 @@ class VoteController extends BaseController
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'reg','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
        $info=VoteInfo::where('status','ON')->first();
-        $award['peopleAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'8'))->get();
-        $award['projectAward']=VoteAward::where(array('is_enabled'=>'yes','category_id'=>'6'))->get();
-        $award['companyAward']=VoteAward::where('is_enabled','yes')->whereIn('category_id', [5,7])->get();
+        $awardCategory=VoteCategory::where(array('is_enabled'=>'yes'))->get();
       $JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
         $signPackage = $JSSDK->getSignPackage();
        session(['index'=>'4']);
@@ -158,7 +156,7 @@ class VoteController extends BaseController
       if($is->first()){
         return view('vote/checking',compact('is','is_guanzhu','signPackage','nickname')); 
       }
-      return view('vote/reg',compact('info','is_guanzhu','award','is','signPackage','nickname')); 
+      return view('vote/reg',compact('info', 'awardCategory','is_guanzhu','is','signPackage','nickname')); 
           
     }
 

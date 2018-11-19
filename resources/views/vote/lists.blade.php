@@ -105,7 +105,7 @@ body{
         }
       .content {
     width: 100%;
-    height:120px;
+    height:135px;
     top: -3px;
     position: relative;
     min-height: 50px;

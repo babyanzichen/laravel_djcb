@@ -706,6 +706,22 @@ class VoteController extends BaseController
         $this->exportExcel($xlsName,$xlsCell,$xlsData);
          
     }
+    
+    public function send1(Request $request,$openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url){
+        
+        $shouquan=new shouquan();
+       
+       
+        $shouquan->sendVoteSuccess($openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);//调用方法
+    }
+
+    public function send2(Request $request,$openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url){
+        
+        $shouquan=new shouquan();
+       
+       
+        $shouquan->sendGetVote($openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url);//调用方法
+    }
 
 
 

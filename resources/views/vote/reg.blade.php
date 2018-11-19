@@ -459,7 +459,7 @@ button
                                               @foreach($awardCategory as $category)
                                                @if($category->id=="8")
                                                @foreach($award as $award)
-                                                <option value="{{$award->id}}">{{$award->name}}</option>
+                                                <option value=""></option>
                                                 @endforeach
                                                 @endif
                                                 @endforeach

@@ -54,7 +54,7 @@
     $('.pagination a').click(function () {
         form = 'subForm';//表单id 全局变量
         p = $(this).data('p');//当前分页
-        turl = "/dashboard/vote/ajaxGetAwards" + "?page=" + p;//url
+        turl = "/dashboard/vote/awards/ajaxGetAwards" + "?page=" + p;//url
         ajaxList(form, turl);
     });
 

@@ -124,7 +124,7 @@ class VoteController extends BaseController
         $signPackage = $JSSDK->getSignPackage();
         session(['index'=>'4']);
       
-        return view('vote/reg',compact('nickname','$awardCategory','signPackage','info')
+        return view('vote/reg',compact('nickname','awardCategory','signPackage','info')
         );
       
     

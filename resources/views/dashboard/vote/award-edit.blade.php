@@ -34,7 +34,7 @@
                                         <option value="">选择奖项分类</option>
                                         @foreach($cateLists as $v)
                                             <option value="{{ $v->id }}"
-                                                    @if($info->cate_id == $v->id) selected @endif>{{ $v->name }}</option>
+                                                    @if($info->category_id == $v->id) selected @endif>{{ $v->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

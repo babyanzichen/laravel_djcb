@@ -34,13 +34,27 @@
                             </div>
                         </div>
                         
+                         <div class="hr-line-dashed"></div>
+                        <div class="form-group avalue">
+                            <label class="col-sm-3 control-label">申报理由：</label>
+                            <div class="input-group col-sm-8">
+                                <textarea name="reason" id="editor" class="form-control"
+                                          placeholder="申报理由">{!!$info->reason!!}</textarea>
+                            </div>
+                        </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">申报理由：</label>
-                            <div class="input-group col-sm-4">
-                               <script id="editor" name="reason" type="text/plain" style="width:724px;height:500px;">{!!$info->reason!!}</script>
-                                <textarea name="reason" style="display:none"></textarea>
-                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 必填</span>
+                            <label class="col-sm-3 control-label">公司logo：</label>
+                            <div class="input-group col-sm-1">
+                                <a class="btn btn-info" href="javascript:void(0);" style="float: left"
+                                   uploader="logo"
+                                   data-url="{{ url('file/upload') }}" data-path="temp">+ 浏览文件
+                                    <input type="hidden" name="logo" id="logo" value="{{ $info->logo }}">
+                                </a>
+                                <img height="100px" id="logo_img"
+                                     style="float:left;margin-left: 120px;margin-top: -50px;"
+                                     onerror="this.src='/assets/dashboard/images/no_img.jpg'"
+                                     src="{{ $info->logo }}"/>
                             </div>
                         </div>
                        <div class="hr-line-dashed"></div>
@@ -95,18 +109,29 @@
     </div>
 </div>
 @include('dashboard.layouts.partials.footer')
-@include('dashboard.layouts.partials.footer')
-@include('UEditor::head')
-<script type="text/javascript">
-     var ue = UE.getEditor('editor'); 
-</script>
+
 <script>
-    /*表单提交*/
-    $("#saveBtn").click(function () {
-        $("textarea[name=reason]").val(ue.getContent());
-        ajaxFormBtn("{{ dashboardUrl('/vote/'.$info->id.'/update') }}", 'btnForm');
+  /*Markdown ------------start */
+    var simplemde = new SimpleMDE({
+        spellChecker: false,
+        autosave: {
+            enabled: true,
+            delay: 2000,
+            unique_id: "dashboard_question_edit_content{{ $info->id . '_' . str_slug($info->update_at)}}"
+        },
+        element: document.getElementById("editor"),
+        forceSync: true,
+        tabSize: 4,
     });
 
+    {{--    simplemde.value({{$info->content }});--}}
+    /*表单提交*/
+    $("#saveBtn").click(function () {
+
+        
+        $("textarea[name=reason]").val(simplemde.value());
+        ajaxFormBtn("{{ dashboardUrl('/vote/'.$info->id.'/update') }}", 'btnForm');
+    });
 </script>
 </body>
 </html>

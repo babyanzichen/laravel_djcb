@@ -250,7 +250,7 @@ button{
 window.onload=function(){
 	
 var num = GetRandomNum(1,3);
-$(".guanggao img").attr("src","http://www.djcb123.cn/home/img/banner"+num+".jpg")
+$(".guanggao img").attr("src","http://www.djcb123.cn/home/img/banner1.jpg")
 }
 function GetRandomNum(Min,Max)
 {   

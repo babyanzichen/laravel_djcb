@@ -234,7 +234,12 @@ button{
             @endif
         </div>
     </div>
+    @if($comments->count())
      @include('comments.list',['collections'=>$comments['root']])
+    @else 
+    暂时没有评论
+    @endif
+    
         <h3>留下您的评论</h3>
         @include('comments.form',['parentId'=>$post->id])
     <div class="guanggao">

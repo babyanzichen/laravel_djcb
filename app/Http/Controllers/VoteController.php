@@ -532,16 +532,7 @@ class VoteController extends BaseController
         session(['index'=>'']);
          DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>$id,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
-         
-        
-        $info=VoteRegister::where('id', '=',$id)->first();
-        $info->load('comments.owner');
-        $comments =$info->getComments();
-
-          
-             $comments['root'] = $comments[''];
-              unset($comments['']);
-          
+        $comments =$info->getComments();   
         if(!$info){
           exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
         }

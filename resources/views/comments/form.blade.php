@@ -1,4 +1,4 @@
-<form method="POST" action="{{url('post/'.$post->id.'/comments')}}" accept-charset="UTF-8">
+<form method="POST" action="{{url('vote/'.$list->id.'/comments')}}" accept-charset="UTF-8">
     {{csrf_field()}}
 
     @if(isset($parentId))

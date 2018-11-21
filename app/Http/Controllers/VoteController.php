@@ -19,6 +19,7 @@ use App\Models\voteCategory;
 use App\Models\VoteInfo; 
 use App\Models\About;
 use App\Models\User;
+use App\Models\VoteComment;
 use App\Repositories\AboutRepository;
 use App\Repositories\VoteInfoRepository;
 use App\Repositories\VoteCategoryRepository;

@@ -581,7 +581,7 @@ class VoteController extends BaseController
     
 }
   public function getComment(Request $request){
-    return VoteComment::where('register_id',$request->id)->paginate(15);
+    return VoteComment::with(['user'])->where('register_id',$request->id)->paginate(15);
   }
 
 

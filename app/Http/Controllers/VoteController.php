@@ -534,9 +534,7 @@ class VoteController extends BaseController
         ['visitip' => $IP, 'page'=>$id,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
          
         
-        $info=VoteRegister::where('id', '=',$id)->first();
-         $info->load('comments.owner');
-          $comments =$info->with(['comments.owner'])->get()->groupBy('parent_id');
+        $info=VoteRegister::with(['comments.owner'])->where('id', '=',$id)->get()->groupBy('parent_id');
           var_dump($comments);
           exit();
           if($comments){

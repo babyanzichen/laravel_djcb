@@ -315,21 +315,40 @@ body {
     <div id="box" class="container">
         <!--留言-->
         <div class="takeComment">
-            <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText"></textarea>
+            <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText" v-model="txtval"></textarea>
             <div class="takeSbmComment clearfix">
-                <button type="button" class="inputs btn btn-success btn-sm" value="">提交评论</button>
+                <button type="button" class="inputs btn btn-success btn-sm" value="" @click="addfun()">提交评论</button>
             </div>
         </div>
         <!--已留-->
         <div class="commentOn">
-            <div class="noContent">暂无留言</div>
+            <div class="noContent" v-show="datalist.length==0">暂无留言</div>
             <div class="page">
                 <a href="javascript:;" class=""></a>
             </div>
-            <div class="messList" style="display: none;">
-                
+            <div class="messList" v-show="datalist.length!=0">
+                <div v-for="item in datalist" class="reply">
+                    <p class="replyContent">{{item.content}}</p>
+                    <p class="operation clearfix">
+                        <span class="replyTime">{{item.reg_date | date}}</span>
+                        <span class="handle">
+                            <a @click="accfun(item.id)" href="javascript:;" :class="['top','top'+item.id]">
+                                <span class="fa fa-thumbs-o-up"></span>
+                                <span class="num">{{item.acc}}</span>
+                            </a>
+                            <a @click="reffun(item.id)" href="javascript:;" :class="['down_icon','down_icon'+item.id]">
+                                <span class="fa fa-thumbs-o-down"></span>
+                                <span class="num">{{item.ref}}</span>
+                            </a>
+                            <a @click="delfun(item.id)" href="javascript:;" :class="['cut','cut'+item.id]">
+                                <span class="fa fa-trash-o"></span>
+                                <span>删除</span>
+                            </a>
+                        </span>
+                    </p>
+                </div>
             </div>
-            <div class="page" style="display: none;">
+            <div class="page" v-show="datalist.length!=0">
                 <ul class="pagination" id="pagebox">
                 
                 </ul>
@@ -612,8 +631,8 @@ $(function(){
                 return num;
             },
             getpage:function(pagenum){
-                this.$http.get(urlstr,{
-                    params:{page:pagenum,act:'get'}
+                this.$http.get(urlstr+'/getComment',{
+                    params:{page:pagenum}
                 }).then(function(res){
                     // console.log(res.data)
                     this.datalist = res.data;

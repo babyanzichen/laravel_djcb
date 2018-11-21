@@ -589,7 +589,7 @@ class VoteController extends BaseController
 }
 
         public function Comments(){
-          VoteRegiste::comments()->create([
+          VoteRegister::comments()->create([
                 'body' => request('body'),
                 'user_id' => \Auth::id(),
                 'parent_id' => request('parent_id', null),

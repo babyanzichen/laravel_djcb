@@ -537,8 +537,7 @@ class VoteController extends BaseController
         $info=VoteRegister::where('id', '=',$id)->first();
          $info->load('comments.owner');
           $comments =$info->getComments();
-          var_dump($comments);
-          ext();
+          
           if($comments){
              $comments['root'] = $comments[''];
               unset($comments['']);

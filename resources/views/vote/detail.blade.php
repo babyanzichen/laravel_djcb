@@ -234,14 +234,30 @@ body {
             @endif
         </div>
     </div>
-    @if($comments->count())
-     @include('comments.list',['collections'=>$comments['root']])
-    @else 
-    暂时没有评论
-    @endif
-    
-        <h3>留下您的评论</h3>
-        @include('comments.form',['parentId'=>$data->id])
+    <div id="box" class="container">
+        <!--留言-->
+        <div class="takeComment">
+            <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText"></textarea>
+            <div class="takeSbmComment clearfix">
+                <button type="button" class="inputs btn btn-success btn-sm" value="">提交评论</button>
+            </div>
+        </div>
+        <!--已留-->
+        <div class="commentOn">
+            <div class="noContent">暂无留言</div>
+            <div class="page">
+                <a href="javascript:;" class=""></a>
+            </div>
+            <div class="messList" style="display: none;">
+                
+            </div>
+            <div class="page" style="display: none;">
+                <ul class="pagination" id="pagebox">
+                
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="guanggao">
             <h2>
                 <span>广告</span>
@@ -253,7 +269,7 @@ body {
 		<script type="text/javascript" src="{{asset('/')}}index/vote/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="{{asset('/')}}index/vote/mui.min.js"></script>
 	    <script type="text/javascript" src="{{asset('/')}}index/vote/app.js"></script>
-	
+<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">	
 <script type="text/javascript">
 window.onload=function(){
 	
@@ -462,5 +478,185 @@ $(function () {
 
 
 
+</script>
+<script type="text/javascript">
+$(function(){
+    var nowtime = new Date().getTime();
+    var urlstr = "/vote";
+    var c = new Vue({
+        el:"#box",
+        data:{
+            datalist:[],
+            acc:0,
+            ref:0,
+            nowdate:"",
+            txtval:""
+        },
+        filters:{
+          date(time){
+            let date   = new Date(time*1000)//把定义的时间赋值进来进行下面的转换
+            let year   = date.getFullYear();
+            let month  = date.getMonth()+1;
+            let day    = date.getDate();
+            let hour   = date.getHours(); 
+            let minute = date.getMinutes(); 
+            let second = date.getSeconds(); 
+            return year+"-"+this.numfun(month)+"-"+this.numfun(day)+" "+this.numfun(hour)+":"+this.numfun(minute)+":"+this.numfun(second);
+          }
+        },
+        methods:{
+            addfun:function(){
+                if(this.txtval!=""){
+                    this.$http.get(urlstr,{
+                        params:{act:"add",content:this.txtval}
+                    }).then(function(res){
+                        console.log(res.data)
+                        this.datalist.unshift({id:res.data.id,content:this.txtval,acc:0,ref:0,reg_date:res.data.time});
+                        this.txtval = "";
+                        this.getcount();
+                        this.getpage(1);
+
+                    },function(){})
+                }else{
+                    alert("你没有填写任何内容！")
+                }
+                
+
+            },
+            numfun:function(num){
+                if(num<10){
+                    num = "0"+num;
+                }else{
+                    num=num;
+                }
+
+                return num;
+            },
+            getpage:function(pagenum){
+                this.$http.get(urlstr,{
+                    params:{page:pagenum,act:'get'}
+                }).then(function(res){
+                    // console.log(res.data)
+                    this.datalist = res.data;
+                },function(){})
+            },
+            getcount:function(){
+
+                this.$http.get(urlstr,{
+                    params:{act:'get_page_count'}
+                }).then(function(res){
+                    // console.log(res.data.count)
+                    var that = this;
+                    $("#pagebox").bootstrapPaginator({
+                        bootstrapMajorVersion:3,
+                        currentPage:1,//当前页
+                        totalPages:res.data.count,//总页数
+                        numberOfPages:5,//每页显示几个按钮
+                        itemTexts:function(type,page,current){
+                            switch (type){
+                                case "first" : return "<<";
+                                case "prev" : return "<";
+                                case "next" : return ">";
+                                case "last" : return ">>";
+                                case "page" : return page;
+                            }
+                        },
+                        onPageClicked:function(event, originalEvent, type, page){
+                            that.getpage(page);
+                        }
+                    })
+                    
+
+                },function(){})
+            },
+            accfun:function(ids){
+                //赞同
+                
+                var txtnum = Number($(".top"+ids).find(".num").text());
+                var clickbool =  $(".down_icon"+ids).find(".fa").hasClass("fa-thumbs-down"); //是否点击了反对
+                console.log("accfun: "+clickbool)
+                if(clickbool){
+                    this.reffun(ids);
+                }
+
+                txtnum = this.thumbsfun(".top",txtnum,ids,"fa-thumbs-o-up","fa-thumbs-up");
+
+                this.$http.get(urlstr,{
+                    params:{act:'acc',id:ids,num:txtnum}
+                }).then(function(res){
+                    console.log(res.data);
+                    
+                    
+                },function(){})
+                
+            },
+            reffun:function(ids){
+                //反对
+                var txtnum = Number($(".down_icon"+ids).find(".num").text());
+                var clickbool =  $(".top"+ids).find(".fa").hasClass("fa-thumbs-up"); //是否点击了赞同
+                console.log("reffun: "+clickbool)
+                if(clickbool){
+                    this.accfun(ids);
+                }
+
+                
+                txtnum = this.thumbsfun(".down_icon",txtnum,ids,"fa-thumbs-o-down","fa-thumbs-down");
+
+
+                this.$http.get(urlstr,{
+                    params:{act:'ref',id:ids,num:txtnum}
+                }).then(function(res){
+                    console.log(res.data)
+                },function(){})
+
+
+            },
+            delfun:function(ids){
+                console.log(ids);
+                var yon = confirm("确认删除么？");
+                if(yon){
+                    this.$http.get(urlstr,{
+                        params:{act:'del',id:ids}
+                    }).then(function(res){
+                        console.log(res.data)
+                        
+                        this.getpage(1)
+                        this.getcount();
+                        
+                    },function(){})
+                }
+                
+
+            },
+            //点赞颜色改变，数字自增自减
+            thumbsfun:function(el,txtnum,ids,kclass,aclick){
+                var clickbool =  $(el+ids).find(".fa").hasClass(kclass);
+                // console.log(clickbool)
+                if(clickbool){
+                    $(el+ids).css("color","#175199")
+                    $(el+ids).find(".fa").css("color","#175199")
+                    $(el+ids).find(".fa").removeClass(kclass).addClass(aclick);
+                    txtnum += 1;
+                    $(el+ids).find(".num").text(txtnum)
+                }else{
+                    $(el+ids).find(".fa").removeClass(aclick).addClass(kclass);
+                    txtnum -= 1;
+                    $(el+ids).css("color","#666666")
+                    $(el+ids).find(".fa").css("color","#666666")
+                    $(el+ids).find(".num").text(txtnum)
+                }
+                return txtnum;
+            }
+
+        },
+        // vue初始化完成时进行的操作
+        created:function(){
+            this.getcount();
+            this.getpage(1)
+        }
+    })
+
+    
+})
 </script>
 </body></html>

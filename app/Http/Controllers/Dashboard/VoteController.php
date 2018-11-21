@@ -94,7 +94,7 @@ class VoteController extends Controller
         $data = $request->all();
         
         $this->VoteRegisterRepository->update($id, $data);
-       if($request->input('status')==1){
+       if($request->input('is_enabled')=='yes'){
 
         $this->passSend($id,$request->input('openid'),$request->input('awards'));
        }

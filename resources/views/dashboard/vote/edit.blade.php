@@ -143,7 +143,8 @@
                                            @if($info->is_enabled == 'yes') checked @endif/>是&nbsp;&nbsp;
                                     <input type="radio" name='is_enabled' value="no"
                                            @if($info->is_enabled == 'no') checked @endif/>否
-                                        
+                                    <input type="text"  name="openid"
+                                       value="{{ $info->openid }}">    
                                 </div>
                             </div>
                         </div>

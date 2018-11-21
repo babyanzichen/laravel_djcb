@@ -723,7 +723,7 @@ $(function(){
                         params:{act:'del',id:ids}
                     }).then(function(res){
                         console.log(res.data)
-                        
+                        alert('我们尊重每个人发言的自由权，所以这个留言咱还是保留吧')
                         this.getpage(1)
                         this.getcount();
                         

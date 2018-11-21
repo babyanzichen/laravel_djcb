@@ -568,7 +568,8 @@ $(function(){
             acc:0,
             ref:0,
             nowdate:"",
-            txtval:""
+            txtval:"",
+            id:'{{$data->id}}'
         },
         filters:{
           date(time){
@@ -621,7 +622,7 @@ $(function(){
             getcount:function(){
 
                 this.$http.get(urlstr+'/getComment',{
-                    params:{act:''}
+                    params:{act:'id='+this.id}
                 }).then(function(res){
                     // console.log(res.data.count)
                     var that = this;

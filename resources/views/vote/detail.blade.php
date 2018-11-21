@@ -330,7 +330,7 @@ body {
                 <div v-for="item in datalist" class="reply">
                     <p class="replyContent">@{{item.body}}</p>
                     <p class="operation clearfix">
-                        <span class="replyTime">@{{item.reg_date | date}}</span>
+                        <span class="replyTime">@{{item.created_at | date}}</span>
                         <span class="handle">
                             <a @click="accfun(item.id)" href="javascript:;" :class="['top','top'+item.id]">
                                 <span class="fa fa-thumbs-o-up"></span>

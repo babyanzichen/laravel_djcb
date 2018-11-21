@@ -19,7 +19,7 @@ class VoteRegister extends Model
      */
     public function comments()
     {
-        return $this->hasMany(VoteComment::class,'id','vote_register_id');
+        return $this->hasMany(VoteComment::class,'vote_register_id','id');
     }
 
     /**

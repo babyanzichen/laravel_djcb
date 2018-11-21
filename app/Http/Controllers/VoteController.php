@@ -92,10 +92,10 @@ class VoteController extends BaseController
       }
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
-      $data['regcount']= VoteRegister::where('id','>','266')->distinct('openid')->count();
+      $data['regcount']= VoteRegister::distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
       $data['visitcount']=$data['visitcount'];
-      $data['votecount']=VoteRecord::where('id','>','15782')->distinct('openid')->count();
+      $data['votecount']=VoteRecord::distinct('openid')->count();
       $data['votecount']=$data['votecount'];
      
     	$JSSDK=new JSSDK(config('app.appId'),config('app.appSecret'));
@@ -418,14 +418,14 @@ class VoteController extends BaseController
      }
      foreach($lists as $key=>$val) {
             
-          if ($lists[$key]['award_id']==33) {   //
+          if ($lists[$key]['c2']==33) {   //
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['projectname']; 
-            }elseif ($lists[$key]['award_id']==34||$lists[$key]['award_id']==1){
+            }elseif ($lists[$key]['c2']==34||$lists[$key]['c2']==1){
               $lists[$key]['photo']=$lists[$key]['head'];
               $lists[$key]['name']=$lists[$key]['username']; 
             } 
-            elseif ($lists[$key]['award_id']==31||$lists[$key]['award_id']==32||$lists[$key]['award_id']==36){
+            elseif ($lists[$key]['c2']==31||$lists[$key]['c2']==32||$lists[$key]['c2']==36){
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['companyname']; 
             }        
@@ -532,7 +532,9 @@ class VoteController extends BaseController
         session(['index'=>'']);
          DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>$id,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
-        $comments =$info->getComments();   
+         
+        
+        $info=VoteRegister::where('id', '=',$id)->first();
         if(!$info){
           exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
         }
@@ -568,33 +570,17 @@ class VoteController extends BaseController
                }
 
           $info['visitcounts']= DB::table('chebao_visittable')->where('page',$id)->count();
-
-         
         return view('vote/detail', 
           [
           'data'=>$info,
           'list'=>$list,
           'signPackage' => $signPackage,
-          'nickname'=>$nickname,
-          'comments'=>$comments
+          'nickname'=>$nickname
           ]);
     
 }
 
-        public function Comments(Request $request){
-           $this->autoLogin();
-            $userInfo = $this->getEasyWechatSession();
-            $openid= $userInfo['original']['openid'];
-          $nickname=$userInfo['original']['nickname'];
-          $VoteRegister=VoteRegister::find($request->id);
-          $VoteRegister->comments()->create([
-                'body' => request('body'),
-                'openid' =>$openid,
-                'parent_id' => request('parent_id', null),
-                'vote_register_id'=>$request->id,
-            ]);
-            return back();
-        }
+
 
 
     public function articledetail(Request $request){

@@ -11,7 +11,7 @@
             <link rel="stylesheet" href="/dist/css/font-awesome.min.css">
             <script type="text/javascript" src="/js/vue.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
-            <script type="text/javascript" src="/distbootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
             <script type="text/javascript" src="/dist/js/bootstrap-paginator.min.js"></script>
             <style>
                 #box{
@@ -217,7 +217,7 @@
                     color: white;
                     margin-left: 13%
                 }
-                  .dark {
+                .buttons .dark {
                     border: 1px solid #bfb9b9;
                     /* color: black; */
                     background-color: #93a2a1;

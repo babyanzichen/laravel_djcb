@@ -589,10 +589,14 @@ class VoteController extends BaseController
 }
 
         public function Comments(Request $request){
+           $this->autoLogin();
+            $userInfo = $this->getEasyWechatSession();
+            $openid= $userInfo['original']['openid'];
+          $nickname=$userInfo['original']['nickname'];
           $VoteRegister=VoteRegister::find($request->id);
           $VoteRegister->comments()->create([
                 'body' => request('body'),
-                'user_id' =>Auth::id(),
+                'openid' =>$openid,
                 'parent_id' => request('parent_id', null),
             ]);
             return back();

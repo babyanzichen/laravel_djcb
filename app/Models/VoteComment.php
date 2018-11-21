@@ -14,7 +14,7 @@ class VoteComment extends Model
     protected $fillable = [
         'body',
         'parent_id',
-        'user_id',
+        'openid',
         'register_id'
     ];
 
@@ -24,7 +24,7 @@ class VoteComment extends Model
      */
     public function owner()
     {
-        return $this->belongsTo(User::class, 'user_id','id');
+        return $this->belongsTo(User::class, 'openid','openid');
     }
 
     /**

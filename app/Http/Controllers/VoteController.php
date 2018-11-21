@@ -418,14 +418,14 @@ class VoteController extends BaseController
      }
      foreach($lists as $key=>$val) {
             
-          if ($lists[$key]['c2']==33) {   //
+          if ($lists[$key]['award_id']==33) {   //
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['projectname']; 
-            }elseif ($lists[$key]['c2']==34||$lists[$key]['c2']==1){
+            }elseif ($lists[$key]['award_id']==34||$lists[$key]['award_id']==1){
               $lists[$key]['photo']=$lists[$key]['head'];
               $lists[$key]['name']=$lists[$key]['username']; 
             } 
-            elseif ($lists[$key]['c2']==31||$lists[$key]['c2']==32||$lists[$key]['c2']==36){
+            elseif ($lists[$key]['award_id']==31||$lists[$key]['award_id']==32||$lists[$key]['award_id']==36){
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['companyname']; 
             }        
@@ -535,13 +535,11 @@ class VoteController extends BaseController
          
         
         $info=VoteRegister::where('id', '=',$id)->first();
-         $info->load('comments.owner');
-          $comments =$info->getComments();
-          
-          if($comments){
-             $comments['root'] = $comments[''];
-              unset($comments['']);
-          }
+        $info->load('comments.owner');
+        $comments =$info->getComments();
+        $comments['root'] = $comments[''];
+        unset($comments['']);
+         
         if(!$info){
           exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
         }

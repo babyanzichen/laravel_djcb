@@ -6,7 +6,7 @@
     @endif
 
     <div class="form-group">
-        <label for="body" class="control-label">Info:</label>
+        <label for="body" class="control-label">评论内容:</label>
         <textarea id="body" name="body"  class="form-control" required="required"></textarea>
     </div>
     <button type="submit" class="btn btn-success">回复</button>

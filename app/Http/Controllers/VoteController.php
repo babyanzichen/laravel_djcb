@@ -538,7 +538,7 @@ class VoteController extends BaseController
          $info->load('comments.owner');
           $comments =$info->getComments();
           var_dump($comments);
-          eixt();
+          exit();
           if($comments){
              $comments['root'] = $comments[''];
               unset($comments['']);

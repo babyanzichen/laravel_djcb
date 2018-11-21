@@ -28,6 +28,6 @@ class VoteRegister extends Model
      */
     public function getComments()
     {
-        return $this->comments()->with('owner')->get()->groupBy('parent_id');
+        return $this->comments();
     }
 }

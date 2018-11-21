@@ -634,7 +634,7 @@ $(function(){
                 this.$http.get(urlstr+'/getComment',{
                     params:{page:pagenum}
                 }).then(function(res){
-                    // console.log(res.data)
+                    console.log(res);
                     this.datalist = res.data;
                 },function(){})
             },

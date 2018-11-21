@@ -99,11 +99,7 @@
             margin-bottom: 5px;
         }
  
-   .dark {
-    border: 1px solid #bfb9b9;
-    /* color: black; */
-    background-color: #93a2a1;
-}
+ 
 body {
     font-family: 微软雅黑;
     background-color: #d8d8d8;
@@ -222,6 +218,11 @@ body {
     border-radius: 5px;
     color: white;
     margin-left: 13%
+}
+  .dark {
+    border: 1px solid #bfb9b9;
+    /* color: black; */
+    background-color: #93a2a1;
 }
 .tishi {
     left: 25%;

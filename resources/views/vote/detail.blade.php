@@ -634,8 +634,8 @@ $(function(){
                 this.$http.get(urlstr+'/getComment',{
                     params:{page:pagenum}
                 }).then(function(res){
-                    console.log(res);
-                    this.datalist = res.q.data;
+                    console.log(res.data);
+                    this.datalist = res.data;
                 },function(){})
             },
             getcount:function(){

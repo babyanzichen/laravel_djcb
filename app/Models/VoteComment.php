@@ -22,7 +22,7 @@ class VoteComment extends Model
      * 这个评论的所属用户
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function owner()
+    public function user()
     {
         return $this->belongsTo(User::class, 'openid','openid');
     }

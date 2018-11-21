@@ -572,6 +572,8 @@ class VoteController extends BaseController
           $info['visitcounts']= DB::table('chebao_visittable')->where('page',$id)->count();
           $info->load('comments.owner');
           $comments =$info->getComments();
+          var_dump($comments);
+          eixt();
           if($comments){
              $comments['root'] = $comments[''];
               unset($comments['']);

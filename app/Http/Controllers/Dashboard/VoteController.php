@@ -20,7 +20,7 @@ use Config;
 use Auth;
 use DB;
 use page;
-use App\VoteRegister;
+use App\Models\VoteRegister;
 class VoteController extends Controller
 {
     protected $userRepository;

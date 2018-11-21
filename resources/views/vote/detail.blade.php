@@ -34,11 +34,7 @@
                     width: 50px;
                     border-radius: 50%;
                 }
-                .takeComment{
-                    padding:10px 20px;
-                    border:1px solid #ccc;
-                    background-color: #eef3fa;
-                }
+                
                 .takeComment .takeSbmComment{
                     margin-top: 15px;
                     display: flex;
@@ -615,8 +611,8 @@ $(function(){
         methods:{
             addfun:function(){
                 if(this.txtval!=""){
-                    this.$http.get(urlstr,{
-                        params:{act:"add",content:this.txtval}
+                    this.$http.get(urlstr+'/addComment',{
+                        params:{id:this.id,content:this.txtval}
                     }).then(function(res){
                         console.log(res.data)
                         this.datalist.unshift({id:res.data.id,content:this.txtval,acc:0,ref:0,reg_date:res.data.time});

@@ -583,7 +583,12 @@ class VoteController extends BaseController
   public function getComment(Request $request){
     return VoteComment::with(['user'])->where('register_id',$request->id)->paginate(15);
   }
-
+  public function addComment(Request $request){
+      $userInfo = $this->getEasyWechatSession();
+      $openid= $userInfo['original']['openid'];
+      $nickname=$userInfo['original']['nickname'];
+      VoteComment::create(array('body' =>$request->content ,'register_id'=>$request->id,'openid'=>$openid));
+  }
 
 
     public function articledetail(Request $request){

@@ -620,15 +620,15 @@ $(function(){
             },
             getcount:function(){
 
-                this.$http.get(urlstr,{
-                    params:{act:'get_page_count'}
+                this.$http.get(urlstr+'/getComment',{
+                    params:{act:''}
                 }).then(function(res){
                     // console.log(res.data.count)
                     var that = this;
                     $("#pagebox").bootstrapPaginator({
                         bootstrapMajorVersion:3,
                         currentPage:1,//当前页
-                        totalPages:res.data.count,//总页数
+                        totalPages:res.data.last_page,//总页数
                         numberOfPages:5,//每页显示几个按钮
                         itemTexts:function(type,page,current){
                             switch (type){

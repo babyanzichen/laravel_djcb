@@ -579,7 +579,9 @@ class VoteController extends BaseController
           ]);
     
 }
-
+  public function getComment($id){
+    return VoteComment::where('register_id',$id)->paginate(15);
+  }
 
 
 

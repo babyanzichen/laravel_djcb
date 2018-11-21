@@ -241,7 +241,7 @@ button{
     @endif
     
         <h3>留下您的评论</h3>
-        @include('comments.form',['parentId'=>$post->id])
+        @include('comments.form',['parentId'=>$data->id])
     <div class="guanggao">
             <h2>
                 <span>广告</span>

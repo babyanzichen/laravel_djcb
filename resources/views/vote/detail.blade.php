@@ -328,7 +328,7 @@ body {
             </div>
             <div class="messList" v-show="datalist.length!=0">
                 <div v-for="item in datalist" class="reply">
-                    <p class="replyContent">{{item.content}}</p>
+                    <p class="replyContent">{{item.body}}</p>
                     <p class="operation clearfix">
                         <span class="replyTime">{{item.reg_date | date}}</span>
                         <span class="handle">

@@ -391,7 +391,7 @@ Route::get('race/vote/{id}', 'RaceController@vote');
         Route::get('vote/subs', 'voteController@subs'); 
         Route::get('vote/expXls', 'voteController@expXls'); 
         Route::get('vote/detail/{id}', 'voteController@detail');
-        Route::post('vote/{id}/comment', 'voteController@comment');
+        Route::post('vote/{id}/comments', 'voteController@comments');
     });
 
 

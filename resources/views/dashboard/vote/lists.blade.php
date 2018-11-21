@@ -19,11 +19,11 @@
                                     </span>
                                     </div>
                                 </div>
-                                <!-- <div class="col-sm-2 pull-right">
+                                <div class="col-sm-2 pull-right">
                                     <div class="btn-group pull-right"  role="group" style="clear: both">
-                                        <a href="{{ dashboardUrl('/user/create') }}" class="btn btn-outline btn-default "><i class="fa fa-plus"></i> </a>
+                                        <a href="{{ dashboardUrl('/vote/create') }}" class="btn btn-outline btn-default "><i class="fa fa-plus"></i> </a>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </form>
 

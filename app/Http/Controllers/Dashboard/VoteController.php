@@ -70,20 +70,17 @@ class VoteController extends Controller
 
 
     public function create()
-    {
-        return view('dashboard.users.create');
+    {    
+        $awardList = $this->VoteAwardRepository->getAllData(['id', 'name'], false);
+        return view('dashboard.vote.create',compact('awardList'));
     }
 
     public function store(StoreVoteRegisterRequest $request)
     {
-        $data = array_merge($request->all(), [
-            'avatar' => '/assets/dashboard/images/head_default.gif',
-            'register_source' => 'admin',
-            'password' => bcrypt($request->password),
-            'status' => 1
-        ]);
-        $this->userRepository->store($data);
-        return ajaxReturn(dashboardUrl('/user'));
+        $data = $request->all();
+        
+        $this->VoteRegisterRepository->store($data);
+        return ajaxReturn(dashboardUrl('/vote'));
     }
 
     public function edit($id)

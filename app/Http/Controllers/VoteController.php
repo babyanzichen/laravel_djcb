@@ -536,7 +536,7 @@ class VoteController extends BaseController
         
         $info=VoteRegister::where('id', '=',$id)->first();
         if(!$info){
-          exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/";</script>');
+          exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
         }
           
         $list=DB::table('vote_records')->leftJoin('users', 'vote_records.openid', '=', 'users.openid')

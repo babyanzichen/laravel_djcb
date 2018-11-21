@@ -9,4 +9,3 @@
     @endif
     <hr>
 </div>
-<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">

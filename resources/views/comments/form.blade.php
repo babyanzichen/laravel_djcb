@@ -11,3 +11,4 @@
     </div>
     <button type="submit" class="btn btn-success">回复</button>
 </form>
+<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">

@@ -123,7 +123,7 @@ body {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-button{
+.buttons button{
   width: 30%;
     height: 50px;
     background-color: #00BCD4;

@@ -5,13 +5,13 @@
 		    <meta name="_token" content="{!! csrf_token() !!}" />
 	        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	        <title>{{$data->name}}——2018-2019年度汽车服务行业财富金字塔颁奖盛典投票</title>
-	        <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
+	        <script type="text/javascript" src="/dist/js/jquery-1.11.3.js"></script>
 	        <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
 	        <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
             <link rel="stylesheet" href="/dist/css/font-awesome.min.css">
             <script type="text/javascript" src="/js/vue.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
-            <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/distbootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
             <script type="text/javascript" src="/dist/js/bootstrap-paginator.min.js"></script>
             <style>
                 #box{

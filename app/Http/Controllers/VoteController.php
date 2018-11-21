@@ -584,7 +584,6 @@ class VoteController extends BaseController
           'list'=>$list,
           'signPackage' => $signPackage,
           'nickname'=>$nickname,
-          'comments'=>$comments
           ]);
     
 }

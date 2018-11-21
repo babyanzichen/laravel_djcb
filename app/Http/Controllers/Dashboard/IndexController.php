@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Config;
 use DB;
+use shouquan;
 use App\Models\VoteRegister;
 class IndexController extends Controller
 {
@@ -81,6 +82,12 @@ class IndexController extends Controller
         $value = $data['value'];
 
         $rs = DB::table($table)->where(['id' => $id])->update([$column => $value]);
+        if($table=='vote_registers'&&$column=='is_enabled'&&$value=='yes'){
+            $openid=DB::table($table)->where(['id' => $id])->value('openid');
+            $award_id=DB::table($table)->where(['id' => $id])->value('award_id');
+            $award=DB::table('vote_awards')->where('id',$award_id)->value('name');
+             $this->passSend($id,$openid,$award);
+        }
         if ($rs) return ajaxReturn();
         return ajaxReturnError();
     }
@@ -90,4 +97,9 @@ class IndexController extends Controller
         $res = $this->$model->saveFunction();
         dd($res);
     }
+    public function passSend($id,$openid,$awards){
+           
+            $shouquan=new shouquan();
+            $shouquan->passMessage($id,$openid,$awards);//调用方法
+          }
 }

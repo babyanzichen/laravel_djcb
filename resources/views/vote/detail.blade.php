@@ -16,11 +16,14 @@
             width: 100%;
             margin-top: 20px;
         }
-        .box {
+        #box {
     border-radius: 0px;
     position: relative;
 }
-.reply img{
+.reply .avatar{
+    width: 50px;
+}
+.reply .avatar img{
     width: 50px;
     border-radius: 50%;
 }
@@ -333,7 +336,7 @@ body {
             </div>
             <div class="messList" v-show="datalist.length!=0">
                 <div v-for="item in datalist" class="reply">
-                   <p><img src="@{{item.user.avatar}}"></p>
+                   <p class="avatar"><img src="@{{item.user.avatar}}"></p>
                     <p class="replyContent">@{{item.body}}</p>
                     <p class="operation clearfix">
                         <span class="replyTime">@{{item.created_at}}</span>

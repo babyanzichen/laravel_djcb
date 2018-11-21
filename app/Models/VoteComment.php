@@ -24,7 +24,7 @@ class VoteComment extends Model
      */
     public function owner()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id','id');
     }
 
     /**
@@ -33,6 +33,6 @@ class VoteComment extends Model
      */
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->hasMany(VoteComment::class, 'parent_id','id');
     }
 }

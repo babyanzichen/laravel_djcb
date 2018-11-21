@@ -234,6 +234,9 @@ button{
             @endif
         </div>
     </div>
+     @include('comments.list',['collections'=>$comments['root']])
+        <h3>留下您的评论</h3>
+        @include('comments.form',['parentId'=>$post->id])
     <div class="guanggao">
             <h2>
                 <span>广告</span>

@@ -570,17 +570,29 @@ class VoteController extends BaseController
                }
 
           $info['visitcounts']= DB::table('chebao_visittable')->where('page',$id)->count();
+
+          $comments =VoteRegister::getComments();
+          $comments['root'] = $comments[''];
+          unset($comments['']);
         return view('vote/detail', 
           [
           'data'=>$info,
           'list'=>$list,
           'signPackage' => $signPackage,
-          'nickname'=>$nickname
+          'nickname'=>$nickname,
+          'comments'=>$comments
           ]);
     
 }
 
-
+        public function addComments(){
+          VoteRegiste::comments()->create([
+                'body' => request('body'),
+                'user_id' => \Auth::id(),
+                'parent_id' => request('parent_id', null),
+            ]);
+            return back();
+        }
 
 
     public function articledetail(Request $request){

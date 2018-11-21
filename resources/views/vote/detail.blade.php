@@ -20,8 +20,13 @@
     border-radius: 0px;
     position: relative;
 }
-.reply .avatar{
+.reply .avatar {
     width: 50px;
+    float: left;
+}
+.replyContent{
+    float: right;
+    width: 80%
 }
 .reply .avatar img{
     width: 50px;
@@ -320,7 +325,7 @@ body {
             @endif
         </div>
     </div>
-    <div id="box" class="container">
+    <div id="box" class="box">
         <!--留言-->
         <div class="takeComment">
             <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText" v-model="txtval"></textarea>

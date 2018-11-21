@@ -571,7 +571,7 @@ class VoteController extends BaseController
 
           $info['visitcounts']= DB::table('chebao_visittable')->where('page',$id)->count();
 
-          $comments =new \VoteRegister->getComments();
+          $comments =new \VoteRegister::getComments();
           $comments['root'] = $comments[''];
           unset($comments['']);
         return view('vote/detail', 

@@ -635,7 +635,7 @@ $(function(){
                     params:{page:pagenum}
                 }).then(function(res){
                     console.log(res);
-                    this.datalist = res.q.body.data;
+                    this.datalist = res.q.data;
                 },function(){})
             },
             getcount:function(){

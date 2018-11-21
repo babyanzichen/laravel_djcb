@@ -16,9 +16,14 @@
             width: 100%;
             margin-top: 20px;
         }
-        #box{
-            border-radius: 0px;
-        }
+        .box {
+    border-radius: 0px;
+    position: relative;
+}
+.reply img{
+    width: 50px;
+    border-radius: 50%;
+}
         .takeComment{
             padding:10px 20px;
             border:1px solid #ccc;

@@ -632,10 +632,10 @@ $(function(){
             },
             getpage:function(pagenum){
                 this.$http.get(urlstr+'/getComment',{
-                    params:{page:pagenum}
+                    params:{id:this.id,page:pagenum}
                 }).then(function(res){
                     console.log(res.data);
-                    this.datalist = res.data;
+                    this.datalist = res.data.data;
                 },function(){})
             },
             getcount:function(){

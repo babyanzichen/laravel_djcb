@@ -537,9 +537,10 @@ class VoteController extends BaseController
         $info=VoteRegister::where('id', '=',$id)->first();
         $info->load('comments.owner');
         $comments =$info->getComments();
-        $comments['root'] = $comments[''];
-        unset($comments['']);
-         
+          if($comments){
+             $comments['root'] = $comments[''];
+              unset($comments['']);
+          }
         if(!$info){
           exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
         }

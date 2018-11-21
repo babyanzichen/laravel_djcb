@@ -534,11 +534,14 @@ class VoteController extends BaseController
         ['visitip' => $IP, 'page'=>$id,'openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
          
         
-        $info=VoteRegister::with(['comments.owner'])->where('id', '=',$id)->get()->groupBy('parent_id');
-         var_dump($info);
-          if($info->comments){
-             $info->comments['root'] =$info->comments[''];
-              unset($info->comments['']);
+        $info=VoteRegister::where('id', '=',$id)->first();
+         $info->load('comments.owner');
+          $comments =$info->getComments();
+          var_dump($comments);
+          ext();
+          if($comments){
+             $comments['root'] = $comments[''];
+              unset($comments['']);
           }
         if(!$info){
           exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
@@ -583,6 +586,7 @@ class VoteController extends BaseController
           'list'=>$list,
           'signPackage' => $signPackage,
           'nickname'=>$nickname,
+          'comments'=>$comments
           ]);
     
 }

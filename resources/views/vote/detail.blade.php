@@ -328,17 +328,17 @@ body {
             </div>
             <div class="messList" v-show="datalist.length!=0">
                 <div v-for="item in datalist" class="reply">
-                    <p class="replyContent">{{item.body}}</p>
+                    <p class="replyContent">@{{item.body}}</p>
                     <p class="operation clearfix">
-                        <span class="replyTime">{{item.reg_date | date}}</span>
+                        <span class="replyTime">@{{item.reg_date | date}}</span>
                         <span class="handle">
                             <a @click="accfun(item.id)" href="javascript:;" :class="['top','top'+item.id]">
                                 <span class="fa fa-thumbs-o-up"></span>
-                                <span class="num">{{item.acc}}</span>
+                                <span class="num">@{{item.acc}}</span>
                             </a>
                             <a @click="reffun(item.id)" href="javascript:;" :class="['down_icon','down_icon'+item.id]">
                                 <span class="fa fa-thumbs-o-down"></span>
-                                <span class="num">{{item.ref}}</span>
+                                <span class="num">@{{item.ref}}</span>
                             </a>
                             <a @click="delfun(item.id)" href="javascript:;" :class="['cut','cut'+item.id]">
                                 <span class="fa fa-trash-o"></span>

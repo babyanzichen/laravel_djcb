@@ -588,7 +588,7 @@ class VoteController extends BaseController
     
 }
 
-        public function Comments(){
+        public function Comments(Request $request){
           $VoteRegister=VoteRegister::find($request->id);
           $VoteRegister->comments()->create([
                 'body' => request('body'),

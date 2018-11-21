@@ -6,7 +6,7 @@
 	     <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
 	    <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
 	    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
     <script type="text/javascript" src="/js/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>

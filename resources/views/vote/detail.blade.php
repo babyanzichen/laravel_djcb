@@ -622,7 +622,7 @@ $(function(){
             getcount:function(){
 
                 this.$http.get(urlstr+'/getComment',{
-                    params:{act:'id='+this.id}
+                    params:{id:this.id}
                 }).then(function(res){
                     // console.log(res.data.count)
                     var that = this;

@@ -6,8 +6,86 @@
 	     <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
 	    <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
 	    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-        
-      <style>
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <script type="text/javascript" src="/js/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-paginator.min.js"></script>
+    <style>
+        #box{
+            width: 100%;
+            margin-top: 20px;
+        }
+        #box{
+            border-radius: 0px;
+        }
+        .takeComment{
+            padding:10px 20px;
+            border:1px solid #ccc;
+            background-color: #eef3fa;
+        }
+        .takeComment .takeSbmComment{
+            margin-top: 15px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .takeComment .takeSbmComment button,.takeComment .takeSbmComment span{
+            
+            vertical-align: middle;
+        }
+        .takeComment .takeSbmComment span{
+            color: #aaa;
+            font-size: 12px;
+            margin:0 10px;
+        }
+        .commentOn{
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            background-color: #eef3fa;
+        }
+        .commentOn .messList,.commentOn .noContent{
+            background-color: #fff;
+        }
+        .commentOn .messList .reply{
+            border-bottom: 1px solid #ccc;
+            padding:10px;
+        }
+        .commentOn .noContent,.commentOn .messList .operation{
+            color: #aaa;
+        }
+        .commentOn .noContent{
+            text-align: center;
+            padding:10px;
+        }
+        .commentOn .messList .operation .replyTime{
+            float: left;
+        }
+        .commentOn .messList .operation .handle{
+            float: right;
+        }
+        .commentOn .messList .operation .handle a{
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+
+        }
+        .commentOn .messList .operation .handle a span.fa{
+            margin-left: 5px;
+            color: #aaa;
+        }
+        .commentOn .messList .operation .handle a span{
+            vertical-align: middle;
+        }
+        .commentOn .page{
+            text-align: center;
+        }
+        .commentOn .page ul{
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+ 
    .dark {
     border: 1px solid #bfb9b9;
     /* color: black; */

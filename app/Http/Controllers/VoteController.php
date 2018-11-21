@@ -572,7 +572,7 @@ class VoteController extends BaseController
           $info['visitcounts']= DB::table('chebao_visittable')->where('page',$id)->count();
           $info->load('comments.owner');
           $comments =$info->getComments();
-          if($comments->count()){
+          if($comments){
              $comments['root'] = $comments[''];
               unset($comments['']);
           }
@@ -598,6 +598,7 @@ class VoteController extends BaseController
                 'body' => request('body'),
                 'openid' =>$openid,
                 'parent_id' => request('parent_id', null),
+                'vote_register_id'=>$request->id,
             ]);
             return back();
         }

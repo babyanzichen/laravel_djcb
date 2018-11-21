@@ -11,8 +11,7 @@
             <link rel="stylesheet" href="/dist/css/font-awesome.min.css">
             <script type="text/javascript" src="/js/vue.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
-            <script type="text/javascript" src="/dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="/dist/js/bootstrap-paginator.min.js"></script>
+            
             <style>
                 #box{
                     width: 100%;
@@ -369,7 +368,8 @@
            <img>
         </div>
 		@include('layout.app')
-		<script type="text/javascript" src="{{asset('/')}}index/vote/jquery-1.10.1.min.js"></script>
+	   <script type="text/javascript" src="/dist/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/dist/js/bootstrap-paginator.min.js"></script>
 		<script type="text/javascript" src="{{asset('/')}}index/vote/mui.min.js"></script>
 	    <script type="text/javascript" src="{{asset('/')}}index/vote/app.js"></script>
 <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">	

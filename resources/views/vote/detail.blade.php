@@ -1,383 +1,378 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		 <meta name="_token" content="{!! csrf_token() !!}" />
-	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-	    <title>{{$data->name}}——2018-2019年度汽车服务行业财富金字塔颁奖盛典投票</title>
-	     <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
-	    <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
-	    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-    <link rel="stylesheet" href="/dist/css/font-awesome.min.css">
-    <script type="text/javascript" src="/js/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap-paginator.min.js"></script>
-    <style>
-        #box{
-            width: 100%;
-            margin-top: 20px;
-        }
-        #box {
-    border-radius: 0px;
-    position: relative;
-}
-.reply .avatar {
-    width: 50px;
-    float: left;
-}
-.replyContent{
-    float: right;
-    width: 80%
-}
-.reply .avatar img{
-    width: 50px;
-    border-radius: 50%;
-}
-        .takeComment{
-            padding:10px 20px;
-            border:1px solid #ccc;
-            background-color: #eef3fa;
-        }
-        .takeComment .takeSbmComment{
-            margin-top: 15px;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        .takeComment .takeSbmComment button,.takeComment .takeSbmComment span{
-            
-            vertical-align: middle;
-        }
-        .takeComment .takeSbmComment span{
-            color: #aaa;
-            font-size: 12px;
-            margin:0 10px;
-        }
-        .commentOn{
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            background-color: #eef3fa;
-        }
-        .commentOn .messList,.commentOn .noContent{
-            background-color: #fff;
-        }
-        .commentOn .messList .reply{
-            border-bottom: 1px solid #ccc;
-            padding:10px;
-        }
-        .commentOn .noContent,.commentOn .messList .operation{
-            color: #aaa;
-        }
-        .commentOn .noContent{
-            text-align: center;
-            padding:10px;
-        }
-        .commentOn .messList .operation .replyTime{
-            float: left;
-        }
-        .commentOn .messList .operation .handle{
-            float: right;
-        }
-        .commentOn .messList .operation .handle a{
-            display: inline-block;
-            color: #666;
-            text-decoration: none;
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		    <meta name="_token" content="{!! csrf_token() !!}" />
+	        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	        <title>{{$data->name}}——2018-2019年度汽车服务行业财富金字塔颁奖盛典投票</title>
+	        <script src="{{asset('/')}}index/vote/jquery-1.10.1.min.js" type="text/javascript"></script>
+	        <link rel="stylesheet" type="text/css" href="{{asset('/')}}index/vote/ui.css">
+	        <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+            <link rel="stylesheet" href="/dist/css/font-awesome.min.css">
+            <script type="text/javascript" src="/js/vue.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+            <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/dist/js/bootstrap-paginator.min.js"></script>
+            <style>
+                #box{
+                    width: 100%;
+                    margin-top: 20px;
+                }
+                #box {
+                    border-radius: 0px;
+                    position: relative;
+                }
+                .reply .avatar {
+                    width: 50px;
+                    float: left;
+                }
+                .replyContent{
+                    float: right;
+                    width: 80%
+                }
+                .reply .avatar img{
+                    width: 50px;
+                    border-radius: 50%;
+                }
+                .takeComment{
+                    padding:10px 20px;
+                    border:1px solid #ccc;
+                    background-color: #eef3fa;
+                }
+                .takeComment .takeSbmComment{
+                    margin-top: 15px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+                .takeComment .takeSbmComment button,.takeComment .takeSbmComment span{
+                    
+                    vertical-align: middle;
+                }
+                .takeComment .takeSbmComment span{
+                    color: #aaa;
+                    font-size: 12px;
+                    margin:0 10px;
+                }
+                .commentOn{
+                    margin-top: 20px;
+                    border: 1px solid #ccc;
+                    background-color: #eef3fa;
+                }
+                .commentOn .messList,.commentOn .noContent{
+                    background-color: #fff;
+                }
+                .commentOn .messList .reply{
+                    border-bottom: 1px solid #ccc;
+                    padding:10px;
+                }
+                .commentOn .noContent,.commentOn .messList .operation{
+                    color: #aaa;
+                }
+                .commentOn .noContent{
+                    text-align: center;
+                    padding:10px;
+                }
+                .commentOn .messList .operation .replyTime{
+                    float: left;
+                }
+                .commentOn .messList .operation .handle{
+                    float: right;
+                }
+                .commentOn .messList .operation .handle a{
+                    display: inline-block;
+                    color: #666;
+                    text-decoration: none;
 
-        }
-        .commentOn .messList .operation .handle a span.fa{
-            margin-left: 5px;
-            color: #aaa;
-        }
-        .commentOn .messList .operation .handle a span{
-            vertical-align: middle;
-        }
-        .commentOn .page{
-            text-align: center;
-        }
-        .commentOn .page ul{
-            margin-top: 10px;
-            margin-bottom: 5px;
-        }
- 
- 
-body {
-    font-family: 微软雅黑;
-    background-color: #d8d8d8;
-    margin: 0px;
-    padding: 0px;
-}
-        .top{
-        z-index: 5;
-        }
-        .main .top img{
-        width: 100%
-        }
-.head {
-  
-    z-index: 1;
-    top: 0;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 0;
-    -webkit-animation: fromBack 1s linear forwards;
-    animation: fromBack 1s linear forwards;
-    margin-top: -10%;
-    position: relative;
-    width: 100%;
-    background-color: rgba(255, 253, 251, 0.6);
-    height:150px;
-    border-radius: 10px;
-}
-.head .votes {
-    margin-top:15%;
-    margin-left: 5%;
-    position: relative;
-    float: left;
-}
-.logo {
-    position: relative;
-    float: right;
-    width:60%;
-    margin-right: 5%;
-    margin-top: -10%;
-}
- .logo img {
-    border-radius: 10px;
-    width: 80px;
-    margin-left: 75%;
-}
-.name{
-    float: right;
-}
-.gdmk {
-    background-color: white;
-    margin-top: 20px;
-    width: 100%;
-    min-height: 210px;
-    overflow: hidden;
-    margin-bottom:20px;
-}
-.gdmk .bt {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #c1b9b9;
-}
-        .gdmk .bt span {
-        font-size: 16px;
-        margin-left: 10px;
-        font-weight: 600;
-        font-family: "Droid Sans Fallback", "Microsoft YaHei",arial,serif,monospace;
-        }
-    .gdmk .xtbmk {
-            width: 100px;
-            height: 170px;
-        }
-       .gdmk .xtbmk .icon {
-            width: 110px;
-            height: 110px;
-            padding: 5px 0 0 5px;
-        }
- .line {
-    left: 2%;
-    position: relative;
-    width: 3px;
-    height: 40px;
-    border: 3px solid #eab558;
-    margin-right: 10px;
-}
-.reason {
-    padding: 3%;
-   
-}
-.tips {
-    width: 100%;
-    height: 80px;
-    padding-top:5%;
-    background-color: rgba(70, 67, 67, 0.19);
-    color: white;
-    text-align: center;
-}
-.record{
-  text-align: center;
-   margin-top:5%
-}
-.record img {
-    width: 5%;
-    border-radius: 5px;
-}
-.buttons {
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.buttons button{
-  width: 30%;
-    height: 50px;
-    background-color: #00BCD4;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    margin-left: 13%
-}
-  .dark {
-    border: 1px solid #bfb9b9;
-    /* color: black; */
-    background-color: #93a2a1;
-}
-.tishi {
-    left: 25%;
-    width: 50%;
-    border-radius: 30px;
-    height: 50px;
-    top: 50%;
-    line-height: 50px;
-    position: fixed;
-    display: none;
-    z-index: 1000;
-    color: red;
-    font-size: 12px;
-    background-color: #e0dad9;
-    text-align: center;
-}
-.num img{
-    width:20px;
-}
-.guanggao {
-    padding: .3rem;
-    background: #f4f4f4;
-}
-.guanggao h2 {
-    color: #999;
-    text-align: center;
-    height: 1rem;
-    line-height: 1rem;
-    font-size: .3rem;
-    position: relative;
-    float: left;
-}
-.guanggao h2 span {
-    width: 1rem;
-    z-index: 1;
-    background: #fbf5f5;
-    position: absolute;
-    top: 0.05rem;
-    left: 100%;
-    margin-left: 0rem;
-}
-.guanggao h2 i {
-    border-bottom: 1px dashed #ddd;
-    background: #f4f4f4;
-    display: block;
-    position: absolute;
-    width: 100%;
-    top: .3rem;
-    z-index: 0;
-}
-.guanggao img {
-    width: 100%;
-}
-    </style>
-	</head>
+                }
+                .commentOn .messList .operation .handle a span.fa{
+                    margin-left: 5px;
+                    color: #aaa;
+                }
+                .commentOn .messList .operation .handle a span{
+                    vertical-align: middle;
+                }
+                .commentOn .page{
+                    text-align: center;
+                }
+                .commentOn .page ul{
+                    margin-top: 10px;
+                    margin-bottom: 5px;
+                }
+                 
+                 
+                body {
+                    font-family: 微软雅黑;
+                    background-color: #d8d8d8;
+                    margin: 0px;
+                    padding: 0px;
+                }
+                        .top{
+                        z-index: 5;
+                        }
+                        .main .top img{
+                        width: 100%
+                        }
+                .head {
+                  
+                    z-index: 1;
+                    top: 0;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                    opacity: 0;
+                    -webkit-animation: fromBack 1s linear forwards;
+                    animation: fromBack 1s linear forwards;
+                    margin-top: -10%;
+                    position: relative;
+                    width: 100%;
+                    background-color: rgba(255, 253, 251, 0.6);
+                    height:150px;
+                    border-radius: 10px;
+                }
+                .head .votes {
+                    margin-top:15%;
+                    margin-left: 5%;
+                    position: relative;
+                    float: left;
+                }
+                .logo {
+                    position: relative;
+                    float: right;
+                    width:60%;
+                    margin-right: 5%;
+                    margin-top: -10%;
+                }
+                 .logo img {
+                    border-radius: 10px;
+                    width: 80px;
+                    margin-left: 75%;
+                }
+                .name{
+                    float: right;
+                }
+                .gdmk {
+                    background-color: white;
+                    margin-top: 20px;
+                    width: 100%;
+                    min-height: 210px;
+                    overflow: hidden;
+                    margin-bottom:20px;
+                }
+                .gdmk .bt {
+                    width: 100%;
+                    height: 40px;
+                    line-height: 40px;
+                    border-bottom: 1px solid #c1b9b9;
+                }
+                .gdmk .bt span {
+                    font-size: 16px;
+                    margin-left: 10px;
+                    font-weight: 600;
+                    font-family: "Droid Sans Fallback", "Microsoft YaHei",arial,serif,monospace;
+                }
+                .gdmk .xtbmk {
+                    width: 100px;
+                    height: 170px;
+                }
+               .gdmk .xtbmk .icon {
+                    width: 110px;
+                    height: 110px;
+                    padding: 5px 0 0 5px;
+                }
+                .line {
+                    left: 2%;
+                    position: relative;
+                    width: 3px;
+                    height: 40px;
+                    border: 3px solid #eab558;
+                    margin-right: 10px;
+                }
+                .reason {
+                    padding: 3%;
+                   
+                }
+                .tips {
+                    width: 100%;
+                    height: 80px;
+                    padding-top:5%;
+                    background-color: rgba(70, 67, 67, 0.19);
+                    color: white;
+                    text-align: center;
+                }
+                .record{
+                  text-align: center;
+                   margin-top:5%
+                }
+                .record img {
+                    width: 5%;
+                    border-radius: 5px;
+                }
+                .buttons {
+                    margin-top: 5%;
+                    margin-bottom: 5%;
+                }
+                .buttons button{
+                  width: 30%;
+                    height: 50px;
+                    background-color: #00BCD4;
+                    border: none;
+                    border-radius: 5px;
+                    color: white;
+                    margin-left: 13%
+                }
+                  .dark {
+                    border: 1px solid #bfb9b9;
+                    /* color: black; */
+                    background-color: #93a2a1;
+                }
+                .tishi {
+                    left: 25%;
+                    width: 50%;
+                    border-radius: 30px;
+                    height: 50px;
+                    top: 50%;
+                    line-height: 50px;
+                    position: fixed;
+                    display: none;
+                    z-index: 1000;
+                    color: red;
+                    font-size: 12px;
+                    background-color: #e0dad9;
+                    text-align: center;
+                }
+                .num img{
+                    width:20px;
+                }
+                .guanggao {
+                    padding: .3rem;
+                    background: #f4f4f4;
+                }
+                .guanggao h2 {
+                    color: #999;
+                    text-align: center;
+                    height: 1rem;
+                    line-height: 1rem;
+                    font-size: .3rem;
+                    position: relative;
+                    float: left;
+                }
+                .guanggao h2 span {
+                    width: 1rem;
+                    z-index: 1;
+                    background: #fbf5f5;
+                    position: absolute;
+                    top: 0.05rem;
+                    left: 100%;
+                    margin-left: 0rem;
+                }
+                .guanggao h2 i {
+                    border-bottom: 1px dashed #ddd;
+                    background: #f4f4f4;
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    top: .3rem;
+                    z-index: 0;
+                }
+                .guanggao img {
+                    width: 100%;
+                }
+            </style>
+	   </head>
 	<body>
-    <div class="tishi">
-    </div>
-		<div class="main">
-        <div class="top">
-            <img src="{{asset('/')}}index/vote/banner.png">
-        </div>
-        <div class="head">
-            <div class="logo">
-                <div class="pic"><img src="{{$data->photo}}"></div>
-                <div class="name">{{$data->name}}</div></div>
-
-            <div class="votes">票数：<span class="number">{{$data->votes}}</span><br>热度：<span class="number">{{$data->visitcounts}}</span></div>
-            
-        </div>
-
-        <div class="gdmk">
-            <div class="bt">
-                <span class="line"></span> <span>自荐理由</span>
+        <div class="tishi">
             </div>
-            <div class="reason">
-             {!!$data->reason!!}
-            </div>
-        </div>
-       
-
-        <div class="gdmk">
-            <div class="bt">
-                <span class="line"></span> <span>最近投票</span>
-            </div>
-           
-        <div class="record">
-            @foreach ($list as $i)
-              <img src="{{$i->avatar}}">
-             @endforeach
-
-        </div>
-    </div>
-     <div class="tips">我正在参加2018-2019汽车服务行业财富金字塔“{{$data->awards}}”评选，请为我投票</div>
-        <div class="buttons">
-             <a  href="{{asset('/')}}vote/lists"><button>查看总榜</button></a>
-             @if($data->is_enabled=='no')
-              <button class="dark" onclick="vote(this,{{$data->id}})">暂不支持投票</button>
-              @else
-            <button class="{{$data->style}}" onclick="vote(this,{{$data->id}})">{{$data->tips}}</button>
-            @endif
-        </div>
-    </div>
-    <div id="box" class="box">
-        <!--留言-->
-        <div class="takeComment">
-            <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText" v-model="txtval"></textarea>
-            <div class="takeSbmComment clearfix">
-                <button type="button" class="inputs btn btn-success btn-sm" value="" @click="addfun()">提交评论</button>
-            </div>
-        </div>
-        <!--已留-->
-        <div class="commentOn">
-            <div class="noContent" v-show="datalist.length==0">暂无留言</div>
-            <div class="page">
-                <a href="javascript:;" class=""></a>
-            </div>
-            <div class="messList" v-show="datalist.length!=0">
-                <div v-for="item in datalist" class="reply">
-                   <p class="avatar"><img src="@{{item.user.avatar}}"></p>
-                    <p class="replyContent">@{{item.body}}</p>
-                    <p class="operation clearfix">
-                        <span class="replyTime">@{{item.created_at}}</span>
-                        <span class="handle">
-                            <a @click="accfun(item.id)" href="javascript:;" :class="['top','top'+item.id]">
-                                <span class="fa fa-thumbs-o-up"></span>
-                                <span class="num">@{{item.acc}}</span>
-                            </a>
-                            <a @click="reffun(item.id)" href="javascript:;" :class="['down_icon','down_icon'+item.id]">
-                                <span class="fa fa-thumbs-o-down"></span>
-                                <span class="num">@{{item.ref}}</span>
-                            </a>
-                            <a @click="delfun(item.id)" href="javascript:;" :class="['cut','cut'+item.id]">
-                                <span class="fa fa-trash-o"></span>
-                                <span>删除</span>
-                            </a>
-                        </span>
-                    </p>
+		        <div class="main">
+                    <div class="top">
+                        <img src="{{asset('/')}}index/vote/banner.png">
+                    </div>
+                    <div class="head">
+                        <div class="logo">
+                            <div class="pic"><img src="{{$data->photo}}"></div>
+                            <div class="name">{{$data->name}}</div></div>
+                        <div class="votes">票数：<span class="number">{{$data->votes}}</span><br>热度：<span class="number">{{$data->visitcounts}}</span></div>  
+                    </div>
+                    <div class="gdmk">
+                        <div class="bt">
+                            <span class="line"></span> <span>自荐理由</span>
+                        </div>
+                        <div class="reason">
+                         {!!$data->reason!!}
+                        </div>
+                    </div>
+                    <div class="gdmk">
+                        <div class="bt">
+                            <span class="line"></span> <span>最近投票</span>
+                        </div>
+                        <div class="record">
+                            @foreach ($list as $i)
+                              <img src="{{$i->avatar}}">
+                             @endforeach
+                        </div>
+                    </div>
+                    <div class="tips">我正在参加2018-2019汽车服务行业财富金字塔“{{$data->awards}}”评选，请为我投票</div>
+                    <div class="buttons">
+                         <a  href="{{asset('/')}}vote/lists"><button>查看总榜</button></a>
+                         @if($data->is_enabled=='no')
+                          <button class="dark" onclick="vote(this,{{$data->id}})">暂不支持投票</button>
+                          @else
+                        <button class="{{$data->style}}" onclick="vote(this,{{$data->id}})">{{$data->tips}}</button>
+                        @endif
+                    </div>
+                </div>
+                <div id="box" class="box">
+                <!--留言-->
+                <div class="takeComment">
+                    <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText" v-model="txtval"></textarea>
+                    <div class="takeSbmComment clearfix">
+                        <button type="button" class="inputs btn btn-success btn-sm" value="" @click="addfun()">提交评论</button>
+                    </div>
+                </div>
+                <!--已留-->
+                <div class="commentOn">
+                    <div class="noContent" v-show="datalist.length==0">暂无留言</div>
+                    <div class="page">
+                        <a href="javascript:;" class=""></a>
+                    </div>
+                    <div class="messList" v-show="datalist.length!=0">
+                        <div v-for="item in datalist" class="reply">
+                           <p class="avatar"><img src="@{{item.user.avatar}}"></p>
+                            <p class="replyContent">@{{item.body}}</p>
+                            <p class="operation clearfix">
+                                <span class="replyTime">@{{item.created_at}}</span>
+                                <span class="handle">
+                                    <a @click="accfun(item.id)" href="javascript:;" :class="['top','top'+item.id]">
+                                        <span class="fa fa-thumbs-o-up"></span>
+                                        <span class="num">@{{item.acc}}</span>
+                                    </a>
+                                    <a @click="reffun(item.id)" href="javascript:;" :class="['down_icon','down_icon'+item.id]">
+                                        <span class="fa fa-thumbs-o-down"></span>
+                                        <span class="num">@{{item.ref}}</span>
+                                    </a>
+                                    <a @click="delfun(item.id)" href="javascript:;" :class="['cut','cut'+item.id]">
+                                        <span class="fa fa-trash-o"></span>
+                                        <span>删除</span>
+                                    </a>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="page" v-show="datalist.length!=0">
+                        <ul class="pagination" id="pagebox">
+                        
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="page" v-show="datalist.length!=0">
-                <ul class="pagination" id="pagebox">
-                
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="guanggao">
+        <div class="guanggao">
             <h2>
                 <span>广告</span>
                 <i></i>
             </h2>
            <img>
         </div>
-		 @include('layout.app')
+		@include('layout.app')
 		<script type="text/javascript" src="{{asset('/')}}index/vote/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="{{asset('/')}}index/vote/mui.min.js"></script>
 	    <script type="text/javascript" src="{{asset('/')}}index/vote/app.js"></script>

@@ -372,7 +372,7 @@
         <script type="text/javascript" src="/dist/js/bootstrap-paginator.min.js"></script>
 		<script type="text/javascript" src="{{asset('/')}}index/vote/mui.min.js"></script>
 	    <script type="text/javascript" src="{{asset('/')}}index/vote/app.js"></script>
-<link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">	
+        <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">	
 <script type="text/javascript">
 window.onload=function(){
 	

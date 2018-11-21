@@ -92,7 +92,7 @@ class VoteController extends BaseController
       }
         DB::table('chebao_visittable')->insert(
         ['visitip' => $IP, 'page'=>'index','openid'=>$openid,'visittime' => date('Y-m-d H:i:s', time())]);
-      $data['regcount']= VoteRegister::distinct('openid')->count();
+      $data['regcount']= VoteRegister::where('id','>','266')->distinct('openid')->count();
       $data['visitcount']= DB::table('chebao_visittable')->count();
       $data['visitcount']=$data['visitcount'];
       $data['votecount']=VoteRecord::distinct('openid')->count();

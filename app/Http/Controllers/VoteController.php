@@ -535,10 +535,11 @@ class VoteController extends BaseController
          
         
         $info=VoteRegister::where('id', '=',$id)->first();
-        // print_r($news);
-        //echo $news->title;
+        if(!$info){
+          exit('<script>alert("这个页面貌似走丢了，要不到其他地方逛逛吧吧");window.location.href="/vote";</script>');
+        }
           
-          $list=DB::table('vote_records')->leftJoin('users', 'vote_records.openid', '=', 'users.openid')
+        $list=DB::table('vote_records')->leftJoin('users', 'vote_records.openid', '=', 'users.openid')
        ->where('vote_records.rid',$id)->groupBy('users.openid')->get();
          
             if ($info['award_id']>=41&&$info['award_id']<=56) {   //

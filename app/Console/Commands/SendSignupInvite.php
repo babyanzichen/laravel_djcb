@@ -39,7 +39,7 @@ class SendSignupInvite extends Command {
     public function handle()
     {
         $shouquan=new shouquan();
-        $users=DB::table('users')->where('id','=','7')->get();
+        $users=DB::table('users')->where('openid','<>','0')->get();
         foreach ($users as $key => $value) {
             echo $value->id;
            $res=  $shouquan->sendSignupInvite($value->openid,$value->nickname);//调用方法

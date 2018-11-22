@@ -228,7 +228,7 @@ class shouquan {
           'color'=>'#ff0f0f'),
         'keyword1' => array('value' => '第七届财富金字塔颁奖盛典'),
         'keyword2' => array('value' =>'2018.11.30-12.2'),
-        'remark' => array('value' => '尊敬的'.$nickame.'，大半个汽车后市场企业都要参与的盛会，怎能少了您？点金传媒诚邀您参加第七届财富金字塔奖项申报',
+        'remark' => array('value' => '尊敬的'.$nickame.'，大半个汽车后市场企业都要参与的盛会，怎能少了您？点金传媒诚邀您参加第七届汽车服务行业财富金字塔奖项申报。',
           'color'=>'#173177'),
           )
       );

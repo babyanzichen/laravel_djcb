@@ -71,7 +71,7 @@ class VoteController extends BaseController
               $n['photo']=$n['head'];
               $n['name']=$n['username']; 
             } elseif ($n['award_id']>=59&&$n['award_id']<=64){
-              $n['photo']=$n['head'];
+              $n['photo']=$n['logo'];
               $n['name']=$n['companyname']; 
             }else{
               $n['photo']=$n['logo'];
@@ -417,16 +417,18 @@ class VoteController extends BaseController
      else{
          $lists=VoteRegister::where('award_id','=',$award_id)->where('is_enabled','yes') ->orderBy('votes', 'desc')->get();
      }
+
+
      foreach($lists as $key=>$val) {
             
-          if ($lists[$key]['c2']==33) {   //
+          if ($lists[$key]['award_id']==33&&$lists[$key]['award_id']<=56) {   //
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['projectname']; 
-            }elseif ($lists[$key]['c2']==34||$lists[$key]['c2']==1){
+            }elseif ($lists[$key]['award_id']>=65&&$lists[$key]['award_id']<=69){
               $lists[$key]['photo']=$lists[$key]['head'];
               $lists[$key]['name']=$lists[$key]['username']; 
             } 
-            elseif ($lists[$key]['c2']==31||$lists[$key]['c2']==32||$lists[$key]['c2']==36){
+            elseif ($lists[$key]['award_id']>=59&&$$lists[$key]['award_id']<=64)){
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['companyname']; 
             }        
@@ -550,7 +552,7 @@ class VoteController extends BaseController
               $info['photo']=$info['head'];
               $info['name']=$info['username']; 
             } elseif ($info['award_id']>=59&&$info['award_id']<=64){
-              $info['photo']=$info['head'];
+              $info['photo']=$info['logo'];
               $info['name']=$info['companyname']; 
             }else{
               $info['photo']=$info['logo'];

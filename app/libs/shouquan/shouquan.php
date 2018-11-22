@@ -296,7 +296,7 @@ class shouquan {
         'first' => array('value' => '财富金字塔奖项申报审核通过',
           'color'=>'#ff0f0f'),
         'keyword1' => array('value' => '奖项申报资料审核'),
-        'keyword2' => array('value' =>'2017财富金字塔奖项申报材料'),
+        'keyword2' => array('value' =>'2018-2019汽车服务行业财富金字塔奖项申报材料'),
         'keyword3' => array('value' => date('Y年m月d日 H:i', time())),
         'remark' => array('value' => '尊敬的用户，您申报的奖项“'.$award.'”信息已经审核通过，赶紧点击打开详情分享拉票吧',
           'color'=>'#173177'),

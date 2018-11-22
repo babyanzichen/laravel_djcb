@@ -53,15 +53,13 @@
 
 
   <br>
-    <h6 >申请不通过可能原因：重复申请奖项</h6> 
-    <h6 >资料长时间审核中可能原因：未提供logo</h6>
-    <h6 >以上请联系客服：程小姐 微信号：Dianjin_Zan协助处理 </h6>
+    <h6 >资料长时间审核中可能原因：未提供logo或头像</h6>
+    <h6 >请联系客服：程小姐 微信号：Dianjin_Zan协助处理 </h6>
  
   <br>
     <h6 style="color:blue">为了您获得更多票数，</h6> 
     <h6 style="color:blue">单个奖项请勿重复申报。</h6>
-    <h6 style="color:blue">如需修改资料，请联系客服。</h6> 
-    <h6 style="color:blue">18922350780（微信、电话同号）  </h6>
+    <h6 style="color:blue">如需修改资料，请联系客服协助处理。</h6> 
   </ul>
   <a class="more" href="{{asset('/')}}vote/regs">报名更多</a>
     <br>

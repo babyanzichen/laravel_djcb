@@ -307,7 +307,7 @@
                              @endforeach
                         </div>
                     </div>
-                    <div class="tips">我正在参加2018-2019汽车服务行业财富金字塔“{{$data->awards}}”评选，请为我投票</div>
+                    <div class="tips">我正在参加2018-2019汽车服务行业财富金字塔“{{$data->award->name}}”评选，请为我投票</div>
                     <div class="buttons">
                          <a  href="{{asset('/')}}vote/lists"><button>查看总榜</button></a>
                          @if($data->is_enabled=='no')

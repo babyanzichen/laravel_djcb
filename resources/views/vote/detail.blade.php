@@ -118,7 +118,7 @@
                     opacity: 0;
                     -webkit-animation: fromBack 1s linear forwards;
                     animation: fromBack 1s linear forwards;
-                    margin-top: -10%;
+                  
                     position: relative;
                     width: 100%;
                     background-color: rgba(255, 253, 251, 0.6);
@@ -136,7 +136,7 @@
                     float: right;
                     width:60%;
                     margin-right: 5%;
-                    margin-top: -10%;
+                  
                 }
                  .logo img {
                     border-radius: 10px;

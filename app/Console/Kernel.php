@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
         BindAdmin::class,
         'App\Console\Commands\SendTemplateMsg',
         'App\Console\Commands\SendMeetingInvite',
+        'App\Console\Commands\SendSignupInvite',
     ];
 
     /**

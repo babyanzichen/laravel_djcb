@@ -316,7 +316,7 @@ button
 }
 </style>
         <div class="top">
-            <img src="{{asset('/')}}index/vote/banner.png" />
+            <img src="{{asset('/')}}index/vote/topbanner" />
         </div>
         <div class="container">
             <div class="nav">

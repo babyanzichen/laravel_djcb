@@ -321,7 +321,7 @@
                 <div class="takeComment">
                     <textarea name="textarea" rows="6" class="takeTextField form-control" placeholder="在这里输入你想说的话吧" id="tijiaoText" v-model="txtval"></textarea>
                     <div class="takeSbmComment clearfix">
-                        <button type="button" class="inputs btn btn-success btn-sm" value="" @click="addfun()">提交评论</button>
+                        <button type="button" class="inputs  btn btn-warning " value="" @click="addfun()">提交评论</button>
                     </div>
                 </div>
                 <!--已留-->

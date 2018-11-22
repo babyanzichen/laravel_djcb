@@ -207,14 +207,14 @@
                     margin-top: 5%;
                     margin-bottom: 5%;
                 }
-                .buttons button{
-                  width: 30%;
+                .buttons button {
+                    width: 30%;
                     height: 50px;
-                    background-color: #00BCD4;
+                    background-color: #ff8b01;
                     border: none;
                     border-radius: 5px;
                     color: white;
-                    margin-left: 13%
+                    margin-left: 13%;
                 }
                 .buttons .dark {
                     border: 1px solid #bfb9b9;
@@ -409,7 +409,7 @@ return(Min + Math.round(Rand * Range));
 
   wx.ready(function(){
     wx.onMenuShareAppMessage({
-     title: '{{$nickname}}祝贺 {{$data->name}}入围财富金字塔“{{$data->awards}}”奖项', // 分享标题
+     title: '{{$nickname}}祝贺 {{$data->name}}入围2018-2019财富金字塔“{{$data->awards}}”奖项', // 分享标题
       desc: '2019年2月24日东莞·颁奖典礼，邀您共鉴荣耀时刻', // 分享描述
       link: 'http://www.djcb123.cn/vote/detail/{{$data->id}}', // 分享链接
       imgUrl: '{{$data->photo}}', // 分享图标
@@ -424,7 +424,7 @@ return(Min + Math.round(Rand * Range));
   });
 
   wx.onMenuShareTimeline({
-      title: '{{$nickname}}祝贺 {{$data->name}}入围财富金字塔“{{$data->awards}}”奖项', // 分享标题
+      title: '{{$nickname}}祝贺 {{$data->name}}入围2018-2019财富金字塔“{{$data->awards}}”奖项', // 分享标题
       desc: '2019年2月24日东莞·颁奖典礼，邀您共鉴荣耀时刻', // 分享描述
       link: 'http://www.djcb123.cn/vote/detail/{{$data->id}}', // 分享链接
       imgUrl: '{{$data->photo}}', // 分享图标分享图标

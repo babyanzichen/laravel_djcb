@@ -19,7 +19,7 @@
                 <td><input type="checkbox" name="ids[]" value="{{ $v->id }}">{{ $v->id }}</td>
                 <td>
                     <a>
-                        <img src="{{  $v->logo }}" class="img-circle fancybox" href="{{ $v->logo }}" title="{{ $v->user_name }}" style="width:35px;height:35px"
+                        <img src="{{  $v->logo }}{{ $v->head}}" class="img-circle fancybox" href="{{ $v->logo }}{{ $v->head}}" title="{{ $v->companyname }}" style="width:35px;height:35px"
                              onerror="this.src='/assets/dashboard/images/head_default.gif'"/>
                     </a>
                 </td>

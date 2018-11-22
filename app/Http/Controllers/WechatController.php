@@ -166,7 +166,7 @@ class WechatController extends Controller
                  DB::table('users')->where('openid',$object->FromUserName)->update(array('is_guanzhu'=>'T'));
                  $arr_item["title"]="财富金字塔颁奖盛典投票请点击";
             $arr_item["description"]="2018-2019年第七届汽车服务行业财富金字塔颁奖盛典将在广东东莞盛大召开。";
-            $arr_item["picurl"]="http://www.djcb123.cn/index/vote/banner.png";
+            $arr_item["picurl"]="http://www.djcb123.cn/index/vote/topbanner.png";
             $arr_item["url"]="http://www.djcb123.cn/vote";
                $resultStr = $this->transmitNews($object,$arr_item);
                 return $resultStr;

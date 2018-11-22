@@ -428,7 +428,7 @@ class VoteController extends BaseController
               $lists[$key]['photo']=$lists[$key]['head'];
               $lists[$key]['name']=$lists[$key]['username']; 
             } 
-            elseif ($lists[$key]['award_id']>=59&&$$lists[$key]['award_id']<=64)){
+            elseif ($lists[$key]['award_id']>=59&&$$lists[$key]['award_id']<=64){
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['companyname']; 
             }        

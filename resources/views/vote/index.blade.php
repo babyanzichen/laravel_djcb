@@ -499,8 +499,11 @@
         
             @include('layout.app')
    <script type="text/javascript">
+   
     $("input[name='countDown']").each(function () {
-        var time_end=this.value;
+         var arr = this.value.split(/[- :]/);
+        let nndate = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
+        var time_end= nndate;
         var con=$(this).next("span");
         var _=this.dataset;
         countDown(con,{

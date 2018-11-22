@@ -499,7 +499,7 @@
         
             @include('layout.app')
    <script type="text/javascript">
-    $("input[name='countDown']".split(/[- : \/]/)).each(function () {
+    $("input[name='countDown']").each(function () {
         var time_end=this.value;
         var con=$(this).next("span");
         var _=this.dataset;

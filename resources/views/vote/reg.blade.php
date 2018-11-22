@@ -48,7 +48,7 @@
         }
         });
         wx.onMenuShareTimeline({
-        title: '我在参加2018-2019汽车服务行业“财富金字塔”颁奖盛典', // 分享标题
+        title: '我在参加汽车服务行业“财富金字塔”颁奖盛典，2019.2.24·东莞，年度大奖一起来吧！', // 分享标题
         desc: '2019年2月24日 东莞·广东现代国际展览中心邀您共鉴荣耀时刻', // 分享描述
         link: 'http://www.djcb123.cn/vote/reg', // 分享链接
         imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标

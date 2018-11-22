@@ -408,7 +408,7 @@
         </div>
         <div class="main">
             <div class="top">
-                <img src="{{asset('/')}}index/vote/topbanner">
+                <img src="{{asset('/')}}index/vote/topbanner.png">
             </div>
             <div class="title">
                 <div class="zs">

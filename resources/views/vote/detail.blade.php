@@ -311,7 +311,7 @@
                     <div class="buttons">
                          <a  href="{{asset('/')}}vote/lists"><button>查看总榜</button></a>
                          @if($data->is_enabled=='no')
-                          <button class="dark" onclick="vote(this,{{$data->id}})">暂不支持投票</button>
+                          <button class="dark">暂不支持投票</button>
                           @else
                         <button class="{{$data->style}}" onclick="vote(this,{{$data->id}})">{{$data->tips}}</button>
                         @endif

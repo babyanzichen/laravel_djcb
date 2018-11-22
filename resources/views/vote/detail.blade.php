@@ -293,7 +293,8 @@
                             <span class="line"></span> <span>自荐理由</span>
                         </div>
                         <div class="reason">
-                         {!!$data->reason!!}
+                            <section data-role="outer" label="Powered by 135editor.com" style="font-size:16px;"><section style="padding: 1px; border: 1px solid rgb(230, 183, 65); color: rgb(0, 0, 0); font-size: 14px; background-color: rgb(255, 255, 245); box-sizing: border-box;"><section style="padding: 1px; border: 1px solid rgb(230, 183, 65); box-sizing: border-box;"><section style="padding: 10px; border: 1px solid rgb(230, 183, 65); box-sizing: border-box;">{!!$data->reason!!}</section></section></section></section>
+                       
                         </div>
                     </div>
                     <div class="gdmk">

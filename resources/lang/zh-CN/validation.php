@@ -87,7 +87,7 @@ return [
     'unique'               => ':attribute 已经存在。',
     'uploaded'             => ':attribute 上传失败。',
     'url'                  => ':attribute 格式不正确。',
-
+    'identitycards' => '身份证号错误！',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

@@ -12,6 +12,7 @@
    		body {
 		    overflow-x: hidden;
 		    width: 100%;
+		    position: absolute;
 		}
 		.top:after{
 			position: absolute;

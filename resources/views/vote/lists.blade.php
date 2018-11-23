@@ -208,11 +208,14 @@ body{
     margin-left: 3px;
 }
 .list_left {
-    display: inline-block;
+    background-size: cover;
+    display: block;
     text-align: center;
     float: left;
     line-height: 90px;
-    margin-top: 2%;
+    left: 10%;
+    height: 80px;
+    position: relative;
 }
 .left {
    
@@ -232,8 +235,14 @@ body{
     padding-top: 3px;
 }
 a {
+    width: 66%;
+    height: 80px;
+    display: block;
     color: #428bca;
     text-decoration: none;
+    float: left;
+    position: absolute;
+    left: 10%;
 }
 .list_left  img {
     width: 70px;

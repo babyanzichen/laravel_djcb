@@ -354,7 +354,8 @@
                     <div class="messList" v-show="datalist.length!=0">
                         <div v-for="item in datalist" class="reply">
                            <p class="avatar"><img src="@{{item.user.avatar}}"></p>
-                          <p class="title"> @{{item.user.nickname}} <span class="replyTime">@{{item.created_at}}</span></p>
+                          <p class="title"> 
+                            <marqueen style="width: 80px">@{{item.user.nickname}}</marqueen> <span class="replyTime">@{{item.created_at}}</span></p>
                             <p class="replyContent">@{{item.body}}</p>
                             <p class="operation clearfix">
                                 

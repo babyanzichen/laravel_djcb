@@ -22,18 +22,20 @@
                     position: relative;
                 }
                 .reply .avatar {
-                    width:80px;
+                    width:15%;
                     float: left;
                     text-align: center;
+                    overflow: hidden;
+                }
+                 .reply .avatar img{
+                    width: 50px;
+                    border-radius: 50%;
                 }
                 .replyContent{
                     float: right;
                     width: 80%
                 }
-                .reply .avatar img{
-                    width: 50px;
-                    border-radius: 50%;
-                }
+               
                 
                 .takeComment .takeSbmComment{
                     margin-top: 15px;

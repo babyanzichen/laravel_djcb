@@ -9,7 +9,7 @@
             
     </div>
     <style>
-   		.top{
+   		body{
    			overflow-x: hidden
    		}
 		.top:after{

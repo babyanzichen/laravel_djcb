@@ -27,7 +27,7 @@
 		  /* Firefox 3.6 - 15 */
 		  background: -moz-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
 		  /* 标准的语法 */
-		  background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 0%,rgba(255,255,255,0) 100%);
+		  background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 100%,rgba(255,255,255,0) 100%);
 	    transform: skewX(-45deg);
 		}
 		.hover:after{

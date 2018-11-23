@@ -14,7 +14,7 @@
 			left: -100%;                    /*改变left的值，让其相对top影藏*/
 			top: 0;
 			width: 30%;
-			height: 100%;
+			height:50%;
 			content: "";
 			/* Safari 5.1 - 6.0 */
 		  background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);

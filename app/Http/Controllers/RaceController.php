@@ -20,9 +20,15 @@ use Illuminate\Support\Facades\Session;
 use shouquan;
 class RaceController extends BaseController
 {
+   public function __construct()
+    {
+
+      $this->middleware(['wechat.oauth']);
+      
+    }
 	public function index(Request $request)
     {   
-    	 $this->check($request,'race');
+    	
     	 $raceinfo= DB::table('races')->where([['openid', '=', $request->session()->get('user')['openid']]])->first();
     	 if($raceinfo!=''||$raceinfo!=null){
     	 	return redirect('race/detail/'.$request->session()->get('user')['openid']);
@@ -94,7 +100,7 @@ public function detail(Request $request)
     {   
     	$id=$request->route('id');
     	
-       $this->check($request,'race/detail/'.$id);
+    
         $race=new races;
       $data=$race->where('openid', '=',$id)->first();
       //var_dump($data);

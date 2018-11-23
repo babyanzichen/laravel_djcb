@@ -355,7 +355,7 @@
                         <div v-for="item in datalist" class="reply">
                            <p class="avatar"><img src="@{{item.user.avatar}}"></p>
                           <p class="title"> 
-                            <marqueen style="width: 80px">@{{item.user.nickname}}</marqueen> <span class="replyTime">@{{item.created_at}}</span></p>
+                            <marquee id="affiche" align="left" behavior="scroll" bgcolor="#FF0000" direction="up" height="300" width="200" hspace="50"            vspace="20" loop="-1" scrollamount="10" scrolldelay="100" onMouseOut="this.start()" onMouseOver="this.stop()">@{{item.user.nickname}}</marqueen> <span class="replyTime">@{{item.created_at}}</span></p>
                             <p class="replyContent">@{{item.body}}</p>
                             <p class="operation clearfix">
                                 

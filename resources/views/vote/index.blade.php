@@ -320,7 +320,7 @@
        .gdmk .xtbmk .icon {
             width: 110px;
             height: 110px;
-           background-size: cover
+           background-size: cover;
            border-radius:20px;
         }
          .line {

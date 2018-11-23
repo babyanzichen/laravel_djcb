@@ -40,7 +40,7 @@ class VoteController extends BaseController
       $this->VoteInfoRepository = $VoteInfoRepository;
       $this->VoteCateryRepository = $VoteCategoryRepository;
     }
-    protected function index(Request $request)
+    public function index(Request $request)
     { 
        
         $this->autoLogin();
@@ -58,7 +58,7 @@ class VoteController extends BaseController
         foreach ($lists as $key => $value) {
           $value['award']=VoteAward::where(array('category_id'=>$value['id'],'is_enabled'=>'yes'))->get();
           foreach ($value['award'] as $k => $v) {
-          $v['register']=VoteRegister::where(array('award_id'=>$v['id'],'is_enabled'=>'yes'))->get();
+          $v['register']=VoteRegister::where(array('award_id'=>$v['id'],'is_enabled'=>'yes'))->orderBy('votes','desc')->get();
           }
         }
        foreach ($lists as $key => $value) {

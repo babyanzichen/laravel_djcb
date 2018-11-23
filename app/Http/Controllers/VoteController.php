@@ -64,7 +64,7 @@ class VoteController extends BaseController
        foreach ($lists as $key => $value) {
           foreach ($value['award'] as $k => $v) {
              foreach ($v['register'] as $m => $n) {
-          if ($n['award_id']>=41&&$n['award_id']<=56) {   //
+          if ($n['award_id']>=41&&$n['award_id']<=58) {   //
               $n['photo']=$n['logo'];
               $n['name']=$n['projectname']; 
             }elseif ($n['award_id']>=65&&$n['award_id']<=69){
@@ -421,7 +421,7 @@ class VoteController extends BaseController
 
      foreach($lists as $key=>$val) {
             
-          if ($lists[$key]['award_id']==33&&$lists[$key]['award_id']<=56) {   //
+          if ($lists[$key]['award_id']>=41&&$lists[$key]['award_id']<=58) {   //
               $lists[$key]['photo']=$lists[$key]['logo'];
               $lists[$key]['name']=$lists[$key]['projectname']; 
             }elseif ($lists[$key]['award_id']>=65&&$lists[$key]['award_id']<=69){

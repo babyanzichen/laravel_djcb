@@ -9,9 +9,10 @@
             
     </div>
     <style>
-   		body{
-   			overflow-x: hidden
-   		}
+   		body {
+		    overflow-x: hidden;
+		    width: 100%;
+		}
 		.top:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/

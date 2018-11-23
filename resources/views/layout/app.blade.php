@@ -9,7 +9,7 @@
             
     </div>
     <style>
-    html{overflow-x : hidden ; height : 100% ; margin : 0 ; padding : 0 ; }
+    .top{overflow-x : hidden ; height : 100% ; margin : 0 ; padding : 0 ; }
 		.cover:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/

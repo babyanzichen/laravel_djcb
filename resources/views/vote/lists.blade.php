@@ -237,7 +237,7 @@ body{
     display: inline-block;
     padding-top: 3px;
 }
-a {
+.wy_list_down a {
     width: 66%;
     height: 80px;
     display: block;

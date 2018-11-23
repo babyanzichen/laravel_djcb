@@ -321,6 +321,7 @@
             width: 110px;
             height: 110px;
            background-size: cover
+           border-radius:20px;
         }
          .line {
             left: 2%;

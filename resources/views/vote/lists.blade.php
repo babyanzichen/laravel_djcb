@@ -184,11 +184,13 @@ body{
     padding-top: .8rem;
     border-bottom: 1px solid #E3E3E3;
 }
+
 .list_main {
-   
+    width: 50%;
+    left: 3%;
     float: left;
+    position: relative;
     text-align: center;
-   
 }
 .list_main h6 {
     line-height: 80px;
@@ -208,12 +210,13 @@ body{
     margin-left: 3px;
 }
 .list_left {
+    width: 30%;
     background-size: cover;
     display: block;
     text-align: center;
     float: left;
     line-height: 90px;
-    left: 10%;
+    left: 0%;
     height: 80px;
     position: relative;
 }
@@ -331,11 +334,12 @@ p {
 	width:10%;
 }
 .a2{
-	width:20%;
+	width:30%;
 }
-.a3{
-	width:20%;
+.a3 {
+    width: 18%;
 }
+
 .a4{
 	width:20%;
 }
@@ -729,7 +733,7 @@ $(function () {
                     for (var i=0,len=data.lists.length; i<len; i++)
                     {
                         console.log(len);
-                    str+='<div class="wy_list_down"><div class="left a1"><span class="rank grade'+(i+0+1)+'">'+(i+0+1)+'</span></div> <a  href="{{asset('/')}}vote/detail/'+data.lists[i]['id']+'"><div class="list_left a2" style="background-image:url('+data.lists[i]['photo']+')"></div><div class="list_main a3"><h6>'+data.lists[i]['name']+'</h6></div><div class="piao a4"><h4 class="hq">'+data.lists[i]['votes']+'</h4></div></a><div class="delete a5"><div  onclick="vote(this,'+data.lists[i]['id']+')"class="app_download_btn '+data.lists[i]['style']+'"><i></i>'+data.lists[i]['tips']+'</div></div></div>';
+                    str+='<div class="wy_list_down"><div class="left a1"><span class="rank grade'+(i+0+1)+'">'+(i+0+1)+'</span></div> <a  href="{{asset('/')}}vote/detail/'+data.lists[i]['id']+'"><div class="list_left" style="background-image:url('+data.lists[i]['photo']+')"></div><div class="list_main"><h6>'+data.lists[i]['name']+'</h6></div><div class="piao a4"><h4 class="hq">'+data.lists[i]['votes']+'</h4></div></a><div class="delete a5"><div  onclick="vote(this,'+data.lists[i]['id']+')"class="app_download_btn '+data.lists[i]['style']+'"><i></i>'+data.lists[i]['tips']+'</div></div></div>';
                     //document.write(cars[i] + "<br>");
                     }
                 }else{

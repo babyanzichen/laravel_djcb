@@ -9,10 +9,6 @@
             
     </div>
     <style>
-    .main {
-	    overflow-x: hidden;
-	    position: relative;
-	}
 		.top:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/
@@ -27,11 +23,11 @@
 		  /* Firefox 3.6 - 15 */
 		  background: -moz-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
 		  /* 标准的语法 */
-		  background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 100%,rgba(255,255,255,0) 100%);
+		  background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
 	    transform: skewX(-45deg);
 		}
 		.hover:after{
-			left:100%;
+		left:100%;
 	    transition: 1s ease;
 		}
 	</style>

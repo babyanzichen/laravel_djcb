@@ -134,14 +134,14 @@
                 .logo {
                     position: relative;
                     float: right;
-                    width:60%;
+                    width: 21%;
                     margin-right: 5%;
-                  
                 }
-                 .logo img {
-                    border-radius: 10px;
-                    width: 80px;
-                    margin-left: 75%;
+                .logo  .pic{
+                    width: 100px;
+                    height:100px;
+                    background-size: cover;
+                    border-radius: 10px
                 }
                 .name{
                     float: right;
@@ -195,11 +195,7 @@
                     color: white;
                     text-align: center;
                 }
-                .pic{
-                    width: 100px;
-                    height:100px;
-                    background-size: cover
-                }
+               
                 .record{
                   text-align: center;
                    margin-top:5%

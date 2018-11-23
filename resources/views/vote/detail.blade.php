@@ -22,8 +22,9 @@
                     position: relative;
                 }
                 .reply .avatar {
-                    width: 50px;
+                    width:80px;
                     float: left;
+                    text-align: center;
                 }
                 .replyContent{
                     float: right;

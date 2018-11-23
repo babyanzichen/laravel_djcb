@@ -43,10 +43,10 @@
     	$(".cover").addClass("hover");
     	
 	}
-, 3000);
+, 2000);
 setInterval(function () {
     	$(".cover").removeClass("hover");
     	
 	}
-,6000);	
+,4000);	
 </script>

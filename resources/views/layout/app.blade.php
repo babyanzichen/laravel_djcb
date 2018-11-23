@@ -9,11 +9,9 @@
             
     </div>
     <style>
-   		body {
-		    overflow-x: hidden;
-		    width: 100%;
-		    position: absolute;
-		}
+    .main{
+    	overflow-x: hidden;
+    }
 		.top:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/
@@ -32,7 +30,7 @@
 	    transform: skewX(-45deg);
 		}
 		.hover:after{
-			left:100%;
+			left:80%;
 	    transition: 1s ease;
 		}
 	</style>

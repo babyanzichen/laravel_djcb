@@ -366,7 +366,7 @@ Route::get('race/vote/{id}', 'RaceController@vote');
     Route::middleware('wechat.oauth:snsapi_base')->group(function () {
         // Route::get('/login', 'SelfAuthController@autoLogin')->name('login');
     });
-    Route::middleware('wechat.oauth:snsapi_userinfo')->group(function () {
+     Route::middleware('wechat.oauth:snsapi_userinfo')->group(function () {
       //  Route::get('/vote','SelfAuthController@autoLogin');
         /*
             财富金字塔投票路由群组
@@ -394,7 +394,7 @@ Route::get('race/vote/{id}', 'RaceController@vote');
         Route::get('vote/getComment/', 'voteController@getComment');
          Route::get('vote/addComment/', 'voteController@addComment');
         Route::post('vote/{id}/comments', 'voteController@comments');
-    });
+     });
 
 
 

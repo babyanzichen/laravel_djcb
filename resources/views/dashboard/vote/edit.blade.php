@@ -100,7 +100,7 @@
                                 <a class="btn btn-info" href="javascript:void(0);" style="float: left"
                                    uploader="head"
                                    data-url="{{ url('file/upload') }}" data-path="temp">+ 浏览文件
-                                    <input type="hidden" name="head" id="head" value="{{ $info->companyname }}">
+                                    <input type="hidden" name="head" id="head" value="{{ $info->head }}">
                                 </a>
                                 <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>人物奖必须上传</span>
                                 <img height="100px" id="head_img" src="{{ $info->head }}"

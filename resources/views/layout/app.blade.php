@@ -9,12 +9,11 @@
             
     </div>
     <style>
-    .top{overflow-x : hidden ; height : 100% ; margin : 0 ; padding : 0 ; }
 		.cover:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/
 			top: 0;
-			width: 30%;
+			width:20%;
 			height: 100%;
 			content: "";
 			/* Safari 5.1 - 6.0 */

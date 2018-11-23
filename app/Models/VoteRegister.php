@@ -7,7 +7,7 @@ use SoftDeletes,BaseFilterable,Notifiable;
 use App\Models\VoteAward;
 class VoteRegister extends Model
 {
-    protected $fillable = ['companyname', 'reason', 'username', 'phone', 'brandname','head','position','projectname','cheat','award_id','is_enabled','logo'];
+    protected $fillable = ['companyname', 'reason', 'username', 'phone', 'brandname','head','position','projectname','cheat','award_id','is_enabled','logo','position' ];
      protected $dates = ['created_at', 'updated_at', 'deleted_at'];
      public function award(){
      	return $this->belongsTo(VoteAward::class, 'award_id','id');

@@ -33,7 +33,7 @@
 		}
 		.hover:after{
 		left:150%;
-	    transition: 1.2s ease;
+	    transition:2s ease;
 		}
 	</style>
     <script type="text/javascript">
@@ -48,5 +48,5 @@ setInterval(function () {
     	$(".cover").removeClass("hover");
     	
 	}
-,4000);	
+,6000);	
 </script>

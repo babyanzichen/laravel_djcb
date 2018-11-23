@@ -9,18 +9,7 @@
             
     </div>
     <style>
-    .top{
-			position: relative;
-			margin: 50px auto;
-			width: 400px;
-			height: 200px;
-			background-color: red;
-			overflow: hidden;
-			cursor: pointer;
-		}
-		img{
-			width: 100%;
-		}
+   
 		.top:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/

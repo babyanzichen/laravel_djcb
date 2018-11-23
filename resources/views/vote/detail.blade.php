@@ -295,7 +295,8 @@
             </style>
 	   </head>
 	<body>
-        
+                <div class="tishi">
+                 </div>
 		        <div class="main">
                     <div class="top">
                         <div class="cover"></div>

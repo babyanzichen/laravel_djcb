@@ -559,8 +559,9 @@ button
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="{{asset('/index/vote/jquery-1.9.1.min.js') }}"></script>
    @include('layout.app')      
-<script type="text/javascript" src="{{asset('/index/vote/jquery-1.9.1.min.js') }}"></script>
+
 <script type="text/javascript">
   $(function() {
 

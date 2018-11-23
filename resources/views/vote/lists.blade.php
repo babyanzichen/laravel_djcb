@@ -720,7 +720,7 @@ $(function () {
                     for (var i=0,len=data.lists.length; i<len; i++)
                     {
                         console.log(len);
-                    str+='<div class="wy_list_down"><div class="left a1"><span class="rank grade'+(i+0+1)+'">'+(i+0+1)+'</span></div> <a  href="{{asset('/')}}vote/detail/'+data.lists[i]['id']+'"><div class="list_left a2"><img src="'+data.lists[i]['photo']+'" alt=""></div><div class="list_main a3"><h6>'+data.lists[i]['name']+'</h6></div><div class="piao a4"><h4 class="hq">'+data.lists[i]['votes']+'</h4></div></a><div class="delete a5"><div  onclick="vote(this,'+data.lists[i]['id']+')"class="app_download_btn '+data.lists[i]['style']+'"><i></i>'+data.lists[i]['tips']+'</div></div></div>';
+                    str+='<div class="wy_list_down"><div class="left a1"><span class="rank grade'+(i+0+1)+'">'+(i+0+1)+'</span></div> <a  href="{{asset('/')}}vote/detail/'+data.lists[i]['id']+'"><div class="list_left a2" style="background-image:url('+data.lists[i]['photo']+')"></div><div class="list_main a3"><h6>'+data.lists[i]['name']+'</h6></div><div class="piao a4"><h4 class="hq">'+data.lists[i]['votes']+'</h4></div></a><div class="delete a5"><div  onclick="vote(this,'+data.lists[i]['id']+')"class="app_download_btn '+data.lists[i]['style']+'"><i></i>'+data.lists[i]['tips']+'</div></div></div>';
                     //document.write(cars[i] + "<br>");
                     }
                 }else{

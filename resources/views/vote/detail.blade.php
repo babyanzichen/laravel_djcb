@@ -355,7 +355,7 @@
                         <div v-for="item in datalist" class="reply">
                            <p class="avatar"><img src="@{{item.user.avatar}}"></p>
                           <p class="title"> 
-                            <span style="width:150px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display: block">@{{item.user.nickname}}</span> <span class="replyTime">@{{item.created_at}}</span></p>
+                            <span style="width:150px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display:inline-block">@{{item.user.nickname}}</span> <span class="replyTime">@{{item.created_at}}</span></p>
                             <p class="replyContent">@{{item.body}}</p>
                             <p class="operation clearfix">
                                 

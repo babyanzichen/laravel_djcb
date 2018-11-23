@@ -335,7 +335,7 @@
                     </div>
                     <div class="messList" v-show="datalist.length!=0">
                         <div v-for="item in datalist" class="reply">
-                           <p class="avatar"><img src="@{{item.user.avatar}}"></p>
+                           <p class="avatar"><img src="@{{item.user.avatar}}">@{{item.user.nickname}}</p>
                             <p class="replyContent">@{{item.body}}</p>
                             <p class="operation clearfix">
                                 <span class="replyTime">@{{item.created_at}}</span>

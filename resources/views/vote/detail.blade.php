@@ -73,12 +73,13 @@
                     padding:10px;
                 }
                 .commentOn .messList .operation{
-                   width: 80%;
+                  
                    text-align: right;
                 }
-                .commentOn .messList  .title {
-                  
+                .commentOn .messList .title {
                     color: black;
+                    width: 80%;
+                    float: right;
                 }
                 .commentOn .messList  .title .replyTime{
                     float:right;

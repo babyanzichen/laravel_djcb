@@ -32,7 +32,7 @@
                     border-radius: 50%;
                 }
                 .replyContent{
-                    float:left;
+                    float: right;
                     width: 80%
                 }
                
@@ -74,7 +74,7 @@
                 }
                 .commentOn .messList .operation{
                    width: 80%;
-                   float: right;
+                   text-align: right;
                 }
                 .commentOn .messList .operation .replyTime{
                     float: left;

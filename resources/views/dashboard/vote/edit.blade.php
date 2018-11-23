@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">职位：</label>
                             <div class="input-group col-sm-4">
-                                <input type="text" class="form-control" name="username"
+                                <input type="text" class="form-control" name="position"
                                     value="{{ $info->position}}"   placeholder="职位">
                                 <span class="help-block m-b-none"><i class="fa fa-info-circle"></i>人物奖必填</span>
                             </div>

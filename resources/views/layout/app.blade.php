@@ -28,7 +28,7 @@
 	    transform: skewX(-45deg);
 		}
 		.hover:after{
-			left: 150%;
+			left:100%;
 	    transition: 1s ease;
 		}
 	</style>

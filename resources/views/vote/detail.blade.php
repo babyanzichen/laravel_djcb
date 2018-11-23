@@ -195,6 +195,11 @@
                     color: white;
                     text-align: center;
                 }
+                .pic{
+                    width: 100px;
+                    height:100px;
+                    background-size: cover
+                }
                 .record{
                   text-align: center;
                    margin-top:5%
@@ -248,7 +253,7 @@
                     text-align: center;
                     height: 1rem;
                     line-height: 1rem;
-                    font-size: .3rem;
+                    font-size:0.8rem;
                     position: relative;
                     float: left;
                 }
@@ -257,7 +262,7 @@
                     z-index: 1;
                     background: #fbf5f5;
                     position: absolute;
-                    top: 0.05rem;
+                    top: 0.02rem;
                     left: 100%;
                     margin-left: 0rem;
                 }
@@ -284,7 +289,7 @@
                     </div>
                     <div class="head">
                         <div class="logo">
-                            <div class="pic"><img src="{{$data->photo}}"></div>
+                            <div class="pic" style="background-image: url({{$data->photo}});"></div>
                             <div class="name">{{$data->name}}</div></div>
                         <div class="votes">票数：<span class="number">{{$data->votes}}</span><br>热度：<span class="number">{{$data->visitcounts}}</span></div>  
                     </div>

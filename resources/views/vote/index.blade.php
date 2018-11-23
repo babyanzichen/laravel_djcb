@@ -471,8 +471,8 @@
                            
                             <div class="xtbmk">
                                 <a  href="{{asset('/')}}vote/detail/{{$register->id}}">
-                                    <div class="icon">
-                                        <img src="{{$register->photo}}">
+                                    <div class="icon" style="background-image: url({{$register->photo}})">
+                                        
                                     </div>
                                     <div class="piao"> {{$register->votes}}票</div>
                                     <div class="yxm">

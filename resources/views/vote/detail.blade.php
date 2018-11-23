@@ -76,8 +76,13 @@
                    width: 80%;
                    text-align: right;
                 }
+                .commentOn .messList  .title {
+                    float:right;
+                    color: blue;
+                }
                 .commentOn .messList  .title .replyTime{
-                    float: left;
+                    float:right;
+                    color:brown;
                 }
                 .commentOn .messList .operation .handle{
                     float: right;

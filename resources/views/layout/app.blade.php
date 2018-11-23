@@ -10,7 +10,7 @@
     </div>
     <style>
    
-		.top:after{
+		.top img:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/
 			top: 0;
@@ -36,12 +36,12 @@
  
  
 	setInterval(function () {
-    	$(".top").addClass("hover");
+    	$(".top img").addClass("hover");
     	
 	}
 , 3000);
 setInterval(function () {
-    	$(".top").removeClass("hover");
+    	$(".top img").removeClass("hover");
     	
 	}
 ,4000);	

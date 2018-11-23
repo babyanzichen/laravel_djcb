@@ -135,7 +135,7 @@
           background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
         transform: skewX(-45deg);
         }
-        .top:after{
+        .top{
             left: 150%;
         transition: 1s ease;
         }

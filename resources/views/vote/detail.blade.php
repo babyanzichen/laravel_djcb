@@ -77,12 +77,12 @@
                    text-align: right;
                 }
                 .commentOn .messList  .title {
-                    float:right;
-                    color: blue;
+                  
+                    color: black;
                 }
                 .commentOn .messList  .title .replyTime{
                     float:right;
-                    color:brown;
+                    color: #999;
                 }
                 .commentOn .messList .operation .handle{
                     float: right;

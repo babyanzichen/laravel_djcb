@@ -135,6 +135,7 @@
                     position: relative;
                     float: right;
                     width: 21%;
+                    top: -10%;
                     margin-right: 5%;
                 }
                 .logo  .pic{

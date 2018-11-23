@@ -82,12 +82,12 @@ class IndexController extends Controller
         $value = $data['value'];
 
         $rs = DB::table($table)->where(['id' => $id])->update([$column => $value]);
-        if($table=='vote_registers'&&$column=='is_enabled'&&$value=='yes'){
-            $openid=DB::table($table)->where(['id' => $id])->value('openid');
-            $award_id=DB::table($table)->where(['id' => $id])->value('award_id');
-            $award=DB::table('vote_awards')->where('id',$award_id)->value('name');
-             $this->passSend($id,$openid,$award);
-        }
+        // if($table=='vote_registers'&&$column=='is_enabled'&&$value=='yes'){
+        //     $openid=DB::table($table)->where(['id' => $id])->value('openid');
+        //     $award_id=DB::table($table)->where(['id' => $id])->value('award_id');
+        //     $award=DB::table('vote_awards')->where('id',$award_id)->value('name');
+        //      $this->passSend($id,$openid,$award);
+        // }
         if ($rs) return ajaxReturn();
         return ajaxReturnError();
     }

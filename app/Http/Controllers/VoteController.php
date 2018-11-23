@@ -312,7 +312,7 @@ class VoteController extends BaseController
         
         // 将数据保存到数据库，通过判断保存结果，控制页面进行不同跳转
         if ($VoteRegister->save()) {
-            $this->send($openid,$nickname,$phone,VoteAward::where('id',$VoteRegister->award_id)->value('name'));
+          //  $this->send($openid,$nickname,$phone,VoteAward::where('id',$VoteRegister->award_id)->value('name'));
            
 
            return Response::json(
@@ -665,8 +665,8 @@ class VoteController extends BaseController
             $openid2=$register->openid;
             $title2='又有小伙伴为您投了一票';
              $remark2='尊敬的用户，又有小伙伴“'.$nickname.'”在2018-2019汽车服务行业财富金字塔颁奖盛典投票活动中为您您申报的“'.$register->companyname.$register->username.'”成功投上一票，赶紧点击此处查看活动详情吧，感谢您的对本次的活动的积极参与。';
-            $this->send1($request,$openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);
-            $this->send2($request,$openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url);
+           // $this->send1($request,$openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);
+          //  $this->send2($request,$openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url);
                  return Response::json(
                   [
                       'success' => true,
@@ -723,7 +723,7 @@ class VoteController extends BaseController
         $shouquan=new shouquan();
        
        
-        $shouquan->sendVoteSuccess($openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);//调用方法
+       //$shouquan->sendVoteSuccess($openid1,$title1,$template_id1,$keyword1,$keyword2,$remark1,$redirect_url);//调用方法
     }
 
     public function send2(Request $request,$openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url){
@@ -731,7 +731,7 @@ class VoteController extends BaseController
         $shouquan=new shouquan();
        
        
-        $shouquan->sendGetVote($openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url);//调用方法
+      //  $shouquan->sendGetVote($openid2,$title2,$template_id2,$keyword1,$keyword3,$keyword2,$remark2,$redirect_url);//调用方法
     }
 
 

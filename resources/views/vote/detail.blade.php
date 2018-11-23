@@ -208,9 +208,9 @@
                 .tips {
                     width: 100%;
                     height: 80px;
-                    padding-top:5%;
+                    padding: 5%;
                     background-color: rgba(70, 67, 67, 0.19);
-                    color: white;
+                    color: #FF5722;
                     text-align: center;
                 }
                
@@ -272,11 +272,11 @@
                     float: left;
                 }
                 .guanggao h2 span {
-                    width: 1rem;
+                    width: 2rem;
                     z-index: 1;
                     background: #fbf5f5;
                     position: absolute;
-                    top: 0.02rem;
+                    top: -1.98rem;
                     left: 100%;
                     margin-left: 0rem;
                 }

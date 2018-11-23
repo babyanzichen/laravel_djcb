@@ -32,7 +32,7 @@
                     border-radius: 50%;
                 }
                 .replyContent{
-                    float: right;
+                    float:left;
                     width: 80%
                 }
                

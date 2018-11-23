@@ -9,8 +9,10 @@
             
     </div>
     <style>
-   
-		.top img:after{
+   		.top{
+   			overflow-x: hidden
+   		}
+		.top:after{
 			position: absolute;
 			left: -100%;                    /*改变left的值，让其相对top影藏*/
 			top: 0;
@@ -27,7 +29,7 @@
 		  background: linear-gradient(to right,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
 	    transform: skewX(-45deg);
 		}
-		.top .hover:after{
+		.hover:after{
 			left:100%;
 	    transition: 1s ease;
 		}
@@ -36,12 +38,12 @@
  
  
 	setInterval(function () {
-    	$(".top img").addClass("hover");
+    	$(".top").addClass("hover");
     	
 	}
 , 3000);
 setInterval(function () {
-    	$(".top img").removeClass("hover");
+    	$(".top").removeClass("hover");
     	
 	}
 ,4000);	

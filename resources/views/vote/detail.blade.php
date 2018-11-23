@@ -72,6 +72,9 @@
                     text-align: center;
                     padding:10px;
                 }
+                .commentOn .messList .operation{
+                   width: 80%;
+                }
                 .commentOn .messList .operation .replyTime{
                     float: left;
                 }

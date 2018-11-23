@@ -74,6 +74,7 @@
                 }
                 .commentOn .messList .operation{
                    width: 80%;
+                   float: right;
                 }
                 .commentOn .messList .operation .replyTime{
                     float: left;

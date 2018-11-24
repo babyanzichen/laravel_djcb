@@ -12,7 +12,6 @@
 	    .top{
 	    position:relative;
 	    overflow-x:hidden;
-
 		}
 		.cover:after{
 			position: absolute;

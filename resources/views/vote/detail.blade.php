@@ -196,7 +196,7 @@
                     height: 110px;
                     padding: 5px 0 0 5px;
                 }
-                .top16{
+                .tops{
                     top:6px
                 }
                 .line {
@@ -462,7 +462,7 @@
                             <p class="operation clearfix">
                                 
                                 <span class="handle">
-                                    <a @click="accfun(item.id)" href="javascript:;" :class="['top','top'+item.id]">
+                                    <a @click="accfun(item.id)" href="javascript:;" :class="['tops','top'+item.id]">
                                         <span class="fa fa-thumbs-o-up"></span>
                                         <span class="num">@{{item.acc}}</span>
                                     </a>

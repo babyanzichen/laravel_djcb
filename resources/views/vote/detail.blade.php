@@ -315,7 +315,7 @@
                 .aui-palace-grid {
                     position: relative;
                     float: left;
-                    padding: 25px 1px 25px 1px;
+                    padding: 16px 1px 16px 1px;
                     width: 33.333%;
                     box-sizing: border-box;
                     text-align: center;

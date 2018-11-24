@@ -166,6 +166,8 @@
                     line-height: 90px;
                     left: 0%;
                     position: relative;
+                    background-position: center center;
+                    background-repeat: no-repeat;
                 }
                 .name{
                     float: right;

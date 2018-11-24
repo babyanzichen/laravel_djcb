@@ -117,17 +117,13 @@
                     padding: 0px;
                 }
 
-
-                
-
-                        .top{
-                        z-index: 5;
-                        }
-                        .main .top img{
-                        width: 100%
-                        }
+                .top{
+                    z-index: 5;
+                }
+                .main .top img{
+                    width: 100%
+                }
                 .head {
-                  
                     z-index:100;
                     top: 0;
                     -webkit-transform: scale(1);
@@ -135,7 +131,6 @@
                     opacity: 0;
                     -webkit-animation: fromBack 1s linear forwards;
                     animation: fromBack 1s linear forwards;
-                  
                     position: relative;
                     width: 100%;
                     background-color: rgba(255, 253, 251, 0.6);
@@ -300,6 +295,61 @@
                 .guanggao img {
                     width: 100%;
                 }
+                 .aui-with-bg {
+                    background: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 5px 17px #ddd;
+                    width: 63%;
+                    /* height: 120px; */
+                    margin: 0px 5%;
+                    top: -10px;
+                    position: relative;
+                }
+                .aui-palace {
+                    padding: 0;
+                    position: relative;
+                    overflow: hidden;
+                    /* margin-bottom: 15px; */
+                    text-align: center;
+                }
+                .aui-palace-grid {
+                    position: relative;
+                    float: left;
+                    padding: 25px 1px 25px 1px;
+                    width: 33.333%;
+                    box-sizing: border-box;
+                    text-align: center;
+                }
+                a {
+                    color: #666;
+                }
+                a {
+                    text-decoration: none;
+                    color: #08acee;
+                }
+                .aui-palace-grid-icon {
+                    width: 83px;
+                    height: 22px;
+                    margin: 0 auto;
+                }
+                .aui-palace-grid-icon span {
+                    color: #333;
+                    font-size: 0.8rem;
+                }
+                .aui-palace-grid-text {
+                    display: block;
+                    text-align: center;
+                    color: #333333;
+                    font-size: 13px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+                .aui-palace-grid-text h2 {
+                    font-size: 0.7rem;
+                    font-weight: normal;
+                    color: #ff6d1a;
+                }
             </style>
 	   </head>
 	<body>
@@ -314,7 +364,44 @@
                         <div class="logo">
                             <div class="pic" style="background-image: url({{$data->photo}});"></div>
                             <div class="name">{{$data->name}}</div></div>
-                        <div class="votes">票数：<span class="number">{{$data->votes}}</span><br>热度：<span class="number">{{$data->visitcounts}}</span></div>  
+
+                            <div class="aui-with-bg">
+                                <div class="aui-palace clearfix">
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <span>票数：</span>
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>{{$data->votes}}</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <span>热度</span>
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>{{$data->visitcounts}}</h2>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:;" class="aui-palace-grid">
+                                        <div class="aui-palace-grid-icon">
+                                            <span>排名</span>
+                                        </div>
+                                        <div class="aui-palace-grid-text">
+                                            <h2>{{$data->rank}}</h2>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div> 
+
+
+
+
+
+
+
+
+                         
                     </div>
                     <div class="gdmk">
                         <div class="bt">

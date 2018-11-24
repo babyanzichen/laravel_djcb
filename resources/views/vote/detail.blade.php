@@ -196,6 +196,9 @@
                     height: 110px;
                     padding: 5px 0 0 5px;
                 }
+                .top-16{
+                    top:6px
+                }
                 .line {
                     left: 2%;
                     position: relative;

@@ -323,6 +323,10 @@
                 a {
                     color: #666;
                 }
+                
+                a:link,a:visited,a:hover,a:active {
+                    text-decoration: none
+                }
                 a {
                     text-decoration: none;
                     color: #08acee;

@@ -572,7 +572,7 @@ class VoteController extends BaseController
                }
 
           $info['visitcounts']= DB::table('chebao_visittable')->where('page',$id)->count();
-          $info['rank']=VoteRegister::where('votes','>',$info['votes'])->count()+1;
+          $info['rank']=VoteRegister::where('votes','>',$info['votes'])->where('is_enabled','yes')->count()+1;
         return view('vote/detail', 
           [
           'data'=>$info,

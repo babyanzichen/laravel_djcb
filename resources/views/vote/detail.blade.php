@@ -155,11 +155,17 @@
                     top: -10%;
                     margin-right: 5%;
                 }
-                .logo  .pic{
+                .logo .pic {
                     width: 100px;
-                    height:100px;
+                    height: 100px;
                     background-size: cover;
-                    border-radius: 10px
+                    border-radius: 10px;
+                    display: block;
+                    text-align: center;
+                    float: left;
+                    line-height: 90px;
+                    left: 0%;
+                    position: relative;
                 }
                 .name{
                     float: right;

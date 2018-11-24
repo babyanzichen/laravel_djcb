@@ -333,8 +333,8 @@
                     margin: 0 auto;
                 }
                 .aui-palace-grid-icon span {
-                    color: #333;
-                    font-size: 0.8rem;
+                    color: rgba(51, 51, 51, 0.71);
+                    font-size: 1.8rem;
                 }
                 .aui-palace-grid-text {
                     display: block;
@@ -346,7 +346,7 @@
                     overflow: hidden;
                 }
                 .aui-palace-grid-text h2 {
-                    font-size: 0.7rem;
+                    font-size: 2.7rem;
                     font-weight: normal;
                     color: #ff6d1a;
                 }
@@ -369,7 +369,7 @@
                                 <div class="aui-palace clearfix">
                                     <a href="javascript:;" class="aui-palace-grid">
                                         <div class="aui-palace-grid-icon">
-                                            <span>票数：</span>
+                                            <span>票数</span>
                                         </div>
                                         <div class="aui-palace-grid-text">
                                             <h2>{{$data->votes}}</h2>

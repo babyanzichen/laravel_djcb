@@ -278,9 +278,6 @@ class TicketController extends BaseController
 	
 	private function logger($content){//开发调试写入log
         $file  = 'log.html';//要写入文件的文件名（可以是任意文件名），如果文件不存在，将会创建一个
-        
-        
-
         $content='【'.date("Y-m-d H:i:s").$content.'】</br>';
         file_put_contents($file, $content,FILE_APPEND);
     }

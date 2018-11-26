@@ -32,7 +32,7 @@
 		}
 		.hover:after{
 		left:150%;
-	    transition:2s ease;
+	    transition:5s ease;
 		}
 	</style>
     <script type="text/javascript">

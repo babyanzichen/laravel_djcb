@@ -379,7 +379,7 @@
                                             <span>票数</span>
                                         </div>
                                         <div class="aui-palace-grid-text">
-                                            <h2>{{$data->votes}}</h2>
+                                            <h2 class="number">{{$data->votes}}</h2>
                                         </div>
                                     </a>
                                     <a href="javascript:;" class="aui-palace-grid">

@@ -542,7 +542,7 @@ class VoteController extends BaseController
         }
           
         $list=DB::table('vote_records')->leftJoin('users', 'vote_records.openid', '=', 'users.openid')
-       ->where('vote_records.rid',$id)->limit(30)->groupBy('users.openid')->get();
+       ->where('vote_records.rid',$id)->limit(100)->groupBy('users.openid')->get();
          
             if ($info['award_id']>=41&&$info['award_id']<=56) {   //
               $info['photo']=$info['logo'];

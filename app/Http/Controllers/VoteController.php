@@ -278,7 +278,8 @@ class VoteController extends BaseController
       $validator = Validator::make($request->all(),  [
             'phone'=> 'required|max:20',
             'companyname' => 'required', // 必填
-            'award_id'=>'required|int'
+            'award_id'=>'required|int',
+            'reason'=>'required'
         ]);
        $userInfo = $this->getEasyWechatSession();
         $openid= $userInfo['original']['openid'];
@@ -291,7 +292,8 @@ class VoteController extends BaseController
             [
                 'success' => false,
                 'msg' => '您已经申报过该奖项啦，换个奖项再申请哦，就酱紫',
-                'status' => '300'
+                'status' => '300',
+
             ]
         );
           }

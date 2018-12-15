@@ -395,7 +395,7 @@ Route::get('race/vote/{id}', 'RaceController@vote');
          Route::get('vote/addComment/', 'voteController@addComment');
         Route::post('vote/{id}/comments', 'voteController@comments');
      });
-
+    Route::get('test', 'TestController@index');
 
 
 

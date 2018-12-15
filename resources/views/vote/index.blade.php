@@ -31,7 +31,7 @@
           wx.ready(function(){
             wx.onMenuShareAppMessage({
              title: '点金传媒邀请您关注2018-2019汽车服务行业财富金字塔颁奖盛典', // 分享标题
-              desc: '2019年2月24日  东莞·广东现代国际会展中心', // 分享描述
+              desc: '2019年2月25日  东莞·广东现代国际会展中心', // 分享描述
               link: 'http://www.djcb123.cn/vote', // 分享链接
               imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
               type: '', // 分享类型,music、video或link，不填默认为link
@@ -46,7 +46,7 @@
 
           wx.onMenuShareTimeline({
               title: '点金传媒邀请您关注2018-2019汽车服务行业财富金字塔颁奖盛典', // 分享标题
-              desc: '2019年2月24日  东莞·广东现代国际会展中心', // 分享描述
+              desc: '2019年2月25日  东莞·广东现代国际会展中心', // 分享描述
               link: 'http://www.djcb123.cn/vote', // 分享链接
               imgUrl: 'http://www.djcb123.cn/index/vote/paramid.jpg', // 分享图标
               success: function () { 
